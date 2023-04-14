@@ -1,4 +1,4 @@
-import React, { MouseEvent as MouseEventReact, useState } from 'react';
+import React, { MouseEvent as MouseEventReact } from 'react';
 import { cursorAdder, cursorRemover, removeCursorProperty, setOrRemoveDocumentListeners } from '../utils/dom-utils';
 import { useGetRefs } from '../hooks/use-get-refs';
 import { TetxtareaRequest } from '@/components/textarea-request/textarea-request';
@@ -6,7 +6,6 @@ import { DisplayInfo } from '@/components/display-info/display-info';
 
 export default function GraphiQl() {
   const { parent, resizer, rightSide, up } = useGetRefs();
-  const [requestQuery, setRequestQuery] = useState('');
 
   let x = 0;
   let y = 0;
@@ -60,7 +59,7 @@ export default function GraphiQl() {
   return (
     <div className="wrapper" ref={parent} onMouseUp={mouseUpHandler}>
       <div className="wrapper-right">
-        <TetxtareaRequest up={up} setRequestQuery={setRequestQuery} />
+        <TetxtareaRequest up={up} />
         <div
           className="resizer"
           data-direction="vertical"
@@ -79,7 +78,7 @@ export default function GraphiQl() {
         onMouseEnter={cursorAdder}
         onMouseLeave={cursorRemover}
       />
-      <DisplayInfo rightSide={rightSide} requestQuery={requestQuery} />
+      <DisplayInfo rightSide={rightSide} />
     </div>
   );
 }

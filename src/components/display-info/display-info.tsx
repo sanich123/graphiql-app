@@ -1,18 +1,22 @@
-import { useSendGraphiqlResponseMutation } from '@/redux/graphql-api/graphql-api';
 import { useAppSelector } from '@/redux/hooks/hooks';
-import { MutableRefObject, useEffect } from 'react';
+import { MutableRefObject } from 'react';
+import JsonFormatter from 'react-json-formatter';
 
 interface DisplayInfoProps {
   rightSide: MutableRefObject<HTMLDivElement | null>;
-  requestQuery: string;
 }
-export function DisplayInfo({ rightSide, requestQuery }: DisplayInfoProps) {
-  const { responseData } = useAppSelector(({ savedData }) => savedData);
 
-  console.log(responseData);
+export function DisplayInfo({ rightSide }: DisplayInfoProps) {
+  const { responseData } = useAppSelector(({ savedData }) => savedData);
+  const jsonStyle = {
+    propertyStyle: { color: 'red' },
+    stringStyle: { color: 'green' },
+    numberStyle: { color: 'darkorange' },
+  };
+
   return (
     <div className="leftSide" ref={rightSide}>
-      {/* {data && data.toString()} */}
+      {responseData && <JsonFormatter json={responseData} tabWith={2} jsonStyle={jsonStyle} />}
     </div>
   );
 }

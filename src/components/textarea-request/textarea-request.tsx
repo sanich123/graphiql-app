@@ -5,9 +5,8 @@ import { useAppDispatch } from '@/redux/hooks/hooks';
 
 interface TextareaRequestProps {
   up: MutableRefObject<HTMLInputElement | null>;
-  setRequestQuery: (arg: string) => void;
 }
-export function TetxtareaRequest({ up, setRequestQuery }: TextareaRequestProps) {
+export function TetxtareaRequest({ up }: TextareaRequestProps) {
   const dispatch = useAppDispatch();
   const [sendRequest] = useSendGraphiqlResponseMutation();
 
@@ -21,10 +20,9 @@ export function TetxtareaRequest({ up, setRequestQuery }: TextareaRequestProps) 
       onKeyDown={async ({ code, ctrlKey, target }) => {
         if (target instanceof HTMLInputElement) {
           if (code === 'Enter' && ctrlKey) {
-            setRequestQuery(target.value);
             await sendRequest(target.value)
               .unwrap()
-              .then((response) => dispatch(changeData(JSON.stringify(response))));
+              .then((response) => dispatch(changeData(JSON.stringify(response, null, 1))));
           }
         }
       }}
