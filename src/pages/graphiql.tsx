@@ -1,9 +1,13 @@
-import React, { MouseEvent as MouseEventReact } from 'react';
+import React, { MouseEvent as MouseEventReact, useState } from 'react';
 import { cursorAdder, cursorRemover, removeCursorProperty, setOrRemoveDocumentListeners } from '../utils/dom-utils';
 import { useGetRefs } from '../hooks/use-get-refs';
+import { TetxtareaRequest } from '@/components/textarea-request/textarea-request';
+import { DisplayInfo } from '@/components/display-info/display-info';
 
 export default function GraphiQl() {
-  const { parent, resizer, leftSide, up } = useGetRefs();
+  const { parent, resizer, rightSide, up } = useGetRefs();
+  const [requestQuery, setRequestQuery] = useState('');
+
   let x = 0;
   let y = 0;
   let leftWidth = 0;
@@ -12,7 +16,7 @@ export default function GraphiQl() {
   function mouseMoveHandler({ target, clientX, clientY }: MouseEvent) {
     const dx = clientX - x;
     const dy = clientY - y;
-    if (resizer.current && parent.current && up.current && leftSide.current) {
+    if (resizer.current && parent.current && up.current && rightSide.current) {
       if (target instanceof HTMLDivElement) {
         const direction = target.getAttribute('data-direction');
         const colOrRow = direction === 'horizontal' ? 'col' : 'row';
@@ -20,7 +24,7 @@ export default function GraphiQl() {
         if (direction === 'vertical') {
           up.current.style.height = `${((upHeight + dy) * 100) / height}%`;
         } else {
-          leftSide.current.style.width = `${((leftWidth - dx) * 100) / width}%`;
+          rightSide.current.style.width = `${((leftWidth - dx) * 100) / width}%`;
         }
         resizer.current.style.cursor = `${colOrRow}-resize`;
         document.body.style.cursor = `${colOrRow}-resize`;
@@ -43,8 +47,8 @@ export default function GraphiQl() {
     if (up.current) {
       upHeight = up.current.getBoundingClientRect().height;
     }
-    if (leftSide.current) {
-      leftWidth = leftSide.current.getBoundingClientRect().width;
+    if (rightSide.current) {
+      leftWidth = rightSide.current.getBoundingClientRect().width;
     }
     setOrRemoveDocumentListeners({
       mouseMoveHandler,
@@ -56,7 +60,7 @@ export default function GraphiQl() {
   return (
     <div className="wrapper" ref={parent} onMouseUp={mouseUpHandler}>
       <div className="wrapper-right">
-        <input type="textarea" className="topSide" placeholder="You can type your graphiql requests here" ref={up} />
+        <TetxtareaRequest up={up} setRequestQuery={setRequestQuery} />
         <div
           className="resizer"
           data-direction="vertical"
@@ -75,9 +79,7 @@ export default function GraphiQl() {
         onMouseEnter={cursorAdder}
         onMouseLeave={cursorRemover}
       />
-      <div className="leftSide" ref={leftSide}>
-        Right
-      </div>
+      <DisplayInfo rightSide={rightSide} requestQuery={requestQuery} />
     </div>
   );
 }

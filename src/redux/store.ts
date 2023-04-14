@@ -1,16 +1,19 @@
 import { configureStore, combineReducers, PreloadedState } from '@reduxjs/toolkit';
-import changeSearchReducer from './search-slice/search-slice';
-import saveDataFromForm from './form-slice/form-slice';
+import changeLangReducer from './change-lang-slice/change-lang-slice';
+import saveDataReducer from './save-data/save-data';
+import { graphiqlApi } from './graphql-api/graphql-api';
 
 const rootReducer = combineReducers({
-  searchQuery: changeSearchReducer,
-  formData: saveDataFromForm,
+  changeLang: changeLangReducer,
+  savedData: saveDataReducer,
+  [graphiqlApi.reducerPath]: graphiqlApi.reducer,
 });
 
 export function setupStore(preloadedState?: PreloadedState<RootState>) {
   return configureStore({
     reducer: rootReducer,
     preloadedState,
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(graphiqlApi.middleware),
   });
 }
 
