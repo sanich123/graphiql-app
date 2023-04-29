@@ -1,5 +1,7 @@
 import '@/styles/globals.css';
 import '../styles/graphiql.scss';
+import 'codemirror/lib/codemirror.css';
+import 'codemirror/theme/material.css';
 import type { AppProps } from 'next/app';
 import { Provider } from 'react-redux';
 import { setupStore } from '@/redux/store';
