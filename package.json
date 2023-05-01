@@ -11,19 +11,22 @@
     "coverage": "vitest --coverage"
   },
   "dependencies": {
+    "@codemirror/state": "^6.2.0",
+    "@codemirror/view": "^6.10.0",
     "@types/node": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
     "autoprefixer": "latest",
-    "codemirror": "^5.65.3",
     "next": "latest",
     "postcss": "latest",
     "react": "latest",
     "react-dom": "latest",
+    "rodemirror": "^2.0.0",
     "tailwindcss": "latest"
   },
   "devDependencies": {
-    "@hookform/error-message": "latest",
+    "@codemirror/lang-javascript": "^6.1.7",
+    "@codemirror/theme-one-dark": "^6.1.2",
     "@reduxjs/toolkit": "latest",
     "@testing-library/react": "latest",
     "@testing-library/user-event": "latest",
@@ -35,7 +38,7 @@
     "@typescript-eslint/parser": "latest",
     "@vitejs/plugin-react": "latest",
     "@vitest/coverage-c8": "latest",
-    "codemirror-graphql": "^2.0.5",
+    "codemirror": "^6.0.1",
     "eslint": "latest",
     "eslint-config-htmlacademy": "latest",
     "eslint-config-next": "latest",
