@@ -12,10 +12,6 @@ interface TextareaRequestProps {
   up: MutableRefObject<HTMLDivElement | null>;
 }
 
-// type CodeMirrorObject = {
-//   display: { input: { prevInput: string } };
-// };
-
 export function TetxtareaRequest({ up }: TextareaRequestProps) {
   const baseExtensions: Extension[] = [basicSetup, oneDark];
   const [extensions, setExtensions] = useState(baseExtensions);
@@ -38,7 +34,7 @@ export function TetxtareaRequest({ up }: TextareaRequestProps) {
     <div ref={up} className="wrapper-textarea">
       <CodeMirror
         value={defaultValue}
-        onUpdate={(v: { docChanged: any; state: { doc: { toString: () => SetStateAction<string> } } }) => {
+        onUpdate={(v: { docChanged: boolean; state: { doc: { toString: () => SetStateAction<string> } } }) => {
           if (v.docChanged) {
             setValue(v.state.doc.toString());
           }

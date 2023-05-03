@@ -2,9 +2,9 @@
 import { useEffect, useRef } from 'react';
 import { buildSchema } from 'graphql';
 
-type CodeMirrorObject = {
-  display: { input: { prevInput: string } };
-};
+// type CodeMirrorObject = {
+//   display: { input: { prevInput: string } };
+// };
 
 export default function Example() {
   const codeMirrorRef = useRef(null);
@@ -17,21 +17,20 @@ export default function Example() {
       require('codemirror-graphql/lint');
       require('codemirror-graphql/mode');
       const CodeMirror = require('codemirror');
-      const instance = CodeMirror.fromTextArea(codeMirrorRef.current, {
+      CodeMirror.fromTextArea(codeMirrorRef.current, {
         lineNumbers: true,
         lineWrapping: false,
         mode: 'graphql',
         autocorrect: true,
-        extraKeys: {
-          'Ctrl-Enter': (changeObj: CodeMirrorObject) => {
-            const {
-              display: {
-                input: { prevInput },
-              },
-            } = changeObj;
-            console.log(prevInput);
-          },
-        },
+        // extraKeys: {
+        //   'Ctrl-Enter': (changeObj: CodeMirrorObject) => {
+        //     // const {
+        //     //   display: {
+        //     //     input: { prevInput },
+        //     //   },
+        //     // } = changeObj;
+        //   },
+        // },
         lint: {
           schema: buildSchema('type Query { hello: String }'),
         },
