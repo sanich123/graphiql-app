@@ -3,15 +3,15 @@ import styles from '../../styles/login.module.scss';
 
 type LoginBtnProps = {
   email: string;
-  isRegistered: boolean;
+  isRegisterOpen: boolean;
   password: string;
 };
 
-export default function LoginBtn({ email, password, isRegistered }: LoginBtnProps) {
+export default function LoginBtn({ email, password, isRegisterOpen }: LoginBtnProps) {
   const { loginBtn } = styles;
   return (
-    <button className={loginBtn} onClick={() => logInWithEmailAndPassword(email, password)}>
-      {isRegistered ? 'Register' : 'Login'}
+    <button type="submit" className={loginBtn} onClick={() => logInWithEmailAndPassword(email, password)}>
+      {isRegisterOpen ? 'Register' : 'Login'}
     </button>
   );
 }

@@ -1,14 +1,14 @@
 import { RegisterBtnProps } from '../register-btn/register-btn';
 
-export default function ToLoginBtn({ setIsForgetPassword, setIsRegistered }: RegisterBtnProps) {
+export default function ToLoginBtn({ setIsResetOpen, setIsRegisterOpen }: RegisterBtnProps) {
   return (
     <>
       {'Already have an account? '}
       <button
         type="button"
         onClick={() => {
-          setIsForgetPassword(false);
-          setIsRegistered(false);
+          setIsResetOpen(false);
+          setIsRegisterOpen(false);
         }}
       >
         Login

@@ -6,5 +6,5 @@ export type InputNameProps = {
   className: string;
 };
 export default function InputName({ setStateFn, value, className }: InputNameProps) {
-  return <input type="text" value={value} className={className} onChange={handleSetState(setStateFn)} placeholder="Full Name" />;
+  return <input type="text" value={value} className={className} onChange={handleSetState(setStateFn)} placeholder="Full Name" name="name" />;
 }

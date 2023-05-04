@@ -2,15 +2,15 @@ export type RegisterBtnProps = {
   [key: string]: (arg: boolean) => void;
 };
 
-export default function RegisterBtn({ setIsForgetPassword, setIsRegistered }: RegisterBtnProps) {
+export default function RegisterBtn({ setIsResetOpen, setIsRegisterOpen }: RegisterBtnProps) {
   return (
     <>
       {'Dont have an account?'}
       <button
         type="button"
         onClick={() => {
-          setIsForgetPassword(false);
-          setIsRegistered(true);
+          setIsResetOpen(false);
+          setIsRegisterOpen(true);
         }}
       >
         Register
