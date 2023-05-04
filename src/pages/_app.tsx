@@ -1,5 +1,5 @@
 import '@/styles/globals.css';
-import '../styles/graphiql.scss';
+import '@/styles/entry.scss';
 // import 'codemirror/lib/codemirror.css';
 // import 'codemirror/theme/material.css';
 import type { AppProps } from 'next/app';

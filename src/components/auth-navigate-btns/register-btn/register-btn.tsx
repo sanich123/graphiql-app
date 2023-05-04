@@ -4,17 +4,18 @@ export type RegisterBtnProps = {
 
 export default function RegisterBtn({ setIsResetOpen, setIsRegisterOpen }: RegisterBtnProps) {
   return (
-    <>
-      {'Dont have an account?'}
+    <div className="btns-wrapper">
+      <div>Don&prime;t have an account?</div>
       <button
         type="button"
         onClick={() => {
           setIsResetOpen(false);
           setIsRegisterOpen(true);
         }}
+        className="btns-wrapper__nav-btn"
       >
         Register
       </button>
-    </>
+    </div>
   );
 }

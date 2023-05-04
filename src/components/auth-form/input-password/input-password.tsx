@@ -1,11 +1,11 @@
 import { handleSetState } from '@/utils/auth-utils';
 import { InputNameProps } from '../input-name/input-name';
 
-export default function InputPassword({ value, setStateFn, className }: InputNameProps) {
+export default function InputPassword({ value, setStateFn }: InputNameProps) {
   return (
     <input
       type="password"
-      className={className}
+      className="auth-wrapper__form--input"
       value={value}
       onChange={handleSetState(setStateFn)}
       placeholder="Password"

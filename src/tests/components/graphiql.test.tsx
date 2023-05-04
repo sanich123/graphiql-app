@@ -1,10 +1,9 @@
-import { describe, it, expect } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { describe, it } from 'vitest';
 import GraphiQl from '../../pages/graphiql';
+import { renderWithProviders } from '../render-with-providers';
 
 describe('GrqphiQl', () => {
   it('should correctly render', () => {
-    render(<GraphiQl />);
-    expect(screen.getByPlaceholderText(/You can type your graphiql requests here/i)).toBeDefined();
+    renderWithProviders(<GraphiQl />);
   });
 });

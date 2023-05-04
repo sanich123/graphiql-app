@@ -7,8 +7,6 @@ export function useAuth() {
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
   const [user, loading, error] = useAuthState(auth);
-  const [isResetOpen, setIsResetOpen] = useState(false);
-  const [isRegisterOpen, setIsRegisterOpen] = useState(false);
 
-  return { email, password, name, isResetOpen, setIsResetOpen, isRegisterOpen, setIsRegisterOpen, setName, setEmail, setPassword, user, loading, error };
+  return { email, password, name, setName, setEmail, setPassword, user, loading, error };
 }
