@@ -1,17 +1,23 @@
-import { logInWithEmailAndPassword } from '@/firebase/email-auth';
 import styles from '../../styles/login.module.scss';
 
 type LoginBtnProps = {
-  email: string;
-  isRegisterOpen: boolean;
-  password: string;
+  [key: string]: boolean;
 };
 
-export default function LoginBtn({ email, password, isRegisterOpen }: LoginBtnProps) {
+export default function LoginBtn({ isRegisterOpen, isResetOpen }: LoginBtnProps) {
   const { loginBtn } = styles;
+  let btnName;
+  if (isRegisterOpen) {
+    btnName = 'Register';
+  } else if (isResetOpen) {
+    btnName = 'Send password reset email';
+  } else {
+    btnName = 'Login';
+  }
+
   return (
-    <button type="submit" className={loginBtn} onClick={() => logInWithEmailAndPassword(email, password)}>
-      {isRegisterOpen ? 'Register' : 'Login'}
+    <button type="submit" className={loginBtn}>
+      {btnName}
     </button>
   );
 }
