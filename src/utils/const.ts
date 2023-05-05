@@ -48,3 +48,9 @@ export const AUTH_PLACES = {
   register: 'Register',
   reset: 'Reset',
 } as const;
+
+export const LOGIN_BTN_TEXTS = {
+  Login: AUTH_PLACES.login,
+  Register: AUTH_PLACES.register,
+  Reset: 'Send password reset email',
+} as const;

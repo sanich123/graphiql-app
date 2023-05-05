@@ -1,13 +1,10 @@
-import { textChanger } from '@/utils/helpers';
+import { ObjectWithStrings } from '@/types/types';
+import { LOGIN_BTN_TEXTS } from '@/utils/const';
 
-type LoginBtnProps = {
-  [key: string]: string;
-};
-
-export default function LoginBtn({ place }: LoginBtnProps) {
+export default function LoginBtn({ place }: ObjectWithStrings) {
   return (
     <button type="submit" className="auth-wrapper__form--btn">
-      {textChanger(place)}
+      {LOGIN_BTN_TEXTS[place as keyof typeof LOGIN_BTN_TEXTS]}
     </button>
   );
 }

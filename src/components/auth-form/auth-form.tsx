@@ -5,11 +5,7 @@ import { AUTH_INPUTS } from '@/utils/const';
 import { Dispatch, SetStateAction } from 'react';
 import { filterInputs } from '@/utils/helpers';
 
-type AuthFormProps = {
-  place: string;
-};
-
-export default function AuthForm({ place }: AuthFormProps) {
+export default function AuthForm({ place }: { place: string }) {
   const { email, password, name, setName, setEmail, setPassword } = useAuth();
   const setStateObj = { email: [email, setEmail], name: [name, setName], password: [password, setPassword] };
 
@@ -20,7 +16,7 @@ export default function AuthForm({ place }: AuthFormProps) {
         const fn = setStateObj[inputName as keyof typeof setStateObj][1] as Dispatch<SetStateAction<string>>;
         return (
           <input
-            key={name}
+            key={inputName}
             type={type}
             value={value.toString()}
             className="auth-wrapper__form--input"

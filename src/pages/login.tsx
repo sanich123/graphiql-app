@@ -6,7 +6,7 @@ import Header from '@/components/header/header';
 import { AUTH_PLACES } from '@/utils/const';
 
 export default function Login() {
-  const [place, setPlace] = useState('Login');
+  const [place, setPlace] = useState(AUTH_PLACES.login as string);
   return (
     <>
       <Header />
