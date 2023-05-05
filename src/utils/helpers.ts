@@ -28,3 +28,17 @@ export function filterBtns(place: string) {
     return AUTH_NAV_BTNS_TEXT;
   }
 }
+
+export function filterInputs(place: string) {
+  return (input: { [key: string]: string }) => {
+    if (place === AUTH_PLACES.login) {
+      return input.name !== 'name';
+    }
+    if (place === AUTH_PLACES.reset) {
+      return input.name === 'email';
+    }
+    if (place === AUTH_PLACES.register) {
+      return input;
+    }
+  };
+}

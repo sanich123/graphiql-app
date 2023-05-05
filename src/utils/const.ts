@@ -24,8 +24,6 @@ export const AUTH_INPUTS = [
     pattern: '[A-Z]{1,}[\\w]{1,}',
     title: 'Имя должно начинаться с латинской большой буквы',
     autoComplete: 'username',
-    value: '',
-    stateFn: {},
   },
   {
     type: 'email',
@@ -34,8 +32,6 @@ export const AUTH_INPUTS = [
     pattern: '^[_a-z0-9-+-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,})',
     title: 'Ваш email должен соответствовать паттерну ^[_a-z0-9-+-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,})',
     autoComplete: 'email',
-    value: '',
-    stateFn: {},
   },
   {
     type: 'password',
@@ -44,8 +40,6 @@ export const AUTH_INPUTS = [
     pattern: '(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{8,}',
     title: 'Пароль должен соответствовать паттерну (?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{8,}',
     autoComplete: 'current-password',
-    value: '',
-    stateFn: {},
   },
 ];
 
