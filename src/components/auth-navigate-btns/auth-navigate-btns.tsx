@@ -1,6 +1,4 @@
-import RegisterBtn from './register-btn/register-btn';
-import ResetBtn from './reset-btn/reset-btn';
-import ToLoginBtn from './to-login-btn/to-login-btn';
+import { filterBtns } from '@/utils/helpers';
 
 type AuthNavigateBtnsProps = {
   isResetOpen: boolean;
@@ -10,11 +8,24 @@ type AuthNavigateBtnsProps = {
 };
 
 export default function AuthNavigateBtns({ isResetOpen, isRegisterOpen, setIsResetOpen, setIsRegisterOpen }: AuthNavigateBtnsProps) {
+  const filtredBtns = filterBtns(isResetOpen, isRegisterOpen);
   return (
     <div className="auth-wrapper__nav-btns">
-      {!isResetOpen && !isRegisterOpen && <ResetBtn setIsResetOpen={setIsResetOpen} />}
-      {(isResetOpen || !isRegisterOpen) && <RegisterBtn setIsResetOpen={setIsResetOpen} setIsRegisterOpen={setIsRegisterOpen} />}
-      {isRegisterOpen && !isResetOpen && <ToLoginBtn setIsResetOpen={setIsResetOpen} setIsRegisterOpen={setIsRegisterOpen} />}
+      {filtredBtns.map(({ phrase, isReset, isRegister, btnText }) => (
+        <div key={btnText} className="btns-wrapper">
+          <div>{phrase}</div>
+          <button
+            type="button"
+            onClick={() => {
+              setIsResetOpen(isReset);
+              setIsRegisterOpen(isRegister);
+            }}
+            className="btns-wrapper__nav-btn"
+          >
+            {btnText}
+          </button>
+        </div>
+      ))}
     </div>
   );
 }

@@ -44,5 +44,9 @@ export async function sendPasswordReset(email: string) {
 }
 
 export function logOut() {
-  signOut(auth);
+  try {
+    signOut(auth);
+  } catch (error) {
+    toast.error('Проблема с сетью');
+  }
 }

@@ -17,7 +17,7 @@ export default function AuthForm({ isRegisterOpen, isResetOpen }: AuthFormProps)
       {isRegisterOpen && !isResetOpen && <InputName setStateFn={setName} value={name} />}
       <InputEmail setStateFn={setEmail} value={email} />
       {!isResetOpen && <InputPassword setStateFn={setPassword} value={password} />}
-      {<LoginBtn isRegisterOpen={isRegisterOpen} isResetOpen={isResetOpen} />}
+      <LoginBtn isRegisterOpen={isRegisterOpen} isResetOpen={isResetOpen} />
     </form>
   );
 }

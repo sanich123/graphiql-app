@@ -1,22 +1,20 @@
-/* eslint-disable no-console */
-import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { signInWithPopup } from 'firebase/auth';
 import { query, getDocs, collection, where, addDoc } from 'firebase/firestore';
 import { auth, db } from '../firebase';
 import { toast } from 'react-toastify';
+import { socialMediaProviderChecker } from '@/utils/helpers';
+import { SOCIAL_NETWORKS } from '@/utils/const';
 
-const googleProvider = new GoogleAuthProvider();
-
-export async function signInWithGoogle() {
+export async function signInWithSocialNetwork(provider: string) {
   try {
-    const res = await signInWithPopup(auth, googleProvider);
-    const user = res.user;
+    const { user } = await signInWithPopup(auth, socialMediaProviderChecker(provider));
     const q = query(collection(db, 'users'), where('uid', '==', user.uid));
     const docs = await getDocs(q);
     if (docs.docs.length === 0) {
       await addDoc(collection(db, 'users'), {
         uid: user.uid,
         name: user.displayName,
-        authProvider: 'google',
+        authProvider: provider === SOCIAL_NETWORKS.github ? 'github' : 'google',
         email: user.email,
       });
     }
