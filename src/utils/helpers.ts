@@ -1,13 +1,13 @@
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
-import { AUTH_NAV_BTNS_TEXT, SOCIAL_NETWORKS } from './const';
+import { AUTH_NAV_BTNS_TEXT, AUTH_PLACES, SOCIAL_NETWORKS } from './const';
 
-export function textChanger(isRegisterOpen: boolean, isResetOpen: boolean) {
-  if (isRegisterOpen) {
-    return 'Register';
-  } else if (isResetOpen) {
+export function textChanger(place: string) {
+  if (place === AUTH_PLACES.register) {
+    return AUTH_PLACES.register;
+  } else if (place === AUTH_PLACES.reset) {
     return 'Send password reset email';
   } else {
-    return 'Login';
+    return AUTH_PLACES.login;
   }
 }
 
@@ -19,14 +19,12 @@ export function socialMediaProviderChecker(provider: string) {
   }
 }
 
-export function filterBtns(reset: boolean, register: boolean) {
-  if (!register && !reset) {
-    return AUTH_NAV_BTNS_TEXT;
-  } else if (register && !reset) {
-    return AUTH_NAV_BTNS_TEXT.filter(({ btnText }) => btnText === 'Login');
-  } else if (reset || !register) {
-    return AUTH_NAV_BTNS_TEXT.filter(({ btnText }) => btnText === 'Register');
+export function filterBtns(place: string) {
+  if (place === AUTH_PLACES.register) {
+    return AUTH_NAV_BTNS_TEXT.filter(({ btnText }) => btnText === AUTH_PLACES.login);
+  } else if (place === AUTH_PLACES.reset) {
+    return AUTH_NAV_BTNS_TEXT.filter(({ btnText }) => btnText === AUTH_PLACES.register);
   } else {
-    return [];
+    return AUTH_NAV_BTNS_TEXT;
   }
 }
