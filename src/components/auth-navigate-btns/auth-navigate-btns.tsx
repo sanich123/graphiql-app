@@ -1,9 +1,9 @@
-import { AUTH_NAV_BTNS_TEXT } from '@/utils/const';
+import { AUTH_NAV_BTNS_TEXT, AUTH_PLACES } from '@/utils/const';
 import { filterBtns } from '@/utils/helpers';
 
 type AuthNavigateBtnsProps = {
-  place: string;
-  setPlace: (arg: string) => void;
+  place: AUTH_PLACES;
+  setPlace: (arg: AUTH_PLACES) => void;
 };
 
 export default function AuthNavigateBtns({ place, setPlace }: AuthNavigateBtnsProps) {

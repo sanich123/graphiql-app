@@ -2,12 +2,11 @@ import { signInWithPopup } from 'firebase/auth';
 import { query, getDocs, collection, where, addDoc } from 'firebase/firestore';
 import { auth, db } from '../firebase';
 import { toast } from 'react-toastify';
-import { socialMediaProviderChecker } from '@/utils/helpers';
-import { SOCIAL_NETWORKS } from '@/utils/const';
+import { SOCIAL_NETWORKS, SOCIAL_NETWORKS_PROVIDERS } from '@/utils/const';
 
-export async function signInWithSocialNetwork(provider: string) {
+export async function signInWithSocialNetwork(provider: SOCIAL_NETWORKS.google | SOCIAL_NETWORKS.github) {
   try {
-    const { user } = await signInWithPopup(auth, socialMediaProviderChecker(provider));
+    const { user } = await signInWithPopup(auth, SOCIAL_NETWORKS_PROVIDERS[provider]);
     const q = query(collection(db, 'users'), where('uid', '==', user.uid));
     const docs = await getDocs(q);
     if (docs.docs.length === 0) {

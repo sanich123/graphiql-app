@@ -1,18 +1,25 @@
-export const SOCIAL_NETWORKS = {
-  github: 'Github',
-  google: 'Google',
-} as const;
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 
+export const enum SOCIAL_NETWORKS {
+  github = 'Github',
+  google = 'Google',
+}
+export const SOCIAL_NETWORKS_ARR = [SOCIAL_NETWORKS.google, SOCIAL_NETWORKS.github];
+export const enum AUTH_PLACES {
+  login = 'Login',
+  register = 'Register',
+  reset = 'Reset',
+}
 export const AUTH_NAV_BTNS_TEXT = [
   // eslint-disable-next-line quotes
-  { phrase: `Don't have an account?`, btnText: 'Register' },
+  { phrase: `Don't have an account?`, btnText: AUTH_PLACES.register },
   {
     phrase: 'Forgot the password?',
-    btnText: 'Reset',
+    btnText: AUTH_PLACES.reset,
   },
   {
     phrase: 'Have an account?',
-    btnText: 'Login',
+    btnText: AUTH_PLACES.login,
   },
 ];
 
@@ -43,14 +50,18 @@ export const AUTH_INPUTS = [
   },
 ];
 
-export const AUTH_PLACES = {
-  login: 'Login',
-  register: 'Register',
-  reset: 'Reset',
-} as const;
-
 export const LOGIN_BTN_TEXTS = {
   Login: AUTH_PLACES.login,
   Register: AUTH_PLACES.register,
   Reset: 'Send password reset email',
 } as const;
+
+export const SOCIAL_NETWORKS_PROVIDERS = {
+  Github: new GithubAuthProvider(),
+  Google: new GoogleAuthProvider(),
+} as const;
+
+export const enum LANGUAGES {
+  ru = 'ru',
+  en = 'en',
+}

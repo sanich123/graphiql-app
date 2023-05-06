@@ -1,14 +1,14 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import AuthNavigateBtns from './auth-navigate-btns';
+import { AUTH_PLACES } from '@/utils/const';
 
-describe('To-login-btn', () => {
-  const setIsResetOpen = vi.fn();
-  const setIsRegisterOpen = vi.fn();
+describe('Authorization btns', () => {
+  const setPlace = vi.fn();
   it('should correctly renders', () => {
-    render(<AuthNavigateBtns isResetOpen isRegisterOpen={false} setIsResetOpen={setIsResetOpen} setIsRegisterOpen={setIsRegisterOpen} />);
-    expect(screen.getByRole('button')).toBeDefined();
+    render(<AuthNavigateBtns place={AUTH_PLACES.login} setPlace={setPlace} />);
+    expect(screen.getAllByRole('button')).toHaveLength(3);
     expect(screen.getByText(/register/i)).toBeDefined();
-    expect(screen.getByText(/have an account/i)).toBeDefined();
+    expect(screen.getByText(/Have an account\?/)).toBeDefined();
   });
 });
