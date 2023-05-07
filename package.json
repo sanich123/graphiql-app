@@ -17,10 +17,14 @@
     "@types/react": "latest",
     "@types/react-dom": "latest",
     "autoprefixer": "latest",
+    "firebase": "^9.21.0",
     "next": "latest",
     "postcss": "latest",
     "react": "latest",
     "react-dom": "latest",
+    "react-firebase-hooks": "^5.1.1",
+    "react-router-dom": "^6.11.0",
+    "react-toastify": "^9.1.2",
     "rodemirror": "^2.0.0",
     "tailwindcss": "latest"
   },
@@ -61,6 +65,7 @@
     "react-remove-scroll": "^2.5.5",
     "sass": "latest",
     "typescript": "latest",
+    "vite-tsconfig-paths": "^4.2.0",
     "vitest": "latest",
     "vitest-fetch-mock": "^0.2.2"
   }
