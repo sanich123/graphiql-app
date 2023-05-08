@@ -65,3 +65,14 @@ export const enum LANGUAGES {
   ru = 'ru',
   en = 'en',
 }
+
+export const enum THEMES {
+  dark = 'dark',
+  light = 'light',
+}
+
+export const enum ROUTES {
+  main = '/',
+  login = '/login',
+  graphiql = '/graphiql',
+}

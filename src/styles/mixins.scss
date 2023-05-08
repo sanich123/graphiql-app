@@ -1,0 +1,36 @@
+@mixin resetBtn() {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background: transparent;
+}
+
+@mixin resetUl() {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@mixin container($width) {
+  width: $width;
+  margin: 0 auto;
+}
+
+@mixin setFont($family, $size, $line-height, $letter-spacing: initial) {
+  font-family: $family;
+  font-size: $size;
+  line-height: $line-height;
+  letter-spacing: $letter-spacing;
+}
+
+@mixin setPseudo($content, $width, $height) {
+  content: $content;
+  width: $width;
+  height: $height;
+  position: absolute;
+}
+
+@mixin zeroPaddingMargin() {
+  margin: 0;
+  padding: 0;
+}
