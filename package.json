@@ -35,6 +35,7 @@
     "@testing-library/react": "latest",
     "@testing-library/user-event": "latest",
     "@types/codemirror": "^5.60.7",
+    "@types/node-fetch": "^2.6.3",
     "@types/react": "latest",
     "@types/react-dom": "latest",
     "@types/react-router-dom": "latest",

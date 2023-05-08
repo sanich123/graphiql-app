@@ -4,6 +4,7 @@ import { useGetRefs } from '../hooks/use-get-refs';
 import { TetxtareaRequest } from '@/components/textarea-request/textarea-request';
 import { DisplayInfo } from '@/components/display-info/display-info';
 import Schema from '@/components/schema/schema';
+import { SearchApi } from '@/components/search-api/seacrh-api';
 
 export default function GraphiQl() {
   const { parent, resizer, rightSide, up } = useGetRefs();
@@ -59,6 +60,7 @@ export default function GraphiQl() {
 
   return (
     <div className="wrapper" ref={parent} onMouseUp={mouseUpHandler}>
+      <SearchApi />
       <Schema />
       <div className="wrapper-right">
         <TetxtareaRequest up={up} />
