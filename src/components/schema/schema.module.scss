@@ -1,15 +1,43 @@
-.btn {
+.allSchema {
+  position: absolute;
+  right: 0px;
+  height: 100%;
+}
+
+.btnSchema {
   color: rgb(255, 255, 255);
   background-color: rgb(28, 19, 68);
   border-radius: 10px 0 0 10px;
   width: 40px;
   position: absolute;
-  right: 0px;
-  top: 40px;
+  top: 60px;
+  left: -40px;
   padding: 10px 6px;
 }
 
 .name {
   writing-mode: vertical-lr;
   text-orientation: upright;
+}
+
+.h1Schema {
+  margin-bottom: 20px;
+}
+
+.blockSchema {
+  max-width: 400px;
+  height: 100%;
+  // max-width: 80%;
+  overflow-x: scroll;
+}
+
+.blockFirstInfo {
+  background-color: rgb(255, 255, 255);
+  height: 100%;
+}
+
+.btnQuery {
+  width: 100%;
+  padding: 4px;
+  border-bottom: 1px solid rgb(13, 6, 41);
 }
