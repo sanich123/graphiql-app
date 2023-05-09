@@ -4,7 +4,7 @@ import { createSlice } from '@reduxjs/toolkit';
 export const changeThemeLang = createSlice({
   name: 'changeThemeLang',
   initialState: {
-    language: LANGUAGES.ru,
+    language: LANGUAGES.en,
     theme: THEMES.dark,
   },
   reducers: {
@@ -17,5 +17,5 @@ export const changeThemeLang = createSlice({
   },
 });
 
-export const { changeLanguage } = changeThemeLang.actions;
+export const { changeLanguage, changeTheme } = changeThemeLang.actions;
 export default changeThemeLang.reducer;

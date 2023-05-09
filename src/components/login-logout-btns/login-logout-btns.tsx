@@ -20,7 +20,7 @@ export default function LoginLogoutBtn() {
         {loading && <Loader />}
         {error && error.message}
         {!user && <DefaultUser theme={theme} />}
-        {LANG[language].login}
+        {!user && LANG[language].login}
         {user?.photoURL && <Image className="login__img" src={user?.photoURL} alt="Avatar of the user" width={30} height={30} />}
         {user?.email || user?.displayName}
       </button>

@@ -76,3 +76,23 @@ export const enum ROUTES {
   login = '/login',
   graphiql = '/graphiql',
 }
+
+export const enum COLORS {
+  almostBlack = '#161D25',
+  white = 'white',
+}
+
+export const DEVELOPERS = [
+  {
+    name: 'irinaiid',
+    github: 'https://github.com/IrinaIID',
+  },
+  {
+    name: 'sanich123',
+    github: 'https://github.com/sanich123',
+  },
+  {
+    name: 'predmaxim',
+    github: 'https://github.com/predmaxim',
+  },
+];

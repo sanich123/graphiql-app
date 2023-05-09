@@ -7,6 +7,8 @@ import { setupStore } from '@/redux/store';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import { Roboto } from 'next/font/google';
+import Header from '@/components/header/header';
+import Footer from '@/components/footer/footer';
 
 const roboto = Roboto({
   weight: ['400', '700'],
@@ -18,9 +20,11 @@ const roboto = Roboto({
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <Provider store={setupStore()}>
-      <div className={roboto.className}>
+      <div className={`${roboto.className} page-body`}>
+        <Header />
         <ToastContainer />
         <Component {...pageProps} />
+        <Footer />
       </div>
     </Provider>
   );

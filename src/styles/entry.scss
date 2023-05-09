@@ -1,6 +1,10 @@
-@import './graphiql.scss';
-@import './login.scss';
-@import './header.scss';
 @import './normalize.scss';
-@import './mixins.scss';
 @import './variables.scss';
+@import './global.scss';
+@import './mixins.scss';
+
+@import './login.scss';
+@import './graphiql.scss';
+@import './header.scss';
+@import './footer.scss';
+

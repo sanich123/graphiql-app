@@ -1,0 +1,42 @@
+.footer {
+  @include container($desktop);
+  padding: 70px 180px;
+  &.light {
+    background: var(--white);
+  }
+  &.dark {
+    background: var(--almost-black);
+    color: var(--white);
+  }
+  &__nav,
+  &__copyright {
+    margin-top: 20px;
+    @include gridFlowColumn();
+    justify-content: space-between;
+  }
+  &__logo {
+    @include resetLink();
+    @include gridFlowColumn();
+    color: inherit;
+    &--text {
+      color: inherit;
+    }
+  }
+  .copyright__authors {
+    @include resetUl();
+    @include gridFlowColumn();
+    gap: 15px;
+    &.dark {
+      color: var(--white);
+    }
+    &.light {
+      color: var(--black);
+    }
+    &--item a {
+      color: inherit;
+    }
+  }
+  .copyright__rsschool-info a {
+    color: inherit;
+  }
+}

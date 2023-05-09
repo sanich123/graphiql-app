@@ -1,6 +1,5 @@
 @mixin resetBtn() {
   border: none;
-  outline: none;
   cursor: pointer;
   background: transparent;
 }
@@ -9,6 +8,11 @@
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+@mixin resetLink() {
+  text-decoration: none;
+  color: var(--black);
 }
 
 @mixin container($width) {
@@ -33,4 +37,10 @@
 @mixin zeroPaddingMargin() {
   margin: 0;
   padding: 0;
+}
+
+@mixin gridFlowColumn() {
+  display: grid;
+  grid-auto-flow: column;
+  align-items: center;
 }
