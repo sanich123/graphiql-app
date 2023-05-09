@@ -1,0 +1,33 @@
+.main {
+  @include container($desktop);
+  @media (min-width: $tablet) and (max-width: $desktop) {
+    @include container($tablet);
+  }
+  display: grid;
+  grid-auto-flow: row;
+  place-items: center;
+  margin-top: 100px;
+  &.dark {
+    background: var(--almost-black);
+    color: var(--white);
+  }
+  &.light {
+    background: var(--white);
+  }
+  &__btn-try {
+    @include resetBtn();
+    padding: 14px 42px;
+    color: var(--white);
+    background: linear-gradient(97.03deg, #d33592 -59.36%, #ee727d 77.99%);
+    border-radius: 50px;
+  }
+}
+.wrapper-main {
+  &.dark {
+    background: var(--almost-black);
+    color: var(--white);
+  }
+  &.light {
+    background: var(--white);
+  }
+}

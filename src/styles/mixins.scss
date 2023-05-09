@@ -20,11 +20,11 @@
   margin: 0 auto;
 }
 
-@mixin setFont($family, $size, $line-height, $letter-spacing: initial) {
-  font-family: $family;
+@mixin setFont($size, $line-height, $font-weight, $font-style: normal) {
   font-size: $size;
   line-height: $line-height;
-  letter-spacing: $letter-spacing;
+  font-weight: $font-weight;
+  font-style: $font-style;
 }
 
 @mixin setPseudo($content, $width, $height) {

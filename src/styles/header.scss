@@ -1,6 +1,12 @@
 .header {
   @include container($desktop);
+  @media (min-width: $tablet) and (max-width: $desktop) {
+    @include container($tablet);
+  }
   padding: 70px 180px;
+  @media (min-width: $tablet) and (max-width: $desktop) {
+    padding: 20px 30px;
+  }
   display: grid;
   grid-template-columns: min-content 1fr min-content;
 
@@ -75,6 +81,11 @@
     min-height: 170px;
     min-width: 267px;
     padding: 27px 20px;
+    @media (min-width: $tablet) and (max-width: $desktop) {
+      min-height: 100px;
+      min-width: 150px;
+      padding: 10px 5px;
+    }
     &.light {
       background: var(--white);
     }
@@ -90,6 +101,9 @@
     column-gap: 10px;
     justify-content: start;
     padding: 15px 25px;
+    @media (min-width: $tablet) and (max-width: $desktop) {
+      padding: 5px 7px;
+    }
     border-radius: 10px;
     color: inherit;
     &.active {
@@ -100,6 +114,14 @@
   .settings-button {
     &:hover {
       transform: scale(1.1) rotate(270deg);
+    }
+  }
+  &-wrapper {
+    &.dark {
+      background: var(--almost-black);
+    }
+    &.light {
+      background: var(--white);
     }
   }
 }

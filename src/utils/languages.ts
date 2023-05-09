@@ -1,3 +1,4 @@
+/* eslint-disable quotes */
 export const LANG = {
   ru: {
     login: 'Войти',
@@ -7,7 +8,7 @@ export const LANG = {
     light: 'Светлая',
     ru: 'Рус',
     en: 'Англ',
-    specialFor: 'Специально для',
+    specialFor: 'Специально для ',
     rsSchool: 'РсСкул',
     footer: {
       irinaiid: 'иринаиид',
@@ -15,6 +16,11 @@ export const LANG = {
       sanich123: 'санич123',
     },
     graphiql: 'ГРАФиКюЛ',
+    main: {
+      h1: 'ГРАФИКЮЛ ПЕСОЧНИЦА',
+      p: 'Это песочница чтобы делать графикюл запросы',
+      startBtn: 'Давай начнем!',
+    },
   },
   en: {
     login: 'Sign-in',
@@ -24,7 +30,7 @@ export const LANG = {
     light: 'Light',
     ru: 'Ru',
     en: 'En',
-    specialFor: 'Special for',
+    specialFor: 'Special for ',
     rsSchool: 'RsSchool',
     footer: {
       irinaiid: 'irinaiid',
@@ -32,5 +38,10 @@ export const LANG = {
       sanich123: 'sanich123',
     },
     graphiql: 'GRAPHiQl',
+    main: {
+      h1: 'GRAPHIQL PLAYGROUND',
+      p: `It is a playground/IDE for graphQL requests`,
+      startBtn: 'Get Started!',
+    },
   },
 };

@@ -23,26 +23,28 @@ export default function Header() {
     }
   }, [setIsPanelOpen, isPanelOpen]);
   return (
-    <header className={`header ${theme}`}>
-      <Logo place={'header'} />
-      <nav className="header__nav nav">
-        <ul className="nav__list">
-          <li className="nav__list--item">
-            <Link href={ROUTES.main}>About</Link>
-          </li>
-          <li className="nav__list--item">
-            <Link href={ROUTES.graphiql}>Playground</Link>
-          </li>
-        </ul>
-      </nav>
-      <div className="header__settings-login-wrapper">
-        <button type="button" className="header__settings-btn" onClick={() => setIsPanelOpen(!isPanelOpen)}>
-          <Settings />
-          {LANG[language].settings}
-        </button>
-        <LoginLogoutBtns />
-        {isPanelOpen && <SettingsPanel />}
-      </div>
-    </header>
+    <div className={`header-wrapper ${theme}`}>
+      <header className={`header ${theme}`}>
+        <Logo place={'header'} />
+        <nav className="header__nav nav">
+          <ul className="nav__list">
+            <li className="nav__list--item">
+              <Link href={ROUTES.main}>About</Link>
+            </li>
+            <li className="nav__list--item">
+              <Link href={ROUTES.graphiql}>Playground</Link>
+            </li>
+          </ul>
+        </nav>
+        <div className="header__settings-login-wrapper">
+          <button type="button" className="header__settings-btn" onClick={() => setIsPanelOpen(!isPanelOpen)}>
+            <Settings />
+            {LANG[language].settings}
+          </button>
+          <LoginLogoutBtns />
+          {isPanelOpen && <SettingsPanel />}
+        </div>
+      </header>
+    </div>
   );
 }
