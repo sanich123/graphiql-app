@@ -1,7 +1,10 @@
 .footer {
   @include container($desktop);
-  @media (min-width: $tablet) and (max-width: $desktop) {
+  @media (min-width: $tablet) and (max-width: ($desktop - 1)) {
     @include container($tablet);
+  }
+  @media (min-width: $mobile) and (max-width: ($tablet - 1)) {
+    @include container($mobile);
   }
   padding: 70px 180px;
   @media (min-width: $tablet) and (max-width: $desktop) {

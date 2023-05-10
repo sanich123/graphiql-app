@@ -1,6 +1,6 @@
 import { useAppSelector } from '@/redux/hooks/hooks';
 import { logOut } from '@/firebase/email-auth';
-import { DefaultUser } from '../svg/svg';
+import { DefaultUser, LogoutIcon } from '../svg/svg';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '@/firebase';
 import Image from 'next/image';
@@ -22,11 +22,14 @@ export default function LoginLogoutBtn() {
         {!user && <DefaultUser theme={theme} />}
         {!user && LANG[language].login}
         {user?.photoURL && <Image className="login__img" src={user?.photoURL} alt="Avatar of the user" width={30} height={30} />}
-        {user?.email || user?.displayName}
+        <span className="header__login--logo-text">{user?.email || user?.displayName}</span>
       </button>
       {user && (
         <button type="button" className="header__logout" onClick={() => logOut(language)}>
-          {LANG[language].logout}
+          <span className="header__logout--text">{LANG[language].logout}</span>
+          <span className="header__logout--icon">
+            <LogoutIcon />
+          </span>
         </button>
       )}
     </>

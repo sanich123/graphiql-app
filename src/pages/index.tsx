@@ -16,7 +16,7 @@ export default function Home() {
         <BigLogo />
         <h1 className="main__h1">{LANG[language].main.h1}</h1>
         <p className="main__p">{LANG[language].main.p}</p>
-        <BtnTry />
+        <BtnTry place="main" />
         <Image src={Img1} alt="Изображение graphql editor" width={1074} height={523} className="main__image" placeholder="blur" />
         <section className="main__tabs tabs">
           <div className="tabs-wrapper">
@@ -28,7 +28,7 @@ export default function Home() {
                 </li>
               ))}
             </ul>
-            <BtnTry />
+            <BtnTry place={'tabs'} />
           </div>
           <div className="iframe-wrapper">
             <iframe

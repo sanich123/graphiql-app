@@ -39,7 +39,7 @@ export default function Header() {
         <div className="header__settings-login-wrapper">
           <button type="button" className="header__settings-btn" onClick={() => setIsPanelOpen(!isPanelOpen)}>
             <Settings />
-            {LANG[language].settings}
+            <span className="header__settings-btn--text">{LANG[language].settings}</span>
           </button>
           <LoginLogoutBtns />
           {isPanelOpen && <SettingsPanel />}
