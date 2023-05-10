@@ -21,6 +21,7 @@ export const LANG = {
       p: 'Это песочница чтобы делать графикюл запросы',
       startBtn: 'Давай начнем!',
     },
+    tabs: ['Запросы к любой API', 'Подсветка синтаксиса', 'Документация', 'Схема', 'Переменные запросов'],
   },
   en: {
     login: 'Sign-in',
@@ -43,5 +44,6 @@ export const LANG = {
       p: `It is a playground/IDE for graphQL requests`,
       startBtn: 'Get Started!',
     },
+    tabs: ['Requests to any API', 'Syntax highlighting', 'Documentation', 'Schema', 'Query variables'],
   },
 };

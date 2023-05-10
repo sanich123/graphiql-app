@@ -1,0 +1,35 @@
+.tabs {
+  margin-top: 30px;
+  width: 100%;
+  &-wrapper {
+    display: grid;
+    grid-auto-flow: row;
+    place-items: center;
+  }
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  &__list {
+    @include resetUl();
+    &--item {
+      @include setFont(20px, 170%, 700);
+      cursor: pointer;
+      &:hover {
+        transform: scale(1.03);
+      }
+      &.active {
+        opacity: 0.5;
+      }
+    }
+  }
+  &__h2 {
+    @include setFont(40px, 47px, 700);
+  }
+  &__iframe {
+    display: grid;
+  }
+  .iframe-wrapper {
+    display: grid;
+    grid-auto-flow: row;
+    place-items: center;
+  }
+}

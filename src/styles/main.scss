@@ -1,12 +1,19 @@
 .main {
   @include container($desktop);
-  @media (min-width: $tablet) and (max-width: $desktop) {
+  @media (min-width: $tablet) and (max-width: ($desktop - 1)) {
     @include container($tablet);
   }
   display: grid;
   grid-auto-flow: row;
   place-items: center;
   margin-top: 100px;
+  &__image {
+    margin-top: 30px;
+    @media (min-width: $tablet) and (max-width: ($desktop - 1)) {
+      width: 500px;
+      height: 260px;
+    }
+  }
   &.dark {
     background: var(--almost-black);
     color: var(--white);
