@@ -1,11 +1,13 @@
 import { configureStore, combineReducers, PreloadedState } from '@reduxjs/toolkit';
 import changeLangReducer from './change-lang-slice/change-lang-slice';
 import saveDataReducer from './save-data/save-data';
+import apiDataReducer from './api-data/api-data';
 import { graphiqlApi } from './graphql-api/graphql-api';
 
 const rootReducer = combineReducers({
   changeLang: changeLangReducer,
   savedData: saveDataReducer,
+  apiData: apiDataReducer,
   [graphiqlApi.reducerPath]: graphiqlApi.reducer,
 });
 

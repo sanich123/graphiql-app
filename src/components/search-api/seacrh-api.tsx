@@ -1,4 +1,8 @@
+import { changeUrlData } from "@/redux/api-data/api-data";
+import React from "react";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import styles from './search-api.module.scss';
 
 
 export function SearchApi() {
@@ -11,6 +15,7 @@ export function SearchApi() {
       queryType {
         fields {
           name
+          description
         }
       }
     }
@@ -31,13 +36,29 @@ export function SearchApi() {
   makeRequest(url, query);
 
 
+  const urlInput = React.useRef(null);
+  const dispatch = useDispatch();
+  // const text = useSelector((state: RootState) => state.textInput.textInput);
+
+
+  const changeUrl = (event: React.SyntheticEvent) => {
+    event.preventDefault();
+    const url = urlInput.current;
+    // dispatch(changeUrlData(url.value))
+    // console.log(url.value);
+  }
+
+
   return (
-    <div className="p-[20px] bg-cyan-50 absolute top-[80px] left-[100px]">
-      <form action="">
-        <input type="text" />
-        <button>Check</button>
+    <div className={styles.allSearchApi}>
+      <form className={styles.formApi}>
+        <button onClick={changeUrl}>Check</button>
+        <input
+          className={styles.inputApi}
+          type="text"
+          ref={urlInput}
+        />
       </form>
-      <h1>Hello World</h1>
     </div>
   );
 }
