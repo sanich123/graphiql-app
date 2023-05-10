@@ -1,0 +1,46 @@
+@mixin resetBtn() {
+  border: none;
+  cursor: pointer;
+  background: transparent;
+}
+
+@mixin resetUl() {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@mixin resetLink() {
+  text-decoration: none;
+  color: var(--black);
+}
+
+@mixin container($width) {
+  width: $width;
+  margin: 0 auto;
+}
+
+@mixin setFont($size, $line-height, $font-weight, $font-style: normal) {
+  font-size: $size;
+  line-height: $line-height;
+  font-weight: $font-weight;
+  font-style: $font-style;
+}
+
+@mixin setPseudo($content, $width, $height) {
+  content: $content;
+  width: $width;
+  height: $height;
+  position: absolute;
+}
+
+@mixin zeroPaddingMargin() {
+  margin: 0;
+  padding: 0;
+}
+
+@mixin gridFlowColumn() {
+  display: grid;
+  grid-auto-flow: column;
+  align-items: center;
+}

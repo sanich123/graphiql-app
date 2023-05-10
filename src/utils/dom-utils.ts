@@ -32,3 +32,21 @@ export function removeCursorProperty(resizer: RefObject<HTMLDivElement>) {
   }
   document.body.style.removeProperty('cursor');
 }
+
+export function setEscListener(setIsPanelOpen: (arg: boolean) => void) {
+  return document.addEventListener('keydown', ({ code }) => {
+    if (code === 'Escape') {
+      setIsPanelOpen(false);
+    }
+  });
+}
+
+export function setClickOnOverlay(setIsPanelOpen: (arg: boolean) => void, isPanelOpen: boolean) {
+  return document.addEventListener('click', ({ target }) => {
+    if (target instanceof HTMLElement) {
+      if (isPanelOpen && !target?.getAttribute('class')?.includes('settings')) {
+        setIsPanelOpen(false);
+      }
+    }
+  });
+}

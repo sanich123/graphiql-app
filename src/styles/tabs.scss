@@ -1,0 +1,64 @@
+.tabs {
+  margin-top: 30px;
+  width: 100%;
+  &-wrapper {
+    display: grid;
+    grid-auto-flow: row;
+    place-items: center;
+  }
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  &__list {
+    @include resetUl();
+    display: grid;
+    grid-auto-flow: row;
+    gap: 15px;
+    &--item {
+      @include setFont(20px, 170%, 700);
+      @media (min-width: $tablet) and (max-width: ($desktop - 1)) {
+        @include setFont(16px, 24px, 700);
+      }
+      cursor: pointer;
+      &:hover {
+        transform: scale(1.03);
+      }
+      &.active {
+        opacity: 0.5;
+      }
+    }
+  }
+
+  &__h2 {
+    @include setFont(40px, 47px, 700);
+    @media (min-width: $tablet) and (max-width: ($desktop - 1)) {
+      @include setFont(25px, 35px, 700);
+    }
+    @media (min-width: $mobile) and (max-width: ($tablet - 1)) {
+      @include setFont(12px, 20px, 700);
+    }
+  }
+  &__iframe {
+    @media (min-width: $tablet) and (max-width: ($desktop - 1)) {
+      width: 500px;
+      height: 300px;
+    }
+
+    @media (min-width: $mobile) and (max-width: ($tablet - 1)) {
+      width: 200px;
+      height: 100px;
+    }
+  }
+  &__btn-try {
+    @include resetBtn();
+    padding: 14px 42px;
+    color: var(--white);
+    background: linear-gradient(97.03deg, #d33592 -59.36%, #ee727d 77.99%);
+    border-radius: 50px;
+    margin-top: 20px;
+  }
+  .iframe-wrapper {
+    display: grid;
+    grid-auto-flow: row;
+    place-items: center;
+  }
+}

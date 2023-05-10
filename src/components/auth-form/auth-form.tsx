@@ -6,7 +6,7 @@ import { filterInputs } from '@/utils/helpers';
 import { useAppSelector } from '@/redux/hooks/hooks';
 
 export default function AuthForm({ place }: { place: AUTH_PLACES }) {
-  const { language }: { language: LANGUAGES } = useAppSelector(({ changeLang }) => changeLang);
+  const { language }: { language: LANGUAGES } = useAppSelector(({ changeThemeLang }) => changeThemeLang);
   const { email, password, name, setName, setEmail, setPassword } = useAuth();
   const setStateObj = { email: [email, setEmail], name: [name, setName], password: [password, setPassword] };
 

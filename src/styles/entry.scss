@@ -1,2 +1,11 @@
-@import './graphiql.scss';
+@import './normalize.scss';
+@import './variables.scss';
+@import './global.scss';
+@import './mixins.scss';
+
 @import './login.scss';
+@import './graphiql.scss';
+@import './header.scss';
+@import './footer.scss';
+@import './main.scss';
+@import './tabs.scss';
