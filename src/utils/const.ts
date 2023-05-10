@@ -65,3 +65,47 @@ export const enum LANGUAGES {
   ru = 'ru',
   en = 'en',
 }
+
+export const enum THEMES {
+  dark = 'dark',
+  light = 'light',
+}
+
+export const enum ROUTES {
+  main = '/',
+  login = '/login',
+  graphiql = '/graphiql',
+}
+
+export const enum COLORS {
+  almostBlack = '#161D25',
+  white = 'white',
+}
+
+export const DEVELOPERS = [
+  {
+    name: 'irinaiid',
+    github: 'https://github.com/IrinaIID',
+  },
+  {
+    name: 'sanich123',
+    github: 'https://github.com/sanich123',
+  },
+  {
+    name: 'predmaxim',
+    github: 'https://github.com/predmaxim',
+  },
+];
+
+export const LINKS = {
+  'Requests to any API': 'https://www.youtube.com/embed/VlrYuRDKQBo',
+  'Syntax highlighting': 'https://www.youtube.com/embed/3DjiSsKsGMI',
+  Documentation: 'https://www.youtube.com/embed/BwJRzO4FJBw',
+  'Запросы к любой API': 'https://www.youtube.com/embed/VlrYuRDKQBo',
+  'Подсветка синтаксиса': 'https://www.youtube.com/embed/3DjiSsKsGMI',
+  Документация: 'https://www.youtube.com/embed/BwJRzO4FJBw',
+  Schema: 'https://www.youtube.com/embed/gr6ewWVOXOs',
+  Схема: 'https://www.youtube.com/embed/gr6ewWVOXOs',
+  'Query variables': 'https://www.youtube.com/embed/nYEmQhKfMS8',
+  'Переменные запросов': 'https://www.youtube.com/embed/nYEmQhKfMS8',
+};
