@@ -10,6 +10,7 @@ import { LINKS } from '@/utils/const';
 export default function Home() {
   const { theme, language } = useAppSelector(({ changeThemeLang }) => changeThemeLang);
   const [activeTab, setActiveTab] = useState(LANG[language].tabs[0]);
+
   return (
     <div className={`wrapper-main ${theme}`}>
       <main className="main">

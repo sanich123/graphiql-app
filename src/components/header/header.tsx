@@ -12,16 +12,20 @@ import Logo from '../logo/logo';
 export default function Header() {
   const { theme, language } = useAppSelector(({ changeThemeLang }) => changeThemeLang);
   const [isPanelOpen, setIsPanelOpen] = useState(false);
+
   useEffect(() => {
+    localStorage.setItem('theme', theme);
+    localStorage.setItem('language', language);
     if (isPanelOpen) {
       setEscListener(setIsPanelOpen);
       setClickOnOverlay(setIsPanelOpen, isPanelOpen);
+
       return () => {
         setEscListener(setIsPanelOpen);
         setClickOnOverlay(setIsPanelOpen, isPanelOpen);
       };
     }
-  }, [setIsPanelOpen, isPanelOpen]);
+  }, [setIsPanelOpen, isPanelOpen, theme, language]);
   return (
     <div className={`header-wrapper ${theme}`}>
       <header className={`header ${theme}`}>
