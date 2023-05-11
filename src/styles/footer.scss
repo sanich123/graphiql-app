@@ -3,12 +3,15 @@
   @media (min-width: $tablet) and (max-width: ($desktop - 1)) {
     @include container($tablet);
   }
-  @media (min-width: $mobile) and (max-width: ($tablet - 1)) {
+  @media (max-width: ($tablet - 1)) {
     @include container($mobile);
   }
   padding: 70px 180px;
   @media (min-width: $tablet) and (max-width: $desktop) {
     padding: 20px 30px;
+  }
+  @media (max-width: ($tablet - 1)) {
+    padding: 10px 20px;
   }
   &.light {
     background: var(--white);
@@ -23,6 +26,9 @@
     @include gridFlowColumn();
     justify-content: space-between;
   }
+  &__nav svg {
+    width: 70px;
+  }
   &__logo {
     @include resetLink();
     @include gridFlowColumn();
@@ -30,12 +36,20 @@
     color: inherit;
     &--text {
       color: inherit;
+      @media (max-width: ($tablet - 1)) {
+        display: none;
+      }
     }
   }
   .copyright__authors {
     @include resetUl();
     @include gridFlowColumn();
     gap: 15px;
+    @media (max-width: ($tablet - 1)) {
+      grid-auto-flow: row;
+      gap: 5px;
+      place-items: center;
+    }
     &.dark {
       color: var(--white);
     }
@@ -46,8 +60,14 @@
       color: inherit;
     }
   }
-  .copyright__rsschool-info a {
-    color: inherit;
+  .copyright__rsschool-info {
+    a {
+      color: inherit;
+    }
+    @media (max-width: ($tablet - 1)) {
+      display: grid;
+      place-items: center;
+    }
   }
   &-wrapper {
     &.dark {

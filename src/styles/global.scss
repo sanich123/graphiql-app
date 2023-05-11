@@ -1,4 +1,7 @@
 @import './variables.scss';
+* {
+  box-sizing: border-box;
+}
 
 html {
   position: relative;
