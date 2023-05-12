@@ -41,7 +41,7 @@
     @media (min-width: $tablet) and (max-width: ($desktop - 1)) {
       @include setFont(25px, 35px, 700);
     }
-    @media (min-width: $mobile) and (max-width: ($tablet - 1)) {
+    @media (max-width: ($tablet - 1)) {
       @include setFont(12px, 20px, 700);
     }
   }
@@ -50,12 +50,13 @@
       width: 450px;
       height: 300px;
     }
-    @media (min-width: $mobile) and (max-width: ($tablet - 1)) {
+    @media (max-width: ($tablet - 1)) {
       width: 200px;
       height: 100px;
       display: grid;
       justify-self: center;
       align-self: center;
+      margin-top: 30px;
     }
   }
   &__btn-try {
@@ -65,5 +66,8 @@
     background: linear-gradient(97.03deg, #d33592 -59.36%, #ee727d 77.99%);
     border-radius: 50px;
     margin-top: 20px;
+    @media (max-width: ($tablet - 1)) {
+      display: none;
+    }
   }
 }

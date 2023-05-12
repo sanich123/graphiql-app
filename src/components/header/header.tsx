@@ -14,12 +14,9 @@ export default function Header() {
   const [isPanelOpen, setIsPanelOpen] = useState(false);
 
   useEffect(() => {
-    localStorage.setItem('theme', theme);
-    localStorage.setItem('language', language);
     if (isPanelOpen) {
       setEscListener(setIsPanelOpen);
       setClickOnOverlay(setIsPanelOpen, isPanelOpen);
-
       return () => {
         setEscListener(setIsPanelOpen);
         setClickOnOverlay(setIsPanelOpen, isPanelOpen);
