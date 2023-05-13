@@ -3,11 +3,26 @@
   @media (min-width: $tablet) and (max-width: ($desktop - 1)) {
     @include container($tablet);
   }
-  @media (min-width: $mobile) and (max-width: ($tablet - 1)) {
+  @media (max-width: ($tablet - 1)) {
     @include container($mobile);
   }
   display: grid;
   place-items: center;
+  height: 79vh;
+  &.dark {
+    background: var(--almost-black);
+  }
+  &.light {
+    background: var(--white);
+  }
+  &--wrapper {
+    &.dark {
+      background: var(--almost-black);
+    }
+    &.light {
+      background: var(--white);
+    }
+  }
 
   &__wrapper {
     display: flex;

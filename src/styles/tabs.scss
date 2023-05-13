@@ -1,6 +1,5 @@
 .tabs {
   margin-top: 30px;
-  width: 100%;
   &-wrapper {
     display: grid;
     grid-auto-flow: row;
@@ -9,7 +8,7 @@
   display: grid;
   grid-template-columns: auto auto;
   column-gap: 20px;
-  @media (min-width: $mobile) and (max-width: ($tablet - 1)) {
+  @media (max-width: ($tablet - 1)) {
     grid-template-columns: none;
     grid-auto-flow: row;
   }
@@ -24,7 +23,7 @@
         @include setFont(16px, 24px, 700);
       }
       @media (min-width: $mobile) and (max-width: ($tablet - 1)) {
-        @include setFont(12px, 16px, 400);
+        @include setFont(16px, 16px, 400);
       }
       cursor: pointer;
       &:hover {
@@ -42,13 +41,13 @@
       @include setFont(25px, 35px, 700);
     }
     @media (max-width: ($tablet - 1)) {
-      @include setFont(12px, 20px, 700);
+      @include setFont(18px, 24px, 700);
     }
   }
   &__iframe {
     @media (min-width: $tablet) and (max-width: ($desktop - 1)) {
-      width: 450px;
-      height: 300px;
+      width: 430px;
+      height: 280px;
     }
     @media (max-width: ($tablet - 1)) {
       width: 200px;
@@ -56,7 +55,7 @@
       display: grid;
       justify-self: center;
       align-self: center;
-      margin-top: 30px;
+      margin-top: 31px;
     }
   }
   &__btn-try {

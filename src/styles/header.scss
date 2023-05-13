@@ -1,18 +1,14 @@
 .header {
   display: grid;
-  grid-template-columns: min-content 1fr min-content;
+  grid-template-columns: min-content 1fr auto;
+  padding: 70px 180px;
   @include container($desktop);
   @media (min-width: $tablet) and (max-width: $desktop) {
     @include container($tablet);
-  }
-  @media (min-width: $mobile) and (max-width: ($tablet - 1)) {
-    @include container($mobile);
-  }
-  padding: 70px 180px;
-  @media (min-width: $tablet) and (max-width: ($desktop - 1)) {
     padding: 20px 30px;
   }
-  @media (min-width: $mobile) and (max-width: ($tablet - 1)) {
+  @media (max-width: ($tablet - 1)) {
+    @include container($mobile);
     padding: 10px 20px;
   }
   &.light {
@@ -73,7 +69,7 @@
     color: inherit;
     width: max-content;
     &--logo-text {
-      @media (min-width: $mobile) and (max-width: ($desktop - 1)) {
+      @media (min-width: $mobile) and (max-width: ($tablet - 1)) {
         display: none;
       }
     }
@@ -98,12 +94,16 @@
     &--icon {
       display: none;
       @media (min-width: $mobile) and (max-width: ($desktop - 1)) {
-        display: block;
+        display: grid;
+        place-content: center;
       }
     }
   }
   .login__img {
     border-radius: 50%;
+    &:hover {
+      transform: scale(1.1);
+    }
   }
   &__settings-panel {
     position: absolute;
