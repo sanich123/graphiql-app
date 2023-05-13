@@ -1,16 +1,13 @@
-import { changeUrlData } from "@/redux/api-data/api-data";
+import { changeUrlData, changeDataQuery, changeDataMutation } from "@/redux/api-data/api-data";
+import { RootState } from "@/redux/store";
 import React from "react";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styles from './search-api.module.scss';
 
 
-export function SearchApi() {
+export default function SearchApi() {
 
-  const [data, setData] = useState('');
-  const url = 'https://countries.trevorblades.com/graphql';
-
-  const query =`{
+  const queryQuery = `{
     __schema {
       queryType {
         fields {
@@ -20,32 +17,54 @@ export function SearchApi() {
       }
     }
   }
+  `;
+
+  const queryMutation = `{
+    __schema {
+      mutationType {
+        fields {
+          name
+        }
+      }
+    }
+  }
   `
-  async function makeRequest(endpoint: string, query: string) {
+
+
+  async function makeRequest1(endpoint: string, query: string) {
       const response = await fetch(endpoint, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({query})
       });
-
       const res = await response.json()
-
-      console.log(res.data.__schema)
+      dispatch(changeDataQuery(JSON.stringify(res)));
+      console.log(res);
   }
 
-  makeRequest(url, query);
+  async function makeRequest2(endpoint: string, query: string) {
+    const response = await fetch(endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({query})
+    });
+    const res = await response.json()
+    dispatch(changeDataMutation(JSON.stringify(res)));
+    console.log(res);
+}
 
 
   const urlInput = React.useRef(null);
   const dispatch = useDispatch();
-  // const text = useSelector((state: RootState) => state.textInput.textInput);
+  const text = useSelector((state: RootState) => state.apiData.urlData);
 
 
-  const changeUrl = (event: React.SyntheticEvent) => {
+  async function changeUrl(event: React.SyntheticEvent) {
     event.preventDefault();
-    const url = urlInput.current;
-    // dispatch(changeUrlData(url.value))
-    // console.log(url.value);
+    const url = await urlInput.current;
+    console.log(url.value);
+    const dataQuery = await makeRequest1(url.value, queryQuery);
+    const dataMutation = await makeRequest2(url.value, queryMutation);
   }
 
 
