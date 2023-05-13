@@ -14,7 +14,7 @@ export default function AuthNavigateBtns({ place, setPlace }: AuthNavigateBtnsPr
     <div className="auth-wrapper__nav-btns">
       {(AUTH_NAV_BTNS_TEXT[language] as []).filter(filterBtns(place)).map(({ phrase, btnText, value }) => (
         <div key={btnText} className="btns-wrapper">
-          <div>{phrase}</div>
+          <div className="btns-wrapper__text">{phrase}</div>
           <button type="button" onClick={() => setPlace(value)} className="btns-wrapper__nav-btn">
             {btnText}
           </button>

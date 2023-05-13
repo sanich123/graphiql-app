@@ -8,11 +8,13 @@ import { useEffect, useState } from 'react';
 import SettingsPanel from '../settings-panel/settings-panel';
 import { setClickOnOverlay, setEscListener } from '@/utils/dom-utils';
 import Logo from '../logo/logo';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from '@/firebase';
 
 export default function Header() {
   const { theme, language } = useAppSelector(({ changeThemeLang }) => changeThemeLang);
   const [isPanelOpen, setIsPanelOpen] = useState(false);
-
+  const [user] = useAuthState(auth);
   useEffect(() => {
     if (isPanelOpen) {
       setEscListener(setIsPanelOpen);
@@ -32,9 +34,11 @@ export default function Header() {
             <li className="nav__list--item">
               <Link href={ROUTES.main}>About</Link>
             </li>
-            <li className="nav__list--item">
-              <Link href={ROUTES.graphiql}>Playground</Link>
-            </li>
+            {user && (
+              <li className="nav__list--item">
+                <Link href={ROUTES.graphiql}>Playground</Link>
+              </li>
+            )}
           </ul>
         </nav>
         <div className="header__settings-login-wrapper">

@@ -9,13 +9,6 @@
   display: grid;
   place-items: center;
   height: 79vh;
-  &.dark {
-    background: var(--almost-black);
-    color: var(--white);
-  }
-  &.light {
-    background: var(--white);
-  }
   &--wrapper {
     &.dark {
       background: var(--almost-black);
@@ -75,6 +68,9 @@
       justify-content: start;
       padding-left: 20px;
       background: var(--almost-black);
+      @media (max-width: ($tablet - 1)) {
+        padding-left: 10px;
+      }
     }
     &__nav-btns {
       display: grid;
@@ -87,9 +83,8 @@
         justify-content: space-between;
         &__nav-btn {
           border: none;
-          outline: none;
           background: var(--almost-black);
-          color: white;
+          color: var(--white);
           padding: 2px 7px;
           border-radius: 10px;
           cursor: pointer;
@@ -98,6 +93,11 @@
           &:hover {
             transform: scale(1.05);
             opacity: 0.7;
+          }
+        }
+        &__text {
+          @media (max-width: ($tablet - 1)) {
+            @include setFont(14px, 18px, 400)
           }
         }
       }
