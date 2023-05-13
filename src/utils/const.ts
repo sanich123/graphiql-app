@@ -97,7 +97,8 @@ export const AUTH_INPUTS = {
       placeholder: 'Password',
       name: 'password',
       pattern: '(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{8,}',
-      title: 'minimum 8 symbols, at least one capital letter, one digit, one special character (?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{8,}',
+      title:
+        'minimum 8 symbols, at least one capital letter, one digit, one special character (?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{8,}',
       autoComplete: 'current-password',
     },
   ],
