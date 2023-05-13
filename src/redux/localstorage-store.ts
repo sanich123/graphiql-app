@@ -1,14 +1,3 @@
-import { LANGUAGES, THEMES } from '@/utils/const';
-import { CombinedState } from '@reduxjs/toolkit';
-type StateType = {
-  state: () => CombinedState<{
-    changeThemeLang: {
-      language: LANGUAGES;
-      theme: THEMES;
-    };
-    savedData: { responseData: string };
-  }>;
-};
 export function loadState() {
   try {
     const serializedState = localStorage.getItem('redux');
@@ -21,7 +10,7 @@ export function loadState() {
   }
 }
 
-export function saveState({ state }: StateType): void {
+export function saveState(state: unknown): void {
   try {
     const serializedState = JSON.stringify(state);
     return localStorage.setItem('redux', serializedState);
