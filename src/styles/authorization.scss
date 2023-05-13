@@ -11,6 +11,7 @@
   height: 79vh;
   &.dark {
     background: var(--almost-black);
+    color: var(--white);
   }
   &.light {
     background: var(--white);
@@ -25,11 +26,18 @@
   }
 
   &__wrapper {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-auto-flow: row;
     text-align: center;
-    background-color: #dcdcdc;
-    padding: 30px;
+    padding: 40px;
+    width: 360px;
+    @media (max-width: ($tablet - 1)) {
+      width: 310px;
+    }
+    background: var(--white);
+    box-shadow: 0px 4px 38px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    color: var(--black);
   }
   .auth-wrapper {
     &__form {
@@ -41,16 +49,32 @@
         margin-bottom: 10px;
       }
       &--btn {
-        padding: 10px;
+        padding: 12px;
         font-size: 18px;
         margin-bottom: 10px;
         border: none;
-        color: white;
-        background-color: black;
+        color: var(--white);
+        background: var(--almost-black);
+        cursor: pointer;
+        border-radius: 10px;
+        &:hover {
+          transform: scale(1.01);
+          opacity: 0.9;
+        }
+      }
+      &--input {
+        background: var(--white);
+        border: 1px solid #a0a0a0;
+        border-radius: 10px;
       }
     }
     .social-btn {
-      background-color: #4285f4;
+      display: grid;
+      grid-template-columns: min-content 1fr;
+      align-items: center;
+      justify-content: start;
+      padding-left: 20px;
+      background: var(--almost-black);
     }
     &__nav-btns {
       display: grid;
@@ -64,7 +88,7 @@
         &__nav-btn {
           border: none;
           outline: none;
-          background: orange;
+          background: var(--almost-black);
           color: white;
           padding: 2px 7px;
           border-radius: 10px;
