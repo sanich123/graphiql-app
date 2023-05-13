@@ -1,9 +1,13 @@
 .authorization {
-  height: 100vh;
-  width: 100vw;
+  @include container($desktop);
+  @media (min-width: $tablet) and (max-width: ($desktop - 1)) {
+    @include container($tablet);
+  }
+  @media (min-width: $mobile) and (max-width: ($tablet - 1)) {
+    @include container($mobile);
+  }
   display: grid;
-  align-items: center;
-  justify-content: center;
+  place-items: center;
 
   &__wrapper {
     display: flex;

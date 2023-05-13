@@ -10,6 +10,7 @@ import { LINKS } from '@/utils/const';
 export default function Home() {
   const { theme, language } = useAppSelector(({ changeThemeLang }) => changeThemeLang);
   const [activeTab, setActiveTab] = useState(LANG[language].tabs[0]);
+
   return (
     <div className={`wrapper-main ${theme}`}>
       <main className="main">
@@ -30,18 +31,17 @@ export default function Home() {
             </ul>
             <BtnTry place={'tabs'} />
           </div>
-          <div className="iframe-wrapper">
-            <iframe
-              className="tabs__iframe"
-              width="500"
-              height="300"
-              src={LINKS[activeTab as keyof typeof LINKS]}
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-            />
-          </div>
+
+          <iframe
+            className="tabs__iframe"
+            width="500"
+            height="300"
+            src={LINKS[activeTab as keyof typeof LINKS]}
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          />
         </section>
       </main>
     </div>
