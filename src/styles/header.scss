@@ -79,6 +79,11 @@
         display: none;
       }
     }
+    &--text {
+      @media (min-width: $mobile) and (max-width: ($desktop - 1)) {
+        display: none;
+      }
+    }
   }
   &__logout {
     @include gridFlowColumn();
