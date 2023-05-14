@@ -4,7 +4,6 @@
     @include container($tablet);
   }
   @media (max-width: ($tablet - 1)) {
-  @media (max-width: ($tablet - 1)) {
     @include container($mobile);
   }
   display: grid;

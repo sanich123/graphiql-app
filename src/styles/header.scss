@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: min-content 1fr auto;
   padding: 70px 180px;
-  transition: width .5s ease-in-out;
+  transition: width 0.5s ease-in-out;
   @include container($desktop);
   @media (min-width: $tablet) and (max-width: $desktop) {
     @include container($tablet);
@@ -179,7 +179,7 @@
     position: fixed;
     top: 0;
     width: 100%;
-    transition: width .5s ease-in-out;
+    transition: width 0.5s ease-in-out;
     & + .somediv {
       padding-top: 100px;
     }
