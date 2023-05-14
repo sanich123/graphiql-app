@@ -3,36 +3,40 @@ import styles from './schema.module.scss';
 import { DATA_SCHEMA } from '@/data/data-schema';
 import { DATA_2 } from '@/data/data-2';
 import { useSelector } from 'react-redux';
-import { RootState } from "@/redux/store";
-import React from "react";
+import { RootState } from '@/redux/store';
+import React from 'react';
 
 
 export default function Schema() {
   const [isOpenDoc, setIsOpenDoc] = useState(false);
   const [isOpenSchema, setIsOpenSchema] = useState(false);
   const dataQuery = useSelector((state: RootState) => state.apiData.dataQuery);
+  const dataDoc = useSelector((state: RootState) => state.apiData.dataDoc);
   let objQuery;
+  let objDoc;
   if (dataQuery !== '') {
-    objQuery = JSON.parse(dataQuery)
-    console.log(JSON.parse(dataQuery))
+    objQuery = JSON.parse(dataQuery);
   }
 
+  if (dataDoc !== '') {
+    objDoc = JSON.parse(dataDoc);
+  }
 
-  function DrawKyes(obj: { data: { __schema: { queryType: { fields: []; }; }; }; }) {
-    if(obj === undefined) {
-      return (
-        <p>uncorrect</p>
-      )
+  function DrawKyes(obj: { data: { __schema: { queryType: { fields: [] } } } }) {
+    if (obj === undefined || dataQuery === '') {
+      return <p className={styles.pInfoCorrect}>Enter correct api</p>;
     }
-      const arr = obj.data.__schema.queryType.fields;
-      const allLi = arr.map((item: { name: string }) => {
-        console.log(item)
-        return (
-          <li key={item.name}><button className={styles.btnQuery}>{item.name}</button></li>
-        )
-      }
+    const arr = obj.data.__schema.queryType.fields;
+    const allLi = arr.map((item: { name: string }) => {
+      console.log(item);
+      return (
+        <li className={styles.liSchema} key={item.name}>
+          <button className={styles.btnQuery}>{item.name}</button>
+        </li>
       );
-      return allLi;
+    }
+    );
+    return allLi;
   }
 
   return (
@@ -40,8 +44,8 @@ export default function Schema() {
       <button
         className={styles.btnDoc}
         onClick={() => {
-          setIsOpenDoc(state => !state);
-          if (isOpenSchema === true) setIsOpenSchema(false);
+          setIsOpenDoc((state) => !state);
+          setIsOpenSchema(false);
         }}
       >
         <p className={styles.name}>DOCS</p>
@@ -49,23 +53,25 @@ export default function Schema() {
       <button
         className={styles.btnSchema}
         onClick={() => {
-          setIsOpenSchema(state => !state);
-          if (isOpenDoc === true) setIsOpenDoc(false);
+          setIsOpenSchema((state) => !state);
+          setIsOpenDoc(false);
         }}
       >
         <p className={styles.name}>Shema</p>
       </button>
-      {isOpenDoc && <div className={styles.blockSchema}>
-          <h1 className={styles.h1Schema}>Query</h1>
+      {isOpenDoc && (
+        <div className={styles.blockSchema}>
+        <h1 className={styles.h1Schema}>QUERIES</h1>
+        <div className={styles.blockFirstInfo}>
+          <ul className={styles.ulSchema}>{DrawKyes(objQuery)}</ul>
+        </div>
+      </div>}
+      {isOpenSchema && <div className={styles.blockSchema}>
           <div className={styles.blockFirstInfo}>
-            <ul>
-              {DrawKyes(objQuery)}
-            </ul>
+            <h1 className={styles.h1Schema}>SCHEMA</h1>
           </div>
-        </div> }
-        {isOpenSchema && <div className={styles.blockSchema}>
-          <h1 className={styles.h1Schema}>FFFFF</h1>
-        </div> }
+      </div>
+      )}
     </div>
   );
 }

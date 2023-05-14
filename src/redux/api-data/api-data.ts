@@ -6,6 +6,7 @@ export const apiData = createSlice({
     urlData: '',
     dataQuery: '',
     dataMutation: '',
+    dataDoc: '',
   },
   reducers: {
     changeUrlData: (state, action) => {
@@ -17,8 +18,11 @@ export const apiData = createSlice({
     changeDataMutation: (state, action) => {
       state.dataMutation = action.payload;
     },
+    changeDataSchema: (state, action) => {
+      state.dataMutation = action.payload;
+    },
   },
 });
 
-export const { changeUrlData, changeDataQuery, changeDataMutation } = apiData.actions;
+export const { changeUrlData, changeDataQuery, changeDataMutation, changeDataSchema } = apiData.actions;
 export default apiData.reducer;
