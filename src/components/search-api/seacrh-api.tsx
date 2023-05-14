@@ -5,10 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import styles from './search-api.module.scss';
 
 export default function SearchApi() {
-  
   const urlInput = React.useRef(null);
   const dispatch = useDispatch();
-  const text = useSelector((state: RootState) => state.apiData.urlData);
 
   const queryQuery = `{
     __schema {
