@@ -36,10 +36,6 @@
     }
   }
 
-  button {
-    @include resetBtn();
-  }
-
   &__nav {
     margin-left: 25px;
     @include gridFlowColumn();
@@ -55,7 +51,7 @@
     }
   }
 
-  &__settings-login-wrapper {
+  &__btns-wrapper {
     @include gridFlowColumn();
     position: relative;
     color: inherit;
@@ -80,17 +76,24 @@
     column-gap: 7px;
     color: inherit;
     width: max-content;
-    &--logo-text {
-      @media (max-width: ($tablet - 1)) {
-        display: none;
-      }
-    }
     &--text {
       @media (max-width: ($desktop - 1)) {
         display: none;
       }
     }
+    &--img {
+      border-radius: 50%;
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+    &--user-info {
+      @media (max-width: ($tablet - 1)) {
+        display: none;
+      }
+    }
   }
+
   &__logout {
     @include gridFlowColumn();
     min-width: 80px;
@@ -111,13 +114,6 @@
         display: grid;
         place-content: center;
       }
-    }
-  }
-
-  .login__img {
-    border-radius: 50%;
-    &:hover {
-      transform: scale(1.1);
     }
   }
 
@@ -151,26 +147,26 @@
       background: var(--lighter-black);
       color: var(--white);
     }
-  }
 
-  .settings-panel__button {
-    display: grid;
-    grid-auto-flow: column;
-    align-items: center;
-    justify-content: start;
-    column-gap: 10px;
-    padding: 15px 25px;
-    @media (min-width: $tablet) and (max-width: $desktop) {
-      padding: 5px 7px;
-    }
-    @media (max-width: ($tablet - 1)) {
-      padding: 5px;
-    }
-    border-radius: 10px;
-    color: inherit;
-    &.active {
-      background: var(--almost-black);
-      color: var(--white);
+    &--button {
+      display: grid;
+      grid-auto-flow: column;
+      align-items: center;
+      justify-content: start;
+      column-gap: 10px;
+      padding: 15px 25px;
+      @media (min-width: $tablet) and (max-width: $desktop) {
+        padding: 5px 7px;
+      }
+      @media (max-width: ($tablet - 1)) {
+        padding: 5px;
+      }
+      border-radius: 10px;
+      color: inherit;
+      &.active {
+        background: var(--almost-black);
+        color: var(--white);
+      }
     }
   }
 
@@ -179,8 +175,11 @@
     top: 0;
     width: 100%;
     transition: width 0.5s ease-in-out;
-    & + .somediv {
+    & + .compensate-sticky-padding {
       padding-top: 20px;
     }
+  }
+  button {
+    @include resetBtn();
   }
 }

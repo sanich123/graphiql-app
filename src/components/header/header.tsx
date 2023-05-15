@@ -1,12 +1,13 @@
-import { Settings } from '../svg/svg';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from '@/firebase';
 import Link from 'next/link';
+import { Settings } from '../svg/svg';
 import { useAppSelector } from '@/redux/hooks/hooks';
 import LoginLogoutBtns from '../login-logout-btns/login-logout-btns';
 import { ROUTES } from '@/utils/const';
 import { LANG } from '@/utils/languages';
 import Logo from '../logo/logo';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import { auth } from '@/firebase';
+
 import dynamic from 'next/dynamic';
 import useHeaderListeners from '@/hooks/use-header-listeners';
 
@@ -33,7 +34,7 @@ export default function Header() {
             )}
           </ul>
         </nav>
-        <div className="header__settings-login-wrapper">
+        <div className="header__btns-wrapper">
           <button type="button" className="header__settings-btn" onClick={() => setIsPanelOpen(!isPanelOpen)}>
             <Settings />
             <span className="header__settings-btn--text">{LANG[language].settings}</span>
@@ -42,7 +43,7 @@ export default function Header() {
           {isPanelOpen && <SettingsPanel />}
         </div>
       </header>
-      <div className="somediv"></div>
+      <div className="compensate-sticky-padding"></div>
     </div>
   );
 }

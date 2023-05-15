@@ -21,8 +21,8 @@ export default function LoginLogoutBtn() {
         {error && error.message}
         {!user && <DefaultUser theme={theme} />}
         {!user && <span className="header__login--text">{LANG[language].login}</span>}
-        {user?.photoURL && <Image className="login__img" src={user?.photoURL} alt="Avatar of the user" width={30} height={30} />}
-        <span className="header__login--logo-text">{user?.email || user?.displayName}</span>
+        {user?.photoURL && <Image className="header__login--img" src={user?.photoURL} alt="Avatar of the user" width={30} height={30} />}
+        <span className="header__login--user-info">{user?.email || user?.displayName}</span>
       </button>
       {user && (
         <button type="button" className="header__logout" onClick={() => logOut(language)}>
