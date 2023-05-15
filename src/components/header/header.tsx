@@ -19,7 +19,7 @@ export default function Header() {
 
   return (
     <div className={`header-wrapper ${theme}`}>
-      <header className={`header ${theme} ${sticky}`}>
+      <header className={`header ${sticky}`}>
         <Logo place={'header'} />
         <nav className="header__nav nav">
           <ul className="nav__list">
