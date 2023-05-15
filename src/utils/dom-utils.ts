@@ -34,19 +34,32 @@ export function removeCursorProperty(resizer: RefObject<HTMLDivElement>) {
 }
 
 export function setEscListener(setIsPanelOpen: (arg: boolean) => void) {
-  return document.addEventListener('keydown', ({ code }) => {
-    if (code === 'Escape') {
-      setIsPanelOpen(false);
-    }
-  });
+  return document.addEventListener(
+    'keydown',
+    ({ code }) => {
+      if (code === 'Escape') {
+        setIsPanelOpen(false);
+      }
+    },
+    { once: true }
+  );
 }
 
+export function addSticky(setSticky: (arg: string) => void) {
+  return () => {
+    if (window.pageYOffset > 100) {
+      setSticky('is-sticky');
+    } else {
+      setSticky('');
+    }
+  };
+}
 export function setClickOnOverlay(setIsPanelOpen: (arg: boolean) => void, isPanelOpen: boolean) {
-  return document.addEventListener('click', ({ target }) => {
+  return ({ target }: MouseEvent) => {
     if (target instanceof HTMLElement) {
       if (isPanelOpen && !target?.getAttribute('class')?.includes('settings')) {
         setIsPanelOpen(false);
       }
     }
-  });
+  };
 }
