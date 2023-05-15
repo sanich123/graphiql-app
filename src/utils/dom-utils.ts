@@ -47,7 +47,7 @@ export function setEscListener(setIsPanelOpen: (arg: boolean) => void) {
 
 export function addSticky(setSticky: (arg: string) => void) {
   return () => {
-    if (window.pageYOffset > 100) {
+    if (window.pageYOffset > 20) {
       setSticky('is-sticky');
     } else {
       setSticky('');
