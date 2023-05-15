@@ -1,12 +1,17 @@
 import { describe, it, expect } from 'vitest';
-import { screen } from '@testing-library/react';
+import { screen, render } from '@testing-library/react';
 import { AUTH_PLACES } from '@/utils/const';
 import AuthForm from './auth-form';
-import { renderWithProviders } from '@/tests/render-with-providers';
+import { store } from '@/redux/store';
+import { Provider } from 'react-redux';
 
 describe('Authorization form', () => {
   it('should correctly renders', () => {
-    renderWithProviders(<AuthForm place={AUTH_PLACES.login} />);
+    render(
+      <Provider store={store}>
+        <AuthForm place={AUTH_PLACES.login} />
+      </Provider>
+    );
     expect(screen.getByRole('textbox')).toBeDefined();
     expect(screen.getByRole('button')).toBeDefined();
     ['E-mail address', 'Password'].map((placeholder) => {

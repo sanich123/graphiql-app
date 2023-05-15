@@ -1,20 +1,19 @@
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '@/firebase';
 import Link from 'next/link';
-import { Settings } from '../svg/svg';
 import { useAppSelector } from '@/redux/hooks/hooks';
-import LoginLogoutBtns from '../login-logout-btns/login-logout-btns';
 import { ROUTES } from '@/utils/const';
-import { LANG } from '@/utils/languages';
 import Logo from '../logo/logo';
-
 import dynamic from 'next/dynamic';
 import useHeaderListeners from '@/hooks/use-header-listeners';
+import SettingsBtn from '../settings-btn/settings-btn';
+import LoginBtn from '../login-btn/login-btn';
+import LogoutBtn from '../logout-btn/logout-btn';
 
 const SettingsPanel = dynamic(() => import('../settings-panel/settings-panel'));
 
 export default function Header() {
-  const { theme, language } = useAppSelector(({ changeThemeLang }) => changeThemeLang);
+  const { theme } = useAppSelector(({ changeThemeLang }) => changeThemeLang);
   const [user] = useAuthState(auth);
   const { sticky, isPanelOpen, setIsPanelOpen } = useHeaderListeners();
 
@@ -35,11 +34,9 @@ export default function Header() {
           </ul>
         </nav>
         <div className="header__btns-wrapper">
-          <button type="button" className="header__settings-btn" onClick={() => setIsPanelOpen(!isPanelOpen)}>
-            <Settings />
-            <span className="header__settings-btn--text">{LANG[language].settings}</span>
-          </button>
-          <LoginLogoutBtns />
+          <SettingsBtn setIsPanelOpen={setIsPanelOpen} isPanelOpen={isPanelOpen} />
+          <LoginBtn />
+          {user && <LogoutBtn />}
           {isPanelOpen && <SettingsPanel />}
         </div>
       </header>

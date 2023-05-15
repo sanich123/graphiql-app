@@ -57,6 +57,7 @@
     "jsdom": "^21.1.0",
     "lint-staged": "^12.4.1",
     "msw": "latest",
+    "next-router-mock": "^0.9.3",
     "prettier": "latest",
     "pretty-print-json": "^2.0.0",
     "react-focus-lock": "^2.9.4",

@@ -1,9 +1,18 @@
 import { describe, it } from 'vitest';
-import { renderWithProviders } from '@/tests/render-with-providers';
+import { render } from '@testing-library/react';
 import Header from './header';
+import { Provider } from 'react-redux';
+import { store } from '@/redux/store';
+// import mockRouter from 'next-router-mock';
+import { MemoryRouterProvider } from 'next-router-mock/MemoryRouterProvider';
 
 describe('Header', () => {
   it('should correctly renders', () => {
-    renderWithProviders(<Header />);
+    render(
+      <Provider store={store}>
+        <Header />
+      </Provider>,
+      { wrapper: MemoryRouterProvider }
+    );
   });
 });
