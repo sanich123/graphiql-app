@@ -12,6 +12,7 @@ export default function LoginBtn() {
   const [user, loading, error] = useAuthState(auth);
   const { language } = useAppSelector(({ changeThemeLang }) => changeThemeLang);
   const { push } = useRouter();
+
   return (
     <button type="button" className="header__login login" onClick={() => push(user ? ROUTES.graphiql : ROUTES.login)}>
       {loading && <Loader />}
