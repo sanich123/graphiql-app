@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "next lint --fix",
     "test": "vitest",
-    "coverage": "vitest --coverage"
+    "coverage": "vitest --coverage",
+    "cypress": "cypress open",
+    "cypress:e2e": "start-server-and-test start http://localhost:3000 cypress"
   },
   "dependencies": {
     "@codemirror/state": "^6.2.0",
@@ -44,6 +46,7 @@
     "@vitejs/plugin-react": "latest",
     "@vitest/coverage-c8": "latest",
     "codemirror": "^6.0.1",
+    "cypress": "^12.12.0",
     "eslint": "latest",
     "eslint-config-htmlacademy": "latest",
     "eslint-config-next": "latest",
@@ -67,6 +70,7 @@
     "react-redux": "latest",
     "react-remove-scroll": "^2.5.5",
     "sass": "latest",
+    "start-server-and-test": "^2.0.0",
     "typescript": "latest",
     "vite-tsconfig-paths": "^4.2.0",
     "vitest": "latest",
