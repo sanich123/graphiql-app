@@ -25,7 +25,6 @@
     "react": "latest",
     "react-dom": "latest",
     "react-firebase-hooks": "^5.1.1",
-    "react-router-dom": "^6.11.0",
     "react-toastify": "^9.1.2",
     "rodemirror": "^2.0.0",
     "tailwindcss": "latest"
@@ -70,6 +69,7 @@
     "react-redux": "latest",
     "react-remove-scroll": "^2.5.5",
     "sass": "latest",
+    "sharp": "^0.32.1",
     "start-server-and-test": "^2.0.0",
     "typescript": "latest",
     "vite-tsconfig-paths": "^4.2.0",
