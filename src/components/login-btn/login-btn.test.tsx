@@ -17,8 +17,8 @@ describe('Login btn', () => {
   afterEach(() => {
     cleanup();
   });
-  it('should correctly renders on initial values', () => {
-    vi.mocked(useAuthState).mockReturnValue([undefined, false, { name: '', message: '' }]);
+  it('should correctly renders on en language without authorization', () => {
+    vi.mocked(useAuthState).mockReturnValue([undefined, false, undefined]);
     vi.mocked(useAppSelector).mockReturnValue({ language: 'en' });
     render(
       <Provider store={store}>
@@ -30,7 +30,7 @@ describe('Login btn', () => {
     expect(screen.getByText(LANG.en.login)).toBeDefined();
   });
 
-  it('should correctly renders in russian', () => {
+  it('should correctly renders in russian without authorization', () => {
     vi.mocked(useAuthState).mockReturnValue([undefined, false, { name: '', message: '' }]);
     vi.mocked(useAppSelector).mockReturnValue({ language: 'ru' });
     render(
@@ -42,7 +42,7 @@ describe('Login btn', () => {
     expect(screen.getByRole('button')).toBeDefined();
     expect(screen.getByText(LANG.ru.login)).toBeDefined();
   });
-  it('should correctly renders with authorized user', () => {
+  it('should correctly renders with correct authorization', () => {
     vi.mocked(useAuthState).mockReturnValue([USER_MOCK as unknown as User, false, { name: 'name', message: '' }]);
     render(
       <Provider store={store}>
@@ -50,5 +50,8 @@ describe('Login btn', () => {
       </Provider>,
       { wrapper: MemoryRouterProvider }
     );
+    expect(screen.getByAltText(/avatar of the user/i)).toBeDefined();
+    expect(screen.getByText(USER_MOCK.email)).toBeDefined();
+    expect(screen.getByRole('button')).toBeDefined();
   });
 });
