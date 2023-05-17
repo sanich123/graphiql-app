@@ -24,6 +24,22 @@ export const USER_MOCK = {
   },
   createdAt: '1683103778845',
   lastLoginAt: '1684180187385',
-  apiKey: 'AIzaSyDT8m05zEtRlU4hQPyWvRiZEku4W0B_908',
+  apiKey: 'A',
   appName: '[DEFAULT]',
+  metadata: {},
+  refreshToken: '',
+  tenantId: '',
+  getIdToken: async () => {
+    await new Promise<void>((resolve) => resolve());
+  },
+  getIdTokenResult: () => {},
+  toJSON: () => {},
+  phoneNumber: '',
+  providerId: '',
+  delete: async () => {
+    await new Promise<void>((resolve) => resolve());
+  },
+  reload: async () => {
+    await new Promise<void>((resolve) => resolve());
+  },
 };
