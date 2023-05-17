@@ -1,11 +1,10 @@
 import { describe, it, expect, afterEach, vi } from 'vitest';
-import { screen, render, cleanup } from '@testing-library/react';
+import { screen, cleanup } from '@testing-library/react';
 import { AUTH_PLACES } from '@/utils/const';
 import AuthForm from './auth-form';
-import { store } from '@/redux/store';
-import { Provider } from 'react-redux';
 import userEvent from '@testing-library/user-event';
 import { useAppSelector } from '@/redux/hooks/hooks';
+import customRender from '@/tests/render-with-providers';
 
 vi.mock('@/redux/hooks/hooks');
 
@@ -15,11 +14,7 @@ describe('Authorization form', () => {
   });
   it('should correctly renders in english', () => {
     vi.mocked(useAppSelector).mockReturnValue({ language: 'en' });
-    render(
-      <Provider store={store}>
-        <AuthForm place={AUTH_PLACES.login} />
-      </Provider>
-    );
+    customRender(<AuthForm place={AUTH_PLACES.login} />);
     expect(screen.getByRole('textbox')).toBeDefined();
     expect(screen.getByRole('button')).toBeDefined();
     ['E-mail address', 'Password'].map((placeholder) => {
@@ -31,11 +26,7 @@ describe('Authorization form', () => {
 
   it('should correctly renders in russian', () => {
     vi.mocked(useAppSelector).mockReturnValue({ language: 'ru' });
-    render(
-      <Provider store={store}>
-        <AuthForm place={AUTH_PLACES.login} />
-      </Provider>
-    );
+    customRender(<AuthForm place={AUTH_PLACES.login} />);
     expect(screen.getByRole('textbox')).toBeDefined();
     expect(screen.getByRole('button')).toBeDefined();
     ['Электропочта', 'Пароль'].map((placeholder) => expect(screen.getByPlaceholderText(new RegExp(`${placeholder}`, 'i'))).toBeDefined());
@@ -44,11 +35,7 @@ describe('Authorization form', () => {
   });
   it('should correctly interract with the user in english', async () => {
     vi.mocked(useAppSelector).mockReturnValue({ language: 'en' });
-    render(
-      <Provider store={store}>
-        <AuthForm place={AUTH_PLACES.login} />
-      </Provider>
-    );
+    customRender(<AuthForm place={AUTH_PLACES.login} />);
     const emailInput = screen.getByPlaceholderText(/e-mail address/i);
     const passwordInput = screen.getByPlaceholderText(/password/i);
     await userEvent.type(emailInput, 'I love pizza');
@@ -59,11 +46,7 @@ describe('Authorization form', () => {
 
   it('should correctly interract with the user in russian', async () => {
     vi.mocked(useAppSelector).mockReturnValue({ language: 'ru' });
-    render(
-      <Provider store={store}>
-        <AuthForm place={AUTH_PLACES.login} />
-      </Provider>
-    );
+    customRender(<AuthForm place={AUTH_PLACES.login} />);
     const emailInput = screen.getByPlaceholderText(/электропочта/i);
     const passwordInput = screen.getByPlaceholderText(/пароль/i);
     await userEvent.type(emailInput, 'I love pizza');
@@ -73,11 +56,7 @@ describe('Authorization form', () => {
   });
   it('should correctly change login btn to register in english', () => {
     vi.mocked(useAppSelector).mockReturnValue({ language: 'en' });
-    render(
-      <Provider store={store}>
-        <AuthForm place={AUTH_PLACES.register} />
-      </Provider>
-    );
+    customRender(<AuthForm place={AUTH_PLACES.register} />);
     ['Full name', 'E-mail address', 'Password'].map((placeholder) => expect(screen.getByPlaceholderText(new RegExp(placeholder, 'i'))).toBeDefined());
     expect(screen.getByRole('button')).toBeDefined();
     expect(screen.getByText(/register/i)).toBeDefined();
@@ -85,22 +64,14 @@ describe('Authorization form', () => {
 
   it('should correctly change login btn to register in russian', () => {
     vi.mocked(useAppSelector).mockReturnValue({ language: 'ru' });
-    render(
-      <Provider store={store}>
-        <AuthForm place={AUTH_PLACES.register} />
-      </Provider>
-    );
+    customRender(<AuthForm place={AUTH_PLACES.register} />);
     ['Имя', 'Электропочта', 'Пароль'].map((placeholder) => expect(screen.getByPlaceholderText(new RegExp(placeholder, 'i'))).toBeDefined());
     expect(screen.getByRole('button')).toBeDefined();
     expect(screen.getByText(/регистрация/i)).toBeDefined();
   });
   it('should correctly change login btn to reset in english', () => {
     vi.mocked(useAppSelector).mockReturnValue({ language: 'en' });
-    render(
-      <Provider store={store}>
-        <AuthForm place={AUTH_PLACES.reset} />
-      </Provider>
-    );
+    customRender(<AuthForm place={AUTH_PLACES.reset} />);
     expect(screen.getByPlaceholderText(/e-mail address/i)).toBeDefined();
     expect(screen.getByRole('textbox')).toBeDefined();
     expect(screen.getByRole('button')).toBeDefined();
@@ -109,11 +80,7 @@ describe('Authorization form', () => {
 
   it('should correctly change login btn to reset in russian', () => {
     vi.mocked(useAppSelector).mockReturnValue({ language: 'ru' });
-    render(
-      <Provider store={store}>
-        <AuthForm place={AUTH_PLACES.reset} />
-      </Provider>
-    );
+    customRender(<AuthForm place={AUTH_PLACES.reset} />);
     expect(screen.getByPlaceholderText(/электропочта/i)).toBeDefined();
     expect(screen.getByRole('textbox')).toBeDefined();
     expect(screen.getByRole('button', { name: 'Cброс' })).toBeDefined();

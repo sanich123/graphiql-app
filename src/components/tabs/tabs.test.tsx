@@ -1,11 +1,9 @@
 import { describe, it, expect, afterEach, vi } from 'vitest';
-import { screen, render, cleanup } from '@testing-library/react';
-import { store } from '@/redux/store';
-import { Provider } from 'react-redux';
-import { MemoryRouterProvider } from 'next-router-mock/MemoryRouterProvider';
+import { screen, cleanup } from '@testing-library/react';
 import { LANG } from '@/utils/languages';
 import Tabs from './tabs';
 import { useAppSelector } from '@/redux/hooks/hooks';
+import customRender from '@/tests/render-with-providers';
 
 vi.mock('@/redux/hooks/hooks');
 describe('Settings panel', () => {
@@ -13,12 +11,7 @@ describe('Settings panel', () => {
 
   it('should correctly renders in english', () => {
     vi.mocked(useAppSelector).mockReturnValue({ language: 'en' });
-    render(
-      <Provider store={store}>
-        <Tabs />
-      </Provider>,
-      { wrapper: MemoryRouterProvider }
-    );
+    customRender(<Tabs />);
     expect(screen.getByRole('list')).toBeDefined();
     expect(screen.getByRole('heading', { name: 'Functionality' })).toBeDefined();
     expect(screen.getAllByRole('listitem')).toHaveLength(5);
@@ -28,12 +21,7 @@ describe('Settings panel', () => {
 
   it('should correctly renders in russian', () => {
     vi.mocked(useAppSelector).mockReturnValue({ language: 'ru' });
-    render(
-      <Provider store={store}>
-        <Tabs />
-      </Provider>,
-      { wrapper: MemoryRouterProvider }
-    );
+    customRender(<Tabs />);
     expect(screen.getByRole('list')).toBeDefined();
     expect(screen.getByRole('heading', { name: 'Functionality' })).toBeDefined();
     expect(screen.getAllByRole('listitem')).toHaveLength(5);

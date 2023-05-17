@@ -1,37 +1,23 @@
 import { describe, it, expect, afterEach, vi } from 'vitest';
-import { screen, render, cleanup } from '@testing-library/react';
-import { store } from '@/redux/store';
-import { Provider } from 'react-redux';
-import { MemoryRouterProvider } from 'next-router-mock/MemoryRouterProvider';
+import { screen, cleanup } from '@testing-library/react';
 import LogoutBtn from './logout-btn';
 import { LANG } from '@/utils/languages';
 import { useAppSelector } from '@/redux/hooks/hooks';
+import customRender from '@/tests/render-with-providers';
 
 vi.mock('@/redux/hooks/hooks');
 
 describe('Logout btn', () => {
-  afterEach(() => {
-    cleanup();
-  });
+  afterEach(() => cleanup());
   it('should correctly renders in english', () => {
     vi.mocked(useAppSelector).mockReturnValue({ language: 'en' });
-    render(
-      <Provider store={store}>
-        <LogoutBtn />
-      </Provider>,
-      { wrapper: MemoryRouterProvider }
-    );
+    customRender(<LogoutBtn />);
     expect(screen.getByRole('button')).toBeDefined();
     expect(screen.getByText(LANG.en.logout)).toBeDefined();
   });
   it('should correctly renders in russian', () => {
     vi.mocked(useAppSelector).mockReturnValue({ language: 'ru' });
-    render(
-      <Provider store={store}>
-        <LogoutBtn />
-      </Provider>,
-      { wrapper: MemoryRouterProvider }
-    );
+    customRender(<LogoutBtn />);
     expect(screen.getByText(LANG.ru.logout)).toBeDefined();
     expect(screen.getByRole('button')).toBeDefined();
   });

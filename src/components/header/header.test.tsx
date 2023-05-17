@@ -1,15 +1,12 @@
 import { describe, it, expect, afterEach, vi } from 'vitest';
-import { cleanup, render, screen } from '@testing-library/react';
+import { cleanup, screen } from '@testing-library/react';
 import Header from './header';
-import { Provider } from 'react-redux';
-import { store } from '@/redux/store';
 import { useAppSelector } from '@/redux/hooks/hooks';
 import { useAuthState } from 'react-firebase-hooks/auth';
-// import mockRouter from 'next-router-mock';
-import { MemoryRouterProvider } from 'next-router-mock/MemoryRouterProvider';
 import { LANG } from '@/utils/languages';
 import { USER_MOCK } from '@/tests/auth-mocks';
 import { User } from 'firebase/auth';
+import customRender from '@/tests/render-with-providers';
 
 vi.mock('@/redux/hooks/hooks');
 vi.mock('react-firebase-hooks/auth');
@@ -18,12 +15,7 @@ describe('Header', () => {
   it('should correctly renders in english', () => {
     vi.mocked(useAuthState).mockReturnValue([undefined, false, undefined]);
     vi.mocked(useAppSelector).mockReturnValue({ language: 'en' });
-    render(
-      <Provider store={store}>
-        <Header />
-      </Provider>,
-      { wrapper: MemoryRouterProvider }
-    );
+    customRender(<Header />);
     expect(screen.getByRole('navigation')).toBeDefined();
     expect(screen.getByRole('banner')).toBeDefined();
     expect(screen.getByRole('list')).toBeDefined();
@@ -35,12 +27,7 @@ describe('Header', () => {
   it('should correctly renders in russian', () => {
     vi.mocked(useAuthState).mockReturnValue([undefined, false, undefined]);
     vi.mocked(useAppSelector).mockReturnValue({ language: 'ru', theme: 'dark' });
-    render(
-      <Provider store={store}>
-        <Header />
-      </Provider>,
-      { wrapper: MemoryRouterProvider }
-    );
+    customRender(<Header />);
     expect(screen.getByRole('navigation')).toBeDefined();
     expect(screen.getByRole('banner')).toBeDefined();
     expect(screen.getByRole('list')).toBeDefined();
@@ -53,12 +40,7 @@ describe('Header', () => {
   it('should correctly renders in russian with authorization', () => {
     vi.mocked(useAuthState).mockReturnValue([USER_MOCK as unknown as User, false, undefined]);
     vi.mocked(useAppSelector).mockReturnValue({ language: 'ru', theme: 'dark' });
-    render(
-      <Provider store={store}>
-        <Header />
-      </Provider>,
-      { wrapper: MemoryRouterProvider }
-    );
+    customRender(<Header />);
     expect(screen.getByRole('navigation')).toBeDefined();
     expect(screen.getByRole('banner')).toBeDefined();
     expect(screen.getByRole('list')).toBeDefined();
@@ -73,12 +55,7 @@ describe('Header', () => {
   it('should correctly renders in english with authorization', () => {
     vi.mocked(useAuthState).mockReturnValue([USER_MOCK as unknown as User, false, undefined]);
     vi.mocked(useAppSelector).mockReturnValue({ language: 'en', theme: 'dark' });
-    render(
-      <Provider store={store}>
-        <Header />
-      </Provider>,
-      { wrapper: MemoryRouterProvider }
-    );
+    customRender(<Header />);
     expect(screen.getByRole('navigation')).toBeDefined();
     expect(screen.getByRole('banner')).toBeDefined();
     expect(screen.getByRole('list')).toBeDefined();

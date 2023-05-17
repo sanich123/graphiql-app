@@ -1,40 +1,26 @@
 import { describe, it, expect, afterEach, vi } from 'vitest';
-import { screen, render, cleanup } from '@testing-library/react';
-import { store } from '@/redux/store';
-import { Provider } from 'react-redux';
-import { MemoryRouterProvider } from 'next-router-mock/MemoryRouterProvider';
+import { screen, cleanup } from '@testing-library/react';
 import { LANG } from '@/utils/languages';
 import SettingsBtn from './settings-btn';
 import { useAppSelector } from '@/redux/hooks/hooks';
+import customRender from '@/tests/render-with-providers';
 
 vi.mock('@/redux/hooks/hooks');
 
 describe('Settings-btn', () => {
-  afterEach(() => {
-    cleanup();
-  });
+  afterEach(() => cleanup());
 
   const setIsPanelOpen = vi.fn();
   it('should correctly renders in english', () => {
     vi.mocked(useAppSelector).mockReturnValue({ language: 'en' });
-    render(
-      <Provider store={store}>
-        <SettingsBtn setIsPanelOpen={setIsPanelOpen} isPanelOpen />
-      </Provider>,
-      { wrapper: MemoryRouterProvider }
-    );
+    customRender(<SettingsBtn setIsPanelOpen={setIsPanelOpen} isPanelOpen />);
     expect(screen.getByRole('button')).toBeDefined();
     expect(screen.getByText(LANG.en.settings)).toBeDefined();
   });
 
   it('should correctly renders in russian', () => {
     vi.mocked(useAppSelector).mockReturnValue({ language: 'ru' });
-    render(
-      <Provider store={store}>
-        <SettingsBtn setIsPanelOpen={setIsPanelOpen} isPanelOpen />
-      </Provider>,
-      { wrapper: MemoryRouterProvider }
-    );
+    customRender(<SettingsBtn setIsPanelOpen={setIsPanelOpen} isPanelOpen />);
     expect(screen.getByRole('button')).toBeDefined();
     expect(screen.getByText(LANG.ru.settings)).toBeDefined();
   });
