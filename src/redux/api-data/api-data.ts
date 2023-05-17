@@ -19,7 +19,7 @@ export const apiData = createSlice({
       state.dataMutation = action.payload;
     },
     changeDataSchema: (state, action) => {
-      state.dataMutation = action.payload;
+      state.dataDoc = action.payload;
     },
   },
 });
