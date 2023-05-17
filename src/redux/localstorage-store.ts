@@ -10,12 +10,11 @@ export function loadState() {
   }
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function saveState(state: any) {
+export function saveState(state: unknown): void {
   try {
     const serializedState = JSON.stringify(state);
     return localStorage.setItem('redux', serializedState);
   } catch (e) {
-    // Ignore
+    /* empty */
   }
 }

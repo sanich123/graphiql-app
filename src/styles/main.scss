@@ -9,7 +9,9 @@
   display: grid;
   grid-auto-flow: row;
   place-items: center;
-  margin-top: 100px;
+  & svg {
+    margin: 50px 0;
+  }
   &__image {
     margin-top: 30px;
     @media (min-width: $tablet) and (max-width: ($desktop - 1)) {
@@ -17,8 +19,8 @@
       height: 260px;
     }
     @media (max-width: ($tablet - 1)) {
-      width: 200px;
-      height: 100px;
+      width: 250px;
+      height: 140px;
     }
   }
   &.dark {
@@ -36,14 +38,12 @@
     border-radius: 50px;
   }
   &__h1 {
-    @media (min-width: $mobile) and (max-width: ($tablet - 1)) {
-      @include setFont(24px, 30px, 700);
-    }
     @media (max-width: ($tablet - 1)) {
-      @include setFont(16px, 24px, 700);
+      @include setFont(24px, 32px, 700);
     }
   }
 }
+
 .wrapper-main {
   &.dark {
     background: var(--almost-black);

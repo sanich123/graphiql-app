@@ -1,18 +1,15 @@
 .footer {
   @include container($desktop);
+  padding: 70px 180px;
   @media (min-width: $tablet) and (max-width: ($desktop - 1)) {
     @include container($tablet);
+    padding: 25px 25px;
   }
   @media (max-width: ($tablet - 1)) {
     @include container($mobile);
+    padding: 10px 15px;
   }
-  padding: 70px 180px;
-  @media (min-width: $tablet) and (max-width: $desktop) {
-    padding: 20px 30px;
-  }
-  @media (max-width: ($tablet - 1)) {
-    padding: 10px 20px;
-  }
+
   &.light {
     background: var(--white);
   }
@@ -27,7 +24,7 @@
     justify-content: space-between;
   }
   &__nav svg {
-    width: 70px;
+    width: 100px;
   }
   &__logo {
     @include resetLink();
@@ -36,6 +33,9 @@
     color: inherit;
     &--text {
       color: inherit;
+      @media (max-width: ($tablet - 1)) {
+        display: none;
+      }
       @media (max-width: ($tablet - 1)) {
         display: none;
       }
@@ -50,6 +50,11 @@
       gap: 5px;
       place-items: center;
     }
+    @media (max-width: ($tablet - 1)) {
+      grid-auto-flow: row;
+      gap: 5px;
+      place-items: center;
+    }
     &.dark {
       color: var(--white);
     }
@@ -58,6 +63,15 @@
     }
     &--item a {
       color: inherit;
+    }
+  }
+  .copyright__rsschool-info {
+    a {
+      color: inherit;
+    }
+    @media (max-width: ($tablet - 1)) {
+      display: grid;
+      place-items: center;
     }
   }
   .copyright__rsschool-info {
