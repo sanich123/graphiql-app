@@ -43,7 +43,8 @@
 }
 
 .blockSchema {
-  max-width: 400px;
+  min-width: 280px;
+  max-width: 1000px;
   height: 100%;
   // max-width: 80%;
   overflow-x: scroll;
@@ -80,7 +81,19 @@
   list-style-type: none;
 }
 
+.liSchemaTypes {
+  margin-left: 20px;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
 .pInfoCorrect {
   margin: 20px;
   font-size: 18px;
+}
+
+
+
+.spanType {
+  color: #B7B7B7;
 }

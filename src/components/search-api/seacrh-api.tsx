@@ -1,7 +1,6 @@
 import { changeDataQuery, changeDataMutation, changeDataSchema } from '@/redux/api-data/api-data';
-import { RootState } from '@/redux/store';
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import styles from './search-api.module.scss';
 import { queryQuery, queryMutation, queryDoc } from './query-param';
 
@@ -34,7 +33,6 @@ export default function SearchApi() {
       const res = await response.json();
       const data = await JSON.stringify(res);
       dispatch(changeDataMutation(data));
-      // console.log(`MUT ${data}`);
     } catch {
       dispatch(changeDataMutation(''));
     }
@@ -54,7 +52,6 @@ export default function SearchApi() {
       dispatch(changeDataSchema(''));
     }
   }
-
 
 
   async function changeUrl(event: React.SyntheticEvent) {
