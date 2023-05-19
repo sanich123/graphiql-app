@@ -15,19 +15,19 @@ export default function SettingsPanel() {
 
   return (
     <div className={`header__settings-panel ${theme} settings-panel`}>
-      <button className={`header__settings-panel--button ${isDark}`} onClick={() => dispatch(changeTheme())}>
+      <button className={`header__settings-panel--button ${isDark}`} onClick={() => dispatch(changeTheme())} data-cy="dark">
         <DarkIcon />
         {LANG[language].dark}
       </button>
-      <button className={`header__settings-panel--button ${isLight}`} onClick={() => dispatch(changeTheme())}>
+      <button className={`header__settings-panel--button ${isLight}`} onClick={() => dispatch(changeTheme())} data-cy="light">
         <LightIcon />
         {LANG[language].light}
       </button>
-      <button className={`header__settings-panel--button ${isRu}`} onClick={() => dispatch(changeLanguage())}>
+      <button className={`header__settings-panel--button ${isRu}`} onClick={() => dispatch(changeLanguage())} data-cy="ru">
         <RuIcon />
         {LANG[language].ru}
       </button>
-      <button className={`header__settings-panel--button ${isEn}`} onClick={() => dispatch(changeLanguage())}>
+      <button className={`header__settings-panel--button ${isEn}`} onClick={() => dispatch(changeLanguage())} data-cy="en">
         <EnIcon />
         {LANG[language].en}
       </button>

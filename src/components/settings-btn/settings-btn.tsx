@@ -10,7 +10,7 @@ type SettingsBtnProps = {
 export default function SettingsBtn({ setIsPanelOpen, isPanelOpen }: SettingsBtnProps) {
   const { language } = useAppSelector(({ changeThemeLang }) => changeThemeLang);
   return (
-    <button type="button" className="header__settings-btn" onClick={() => setIsPanelOpen(!isPanelOpen)}>
+    <button type="button" className="header__settings-btn" onClick={() => setIsPanelOpen(!isPanelOpen)} data-cy="settings-btn">
       <SettingsIcon />
       <span className="header__settings-btn--text">{LANG[language].settings}</span>
     </button>

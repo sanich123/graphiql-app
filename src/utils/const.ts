@@ -14,7 +14,7 @@ export const enum AUTH_PLACES {
 export const enum AUTH_PLACES_RU {
   login = 'Логин',
   register = 'Регистрация',
-  reset = 'Cброс',
+  reset = 'Сброс',
 }
 
 export const AUTH_NAV_BTNS_TEXT = {
