@@ -9,7 +9,7 @@ export default function Tabs() {
   const [activeTab, setActiveTab] = useState(LANG[language].tabs[0]);
   return (
     <section className="main__tabs tabs">
-      {/* <div className="tabs-wrapper">
+      <div className="tabs-wrapper">
         <h2 className="tabs__h2">Functionality</h2>
         <ul className="tabs__list">
           {LANG[language].tabs.map((tab) => (
@@ -20,7 +20,7 @@ export default function Tabs() {
         </ul>
         <BtnTry place={'tabs'} />
       </div>
-      <IFrame activeTab={activeTab} /> */}
+      <IFrame activeTab={activeTab} />
     </section>
   );
 }
