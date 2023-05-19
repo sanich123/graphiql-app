@@ -10,7 +10,10 @@
     "test": "vitest",
     "coverage": "vitest --coverage",
     "cypress": "cypress open",
-    "cypress:e2e": "start-server-and-test start http://localhost:3000 cypress"
+    "e2e": "start-server-and-test dev http://localhost:3000 \"cypress open --e2e\"",
+    "e2e:headless": "start-server-and-test dev http://localhost:3000 \"cypress run --e2e\"",
+    "component": "cypress open --component",
+    "component:headless": "cypress run --component"
   },
   "dependencies": {
     "@codemirror/state": "^6.2.0",
