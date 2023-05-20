@@ -2,7 +2,7 @@ import { useAppSelector } from '@/redux/hooks/hooks';
 import { LANG } from '@/utils/languages';
 import { useState } from 'react';
 import BtnTry from '../btn-try/btn-try';
-import IFrame from '../iframe/iframe';
+import { LINKS } from '@/utils/const';
 
 export default function Tabs() {
   const { language } = useAppSelector(({ changeThemeLang }) => changeThemeLang);
@@ -20,7 +20,7 @@ export default function Tabs() {
         </ul>
         <BtnTry place={'tabs'} />
       </div>
-      <IFrame activeTab={activeTab} />
+      <video className="tabs__iframe" src={LINKS[activeTab as keyof typeof LINKS]} controls />
     </section>
   );
 }

@@ -3,6 +3,9 @@
   grid-template-columns: min-content 1fr auto;
   padding: 70px 180px;
   transition: width 0.5s ease-in-out;
+  grid-template-columns: min-content 1fr auto;
+  padding: 70px 180px;
+  transition: width 0.5s ease-in-out;
   @include container($desktop);
   @media (min-width: $tablet) and (max-width: $desktop) {
     @include container($tablet);
@@ -10,15 +13,21 @@
   }
   @media (max-width: ($tablet - 1)) {
     @include container($mobile);
+  @media (max-width: ($tablet - 1)) {
+    @include container($mobile);
     padding: 10px 20px;
   }
-  &.light {
-    background: var(--white);
+
+  &-wrapper {
+    &.dark {
+      background: var(--almost-black);
+      color: var(--white);
+    }
+    &.light {
+      background: var(--white);
+    }
   }
-  &.dark {
-    background: var(--almost-black);
-    color: var(--white);
-  }
+
   &__logo {
     @include resetLink();
     @include gridFlowColumn();
@@ -26,16 +35,15 @@
     color: inherit;
     &--text {
       color: inherit;
-      @media (min-width: $mobile) and (max-width: ($tablet - 1)) {
+      @media (max-width: ($tablet - 1)) {
         display: none;
       }
     }
   }
-  button {
-    @include resetBtn();
-  }
+
   &__nav {
     margin-left: 25px;
+    @include gridFlowColumn();
     .nav__list {
       @include resetUl();
       @include gridFlowColumn();
@@ -46,71 +54,74 @@
         color: inherit;
       }
     }
-    @include gridFlowColumn();
   }
-  &__settings-login-wrapper {
-    position: relative;
+
+  &__btns-wrapper {
     @include gridFlowColumn();
+    position: relative;
     color: inherit;
   }
+
   &__settings-btn {
-    display: grid;
-    grid-auto-flow: column;
+    @include gridFlowColumn();
     column-gap: 7px;
     color: inherit;
     &--text {
-      @media (min-width: $mobile) and (max-width: ($desktop - 1)) {
+      @media (max-width: ($desktop - 1)) {
         display: none;
       }
     }
+    &--svg:hover {
+      transform: scale(1.1) rotate(270deg);
+    }
   }
+
   &__login {
     @include gridFlowColumn();
     column-gap: 7px;
     color: inherit;
     width: max-content;
-    &--logo-text {
-      @media (min-width: $mobile) and (max-width: ($tablet - 1)) {
+    &--text {
+      @media (max-width: ($desktop - 1)) {
         display: none;
       }
     }
-    &--text {
-      @media (min-width: $mobile) and (max-width: ($desktop - 1)) {
-        display: none;
+    &--img {
+      border-radius: 50%;
+      &:hover {
+        transform: scale(1.1);
       }
     }
-    &--text {
-      @media (min-width: $mobile) and (max-width: ($desktop - 1)) {
+    &--user-info {
+      @media (max-width: ($tablet - 1)) {
         display: none;
       }
     }
   }
+
   &__logout {
     @include gridFlowColumn();
     min-width: 80px;
-    @media (min-width: $mobile) and (max-width: ($desktop - 1)) {
+    color: inherit;
+    @media (max-width: ($desktop - 1)) {
       min-width: 0;
     }
-    color: inherit;
+
     &--text {
-      @media (min-width: $mobile) and (max-width: ($desktop - 1)) {
+      @media (max-width: ($desktop - 1)) {
         display: none;
       }
     }
+
     &--icon {
       display: none;
-      @media (min-width: $mobile) and (max-width: ($desktop - 1)) {
+      @media (max-width: ($desktop - 1)) {
         display: grid;
         place-content: center;
       }
     }
   }
-  .login__img {
-    border-radius: 50%;
-    &:hover {
-      transform: scale(1.1);
-    }
-  }
+
   &__settings-panel {
     position: absolute;
     right: 0;
@@ -129,7 +140,7 @@
       min-width: 150px;
       padding: 10px 5px;
     }
-    @media (min-width: $mobile) and (max-width: ($tablet - 1)) {
+    @media (max-width: ($tablet - 1)) {
       min-height: 50px;
       min-width: 100px;
       padding: 5px;
@@ -141,30 +152,37 @@
       background: var(--lighter-black);
       color: var(--white);
     }
+
+    &--button {
+      display: grid;
+      grid-auto-flow: column;
+      align-items: center;
+      justify-content: start;
+      column-gap: 10px;
+      padding: 15px 25px;
+      @media (min-width: $tablet) and (max-width: $desktop) {
+        padding: 5px 7px;
+      }
+      @media (max-width: ($tablet - 1)) {
+        padding: 5px;
+      }
+      border-radius: 10px;
+      color: inherit;
+      &.active {
+        background: var(--almost-black);
+        color: var(--white);
+      }
+    }
   }
-  .settings-panel__button {
-    display: grid;
-    grid-auto-flow: column;
-    align-items: center;
-    column-gap: 10px;
-    justify-content: start;
-    padding: 15px 25px;
-    @media (min-width: $tablet) and (max-width: $desktop) {
-      padding: 5px 7px;
-    }
-    @media (min-width: $mobile) and (max-width: ($tablet - 1)) {
-      padding: 5px;
-    }
-    border-radius: 10px;
-    color: inherit;
-    &.active {
-      background: var(--almost-black);
-      color: var(--white);
-    }
-  }
-  .settings-button {
-    &:hover {
-      transform: scale(1.1) rotate(270deg);
+
+  &.is-sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    transition: width 0.5s ease-in-out;
+    background: #696969;
+    & + .compensate-sticky-padding {
+      padding-top: 20px;
     }
   }
   &-wrapper {
@@ -173,15 +191,6 @@
     }
     &.light {
       background: var(--white);
-    }
-  }
-  &.is-sticky {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    transition: width 0.5s ease-in-out;
-    & + .somediv {
-      padding-top: 100px;
     }
   }
 }

@@ -1,22 +1,18 @@
 .footer {
   @include container($desktop);
   padding: 70px 180px;
+  padding: 70px 180px;
   @media (min-width: $tablet) and (max-width: ($desktop - 1)) {
     @include container($tablet);
+    padding: 25px 25px;
     padding: 25px 25px;
   }
   @media (max-width: ($tablet - 1)) {
     @include container($mobile);
     padding: 10px 15px;
+    padding: 10px 15px;
   }
 
-  &.light {
-    background: var(--white);
-  }
-  &.dark {
-    background: var(--almost-black);
-    color: var(--white);
-  }
   &__nav,
   &__copyright {
     margin-top: 20px;
@@ -25,31 +21,25 @@
   }
   &__nav svg {
     width: 100px;
+    width: 70px;
+
   }
   &__logo {
     @include resetLink();
     @include gridFlowColumn();
     @include setFont(18px, 140%, 400);
-    color: inherit;
     &--text {
       color: inherit;
       @media (max-width: ($tablet - 1)) {
         display: none;
       }
-      @media (max-width: ($tablet - 1)) {
-        display: none;
-      }
     }
   }
+
   .copyright__authors {
     @include resetUl();
     @include gridFlowColumn();
     gap: 15px;
-    @media (max-width: ($tablet - 1)) {
-      grid-auto-flow: row;
-      gap: 5px;
-      place-items: center;
-    }
     @media (max-width: ($tablet - 1)) {
       grid-auto-flow: row;
       gap: 5px;
@@ -65,30 +55,25 @@
       color: inherit;
     }
   }
+
   .copyright__rsschool-info {
-    a {
-      color: inherit;
-    }
     @media (max-width: ($tablet - 1)) {
       display: grid;
       place-items: center;
     }
   }
-  .copyright__rsschool-info {
-    a {
-      color: inherit;
-    }
-    @media (max-width: ($tablet - 1)) {
-      display: grid;
-      place-items: center;
-    }
-  }
+
   &-wrapper {
     &.dark {
       background: var(--almost-black);
+      color: var(--white);
     }
     &.light {
       background: var(--white);
     }
+  }
+
+  a {
+    color: inherit;
   }
 }

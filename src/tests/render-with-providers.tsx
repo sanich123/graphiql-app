@@ -1,28 +1,9 @@
-// import { PropsWithChildren } from 'react';
-// import { render } from '@testing-library/react';
-// import type { RenderOptions } from '@testing-library/react';
-// import type { PreloadedState } from '@reduxjs/toolkit';
-// import { Provider } from 'react-redux';
-// import { AppStore, RootState, setupStore } from '../redux/store';
-// import { BrowserRouter } from 'react-router-dom';
+import { render } from '@testing-library/react';
+import { Provider } from 'react-redux';
+import { MemoryRouterProvider } from 'next-router-mock/MemoryRouterProvider';
+import { store } from '@/redux/store';
+import { ReactNode } from 'react';
 
-// interface ExtendedRenderOptions extends Omit<RenderOptions, 'queries'> {
-//   preloadedState?: PreloadedState<RootState>;
-//   store?: AppStore;
-// }
-
-// export function renderWithProviders(
-//   ui: React.ReactElement,
-//   { preloadedState = {}, store = setupStore(preloadedState), ...renderOptions }: ExtendedRenderOptions = {}
-// ) {
-//   function Wrapper({ children }: PropsWithChildren): JSX.Element {
-//     return (
-//       <Provider store={store}>
-//         <BrowserRouter>{children}</BrowserRouter>
-//       </Provider>
-//     );
-//   }
-//   return { store, ...render(ui, { wrapper: Wrapper, ...renderOptions }) };
-// }
-
-export {};
+export default function customRender(children: ReactNode) {
+  return render(<Provider store={store}>{children}</Provider>, { wrapper: MemoryRouterProvider });
+}

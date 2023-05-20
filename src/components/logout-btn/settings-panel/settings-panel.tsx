@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from '@/redux/hooks/hooks';
-import { DarkIcon, EnIcon, LightIcon, RuIcon } from '../svg/svg';
+import { DarkIcon, EnIcon, LightIcon, RuIcon } from '../../svg/svg';
 import { LANG } from '@/utils/languages';
 import { changeTheme } from '@/redux/change-lang-slice/change-lang-slice';
 import { changeLanguage } from '@/redux/change-lang-slice/change-lang-slice';
@@ -15,19 +15,19 @@ export default function SettingsPanel() {
 
   return (
     <div className={`header__settings-panel ${theme} settings-panel`}>
-      <button className={`settings-panel__button ${isDark}`} onClick={() => dispatch(changeTheme())}>
+      <button className={`header__settings-panel--button ${isDark}`} onClick={() => dispatch(changeTheme())} data-cy="dark">
         <DarkIcon />
         {LANG[language].dark}
       </button>
-      <button className={`settings-panel__button ${isLight}`} onClick={() => dispatch(changeTheme())}>
+      <button className={`header__settings-panel--button ${isLight}`} onClick={() => dispatch(changeTheme())} data-cy="light">
         <LightIcon />
         {LANG[language].light}
       </button>
-      <button className={`settings-panel__button ${isRu}`} onClick={() => dispatch(changeLanguage())}>
+      <button className={`header__settings-panel--button ${isRu}`} onClick={() => dispatch(changeLanguage())} data-cy="ru">
         <RuIcon />
         {LANG[language].ru}
       </button>
-      <button className={`settings-panel__button ${isEn}`} onClick={() => dispatch(changeLanguage())}>
+      <button className={`header__settings-panel--button ${isEn}`} onClick={() => dispatch(changeLanguage())} data-cy="en">
         <EnIcon />
         {LANG[language].en}
       </button>
