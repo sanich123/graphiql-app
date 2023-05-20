@@ -10,7 +10,7 @@ import SettingsBtn from '../settings-btn/settings-btn';
 import LoginBtn from '../login-btn/login-btn';
 import LogoutBtn from '../logout-btn/logout-btn';
 
-const SettingsPanel = dynamic(() => import('../settings-panel/settings-panel'));
+const SettingsPanel = dynamic(() => import('../logout-btn/settings-panel/settings-panel'));
 
 export default function Header() {
   const { theme } = useAppSelector(({ changeThemeLang }) => changeThemeLang);

@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from '@/redux/hooks/hooks';
-import { DarkIcon, EnIcon, LightIcon, RuIcon } from '../svg/svg';
+import { DarkIcon, EnIcon, LightIcon, RuIcon } from '../../svg/svg';
 import { LANG } from '@/utils/languages';
 import { changeTheme } from '@/redux/change-lang-slice/change-lang-slice';
 import { changeLanguage } from '@/redux/change-lang-slice/change-lang-slice';
