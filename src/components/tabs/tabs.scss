@@ -9,7 +9,6 @@
   grid-template-columns: auto auto;
   column-gap: 20px;
   @media (max-width: ($tablet - 1)) {
-  @media (max-width: ($tablet - 1)) {
     grid-template-columns: none;
     grid-auto-flow: row;
   }
@@ -43,25 +42,27 @@
     }
     @media (max-width: ($tablet - 1)) {
       @include setFont(18px, 24px, 700);
-    @media (max-width: ($tablet - 1)) {
-      @include setFont(18px, 24px, 700);
     }
   }
   &__iframe {
     display: grid;
     justify-self: center;
     align-self: center;
+
     @media (min-width: $desktop) {
       width: 960px;
     }
+
     @media (min-width: $tablet) and (max-width: ($desktop - 1)) {
       width: 430px;
     }
+
     @media (max-width: ($tablet - 1)) {
       width: 300px;
       margin-top: 31px;
     }
   }
+
   &__btn-try {
     @include resetBtn();
     padding: 14px 42px;
@@ -69,6 +70,7 @@
     background: linear-gradient(97.03deg, #d33592 -59.36%, #ee727d 77.99%);
     border-radius: 50px;
     margin-top: 20px;
+
     @media (max-width: ($tablet - 1)) {
       display: none;
     }

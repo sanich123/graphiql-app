@@ -31,11 +31,6 @@ export default function Header() {
                 <Link href={ROUTES.graphiql}>Playground</Link>
               </li>
             )}
-            {user && (
-              <li className="nav__list--item">
-                <Link href={ROUTES.graphiql}>Playground</Link>
-              </li>
-            )}
           </ul>
         </nav>
         <div className="header__btns-wrapper">
