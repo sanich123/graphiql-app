@@ -3,11 +3,16 @@
   grid-template-columns: min-content 1fr auto;
   padding: 70px 180px;
   transition: width 0.5s ease-in-out;
+  grid-template-columns: min-content 1fr auto;
+  padding: 70px 180px;
+  transition: width 0.5s ease-in-out;
   @include container($desktop);
   @media (min-width: $tablet) and (max-width: $desktop) {
     @include container($tablet);
     padding: 20px 30px;
   }
+  @media (max-width: ($tablet - 1)) {
+    @include container($mobile);
   @media (max-width: ($tablet - 1)) {
     @include container($mobile);
     padding: 10px 20px;
@@ -180,7 +185,12 @@
       padding-top: 20px;
     }
   }
-  button {
-    @include resetBtn();
+  &-wrapper {
+    &.dark {
+      background: var(--almost-black);
+    }
+    &.light {
+      background: var(--white);
+    }
   }
 }

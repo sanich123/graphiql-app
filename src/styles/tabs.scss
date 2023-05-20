@@ -9,6 +9,7 @@
   grid-template-columns: auto auto;
   column-gap: 20px;
   @media (max-width: ($tablet - 1)) {
+  @media (max-width: ($tablet - 1)) {
     grid-template-columns: none;
     grid-auto-flow: row;
   }
@@ -40,6 +41,8 @@
     @media (min-width: $tablet) and (max-width: ($desktop - 1)) {
       @include setFont(25px, 35px, 700);
     }
+    @media (max-width: ($tablet - 1)) {
+      @include setFont(18px, 24px, 700);
     @media (max-width: ($tablet - 1)) {
       @include setFont(18px, 24px, 700);
     }

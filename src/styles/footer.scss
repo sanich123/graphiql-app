@@ -1,12 +1,15 @@
 .footer {
   @include container($desktop);
   padding: 70px 180px;
+  padding: 70px 180px;
   @media (min-width: $tablet) and (max-width: ($desktop - 1)) {
     @include container($tablet);
+    padding: 25px 25px;
     padding: 25px 25px;
   }
   @media (max-width: ($tablet - 1)) {
     @include container($mobile);
+    padding: 10px 15px;
     padding: 10px 15px;
   }
 
@@ -18,13 +21,15 @@
   }
   &__nav svg {
     width: 100px;
-  }
+    width: 70px;
 
+  }
   &__logo {
     @include resetLink();
     @include gridFlowColumn();
     @include setFont(18px, 140%, 400);
     &--text {
+      color: inherit;
       @media (max-width: ($tablet - 1)) {
         display: none;
       }
@@ -39,6 +44,15 @@
       grid-auto-flow: row;
       gap: 5px;
       place-items: center;
+    }
+    &.dark {
+      color: var(--white);
+    }
+    &.light {
+      color: var(--black);
+    }
+    &--item a {
+      color: inherit;
     }
   }
 
