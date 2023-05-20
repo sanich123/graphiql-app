@@ -22,7 +22,7 @@
       @media (min-width: $tablet) and (max-width: ($desktop - 1)) {
         @include setFont(16px, 24px, 700);
       }
-      @media (min-width: $mobile) and (max-width: ($tablet - 1)) {
+      @media (max-width: ($tablet - 1)) {
         @include setFont(16px, 16px, 400);
       }
       cursor: pointer;
@@ -45,16 +45,17 @@
     }
   }
   &__iframe {
+    display: grid;
+    justify-self: center;
+    align-self: center;
+    @media (min-width: $desktop) {
+      width: 960px;
+    }
     @media (min-width: $tablet) and (max-width: ($desktop - 1)) {
       width: 430px;
-      height: 280px;
     }
     @media (max-width: ($tablet - 1)) {
-      width: 200px;
-      height: 100px;
-      display: grid;
-      justify-self: center;
-      align-self: center;
+      width: 300px;
       margin-top: 31px;
     }
   }

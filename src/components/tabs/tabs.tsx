@@ -2,11 +2,7 @@ import { useAppSelector } from '@/redux/hooks/hooks';
 import { LANG } from '@/utils/languages';
 import { useState } from 'react';
 import BtnTry from '../btn-try/btn-try';
-import Image from 'next/image';
-import gifVideo from '../../../public/img/gif-test.gif';
-import video from '../../../public/sample.webm';
-
-// import IFrame from '../iframe/iframe';
+import { LINKS } from '@/utils/const';
 
 export default function Tabs() {
   const { language } = useAppSelector(({ changeThemeLang }) => changeThemeLang);
@@ -24,9 +20,7 @@ export default function Tabs() {
         </ul>
         <BtnTry place={'tabs'} />
       </div>
-      <video className="tabs__iframe" src="https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1h4A3HkttVxJKcyfAI_l-3Ca4G7z2cS2v" controls />
-      <Image src={gifVideo} alt="" className="tabs__iframe" />
-      {/* <IFrame activeTab={activeTab} /> */}
+      <video className="tabs__iframe" src={LINKS[activeTab as keyof typeof LINKS]} controls />
     </section>
   );
 }
