@@ -1,5 +1,6 @@
 .allSchema {
   position: absolute;
+  z-index: 10;
   right: 0px;
   height: 100%;
 }
@@ -44,7 +45,7 @@
 
 .blockSchema {
   min-width: 280px;
-  max-width: 1000px;
+  max-width: 600px;
   height: 100%;
   // max-width: 80%;
   overflow-x: scroll;
@@ -84,7 +85,7 @@
 .liSchemaTypes {
   margin-left: 20px;
   font-size: 16px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .pInfoCorrect {
@@ -92,8 +93,49 @@
   font-size: 18px;
 }
 
-
-
 .spanType {
   color: #B7B7B7;
+}
+
+
+.spanTypeName {
+  margin: 0 7px;
+  font-weight: 600;
+}
+
+.nameFields {
+  margin-top: 4px;
+  padding-left: 12px;
+  display: flex;
+  flex-direction: row;
+}
+
+.spanFieldName {
+  margin-right: 4px;
+}
+
+.spanArgName {
+  color: #B7B7B7;
+}
+
+.blockAllArgs {
+  display: flex;
+  flex-direction: row;
+}
+
+.spanColon {
+  margin-right: 4px;
+}
+
+.spanFieldValue {
+  color: #EE727D;
+}
+
+.spanArgValue {
+  margin-right: 4px;
+  color: #806163;;
+}
+
+.spanOpenBracket {
+  margin-right: 4px;
 }
