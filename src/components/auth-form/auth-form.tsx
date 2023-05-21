@@ -29,10 +29,11 @@ export default function AuthForm({ place }: { place: AUTH_PLACES }) {
             required
             autoComplete={autoComplete}
             autoFocus={inputName === 'email'}
+            data-cy={`input-${inputName}`}
           />
         );
       })}
-      <button type="submit" className="auth-wrapper__form--btn">
+      <button type="submit" className="auth-wrapper__form--btn submit-btn">
         {changeBtnText(place, language)}
       </button>
     </form>

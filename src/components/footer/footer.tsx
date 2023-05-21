@@ -11,13 +11,13 @@ export default function Footer() {
 
   return (
     <div className={`footer-wrapper ${theme}`}>
-      <footer className={`footer ${theme}`}>
+      <footer className="footer">
         <nav className="footer__nav">
-          <Logo place={'footer'} />
+          <Logo place="footer" />
           <RSLogo />
         </nav>
         <div className="footer__copyright copyright">
-          <ul className={`copyright__authors ${theme}`}>
+          <ul className="copyright__authors">
             {DEVELOPERS.map(({ name, github }) => {
               const footer = LANG[language].footer;
               return (
