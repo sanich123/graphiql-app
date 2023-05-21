@@ -133,7 +133,6 @@ export function DrawKyesSchema(obj: { data: { __schema: { types: any; }; }; } | 
         }
         if (item.kind === 'INPUT_OBJECT') {
           const arrInputFields = item.inputFields;
-          console.log(arrInputFields)
 
           const allLi = arrInputFields.map((item) => {
             const fieldInputValue = item.type.name ||
@@ -153,7 +152,6 @@ export function DrawKyesSchema(obj: { data: { __schema: { types: any; }; }; } | 
             )
           })
 
-
           return (
             <li className={`${styles.liSchema} ${styles.liSchemaTypes}`} key={item.name}>
               <span className={styles.spanType}>input</span>
@@ -164,6 +162,26 @@ export function DrawKyesSchema(obj: { data: { __schema: { types: any; }; }; } | 
             </li>
           )
         }
+        if (item.kind === 'ENUM') {
+          const arrEnum = item.enumValues;
+          const allLi = arrEnum.map((item) => {
+            return (
+              <div className={styles.nameFields} key={`3${item.name}`}>
+                <span>{item.name}</span>
+              </div>
+            )
+          })
+          return (
+            <li className={`${styles.liSchema} ${styles.liSchemaTypes}`} key={item.name}>
+              <span className={styles.spanType}>enum</span>
+              <span className={styles.spanTypeName}>{item.name}</span>
+              <span>{'{'}</span>
+              {allLi}
+              <span>{'}'}</span>
+            </li>
+          )
+        }
+
       });
       return allLi;
   } catch {
