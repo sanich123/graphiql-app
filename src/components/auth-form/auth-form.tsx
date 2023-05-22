@@ -23,7 +23,6 @@ export default function AuthForm({ place }: { place: AUTH_PLACES }) {
             className="auth-wrapper__form--input"
             onChange={handleSetState(fn)}
             onInput={({ target: { value: errorValue } }: ChangeEvent<HTMLInputElement>) => {
-              console.log(errorValue);
               if (errorValue === 'Привет!') {
                 throw new Error('Произошла ошибка!');
               }
