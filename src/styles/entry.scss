@@ -9,3 +9,7 @@
 @import '../components/footer/footer.scss';
 @import './main.scss';
 @import '../components/tabs/tabs.scss';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
