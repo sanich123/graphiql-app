@@ -14,13 +14,12 @@ export default class ErrorBoundary extends Component<Props, State> {
     hasError: false,
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  public static getDerivedStateFromError(_: Error): State {
+  public static getDerivedStateFromError(): State {
     return { hasError: true };
   }
 
   public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    toast.error(`Uncaught error:${error} ${errorInfo}`);
+    toast.error(`Uncaught error: ${error} ${errorInfo.componentStack}`);
   }
 
   public render() {

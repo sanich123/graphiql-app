@@ -1,7 +1,7 @@
 import { handleSetState, handleSubmitForm } from '@/utils/auth-utils';
 import { useAuth } from '@/hooks/use-auth';
 import { AUTH_INPUTS, AUTH_PLACES } from '@/utils/const';
-import { Dispatch, SetStateAction } from 'react';
+import { ChangeEvent, Dispatch, SetStateAction } from 'react';
 import { changeBtnText, filterInputs } from '@/utils/helpers';
 import { useAppSelector } from '@/redux/hooks/hooks';
 
@@ -22,6 +22,12 @@ export default function AuthForm({ place }: { place: AUTH_PLACES }) {
             value={value.toString()}
             className="auth-wrapper__form--input"
             onChange={handleSetState(fn)}
+            onInput={({ target: { value: errorValue } }: ChangeEvent<HTMLInputElement>) => {
+              console.log(errorValue);
+              if (errorValue === 'Привет!') {
+                throw new Error('Произошла ошибка!');
+              }
+            }}
             placeholder={placeholder}
             name={inputName}
             pattern={pattern}
