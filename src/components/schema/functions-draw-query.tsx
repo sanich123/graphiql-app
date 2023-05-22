@@ -1,192 +1,190 @@
 import { ReactElement, JSXElementConstructor, ReactFragment } from 'react';
 import styles from './schema.module.scss';
-import { ArgsType } from './types';
+import { ArgsArr, ArgsType, ItemArrField, ItemInputField, ItemSchemaTypes } from './types';
 
+// function DrawSubKyes(e:  React.SyntheticEvent) {
+//   e.preventDefault();
 
-export function DrawKyes(obj: { data: { __schema: { queryType: { fields: []; }; }; }; }) {
+//   const target = e.target as typeof e.target & {
+//     value: { value: string };
+//   };
+//   const value = target.value.value;
+//   console.log(value)
+// }
+
+export function DrawKyes(obj: { data: { __schema: { queryType: { fields: [] } } } }) {
   try {
     if (obj === undefined) {
-      return (
-        <p className={styles.pInfoCorrect}>Enter correct api</p>
-      )
+      return <p className={styles.pInfoCorrect}>Enter correct api</p>;
     }
-      const arr = obj.data.__schema.queryType.fields;
-      const allLi = arr.map((item: { name: string }) => {
-        return (
+    const arr = obj.data.__schema.queryType.fields;
+    let condSecondQuery = false;
+    let secondBlock: ReactElement;
+    const allLi = arr.map((item: { name: string }) => (
+        <div>
           <li className={styles.liSchema} key={item.name}>
-            <button className={styles.btnQuery}>{item.name}</button>
+            <button className={styles.btnQuery} value={item.name}
+              onClick={(e: React.SyntheticEvent) => {
+                e.preventDefault();
+              }}
+            >
+              {item.name}
+            </button>
           </li>
-        )
-      }
-      );
-      return allLi;
+          {condSecondQuery && secondBlock}
+        </div>
+      )
+    );
+    return allLi;
   } catch {
-    return (
-      <p className={styles.pInfoCorrect}>Enter correct api</p>
-    )
+    return <p className={styles.pInfoCorrect}>Enter correct api</p>;
   }
 }
 
-export function DrawKyesMutation(obj: { data: { __schema: { mutationType: { fields: any; } | null; }; }; } | undefined) {
+export function DrawKyesMutation(obj: { data: { __schema: { mutationType: { fields: {name: string}[] | [] } | null } } } | undefined) {
   try {
     if (obj === undefined) {
-      return (
-        <p className={styles.pInfoCorrect}>Enter correct api</p>
-      )
+      return <p className={styles.pInfoCorrect}>Enter correct api</p>;
     } else if (obj.data.__schema.mutationType === null) {
-      return (
-        <p className={styles.pInfoCorrect}>No mutations</p>
-      )
+      return <p className={styles.pInfoCorrect}>No mutations</p>;
     } else {
       const arr = obj.data.__schema.mutationType.fields;
-      const allLi = arr.map((item: { name: string }) => {
-        return (
+      const allLi = arr.map((item: { name: string }) => (
           <li className={styles.liSchema} key={item.name}>
             <button className={styles.btnQuery}>{item.name}</button>
           </li>
         )
-      }
       );
       return allLi;
     }
   } catch (error) {
-    console.log(error)
-    return (
-      <p className={styles.pInfoCorrect}>Enter correct api aaa</p>
-    )
+    console.log(error);
+    return <p className={styles.pInfoCorrect}>Enter correct api aaa</p>;
   }
 }
 
-export function DrawKyesSchema(obj: { data: { __schema: { types: any; }; }; } | undefined) {
+export function DrawKyesSchema(obj: { data: { __schema: { types: ItemSchemaTypes[] } } } | undefined) {
   try {
     if (obj === undefined) {
-      return (
-        <p className={styles.pInfoCorrect}>Enter correct api</p>
-      )
+      return <p className={styles.pInfoCorrect}>Enter correct api</p>;
     }
-      const arr = obj.data.__schema.types;
-      const allLi = arr.map((item: { kind: string, name: string, fields: any, inputFields: any }) => {
-        if (item.kind === 'OBJECT') {
-          const arrFields = item.fields;
-          let allArgs: string | number | boolean | JSX.Element[] | ReactElement<any, string | JSXElementConstructor<any>> | ReactFragment | null | undefined;
-          const allLi = arrFields.map((item: {name: string, args: [], type: ArgsType}) => {
-            const condition = item.args[0] !== undefined;
-            const fieldValue = item.type.name ||
-              item.type.ofType.name ||
-              item.type.ofType.ofType.name ||
-              item.type.ofType.ofType.ofType.name ||
-              item.type.ofType.ofType.ofType.ofType.name ||
-              item.type.ofType.ofType.ofType.ofType.ofType.name ||
-              item.type.ofType.ofType.ofType.ofType.ofType.ofType.name ||
-              item.type.ofType.ofType.ofType.ofType.ofType.ofType.ofType.name;
+    const arr = obj.data.__schema.types;
+    const allLi = arr.map((item: ItemSchemaTypes) => {
+      if (item.kind === 'OBJECT') {
+        const arrFields = item.fields;
+        let allArgs: string | number | boolean | JSX.Element[] | ReactElement<any, string | JSXElementConstructor<any>> | ReactFragment | null | undefined;
+        const allLi = arrFields.map((item: ItemArrField) => {
+          const condition = item.args[0] !== undefined;
+          const fieldValue = item.type.name ||
+            item.type.ofType.name ||
+            item.type.ofType.ofType.name ||
+            item.type.ofType.ofType.ofType.name ||
+            item.type.ofType.ofType.ofType.ofType.name ||
+            item.type.ofType.ofType.ofType.ofType.ofType.name ||
+            item.type.ofType.ofType.ofType.ofType.ofType.ofType.name ||
+            item.type.ofType.ofType.ofType.ofType.ofType.ofType.ofType.name;
 
-            if (item.args !== []) {
-              allArgs = item.args.map((arg: {name: string, type: ArgsType} ) => {
-                const argValue = arg.type.name ||
-                  arg.type.ofType.name ||
-                  arg.type.ofType.ofType.name ||
-                  arg.type.ofType.ofType.ofType.name ||
-                  arg.type.ofType.ofType.ofType.ofType.name ||
-                  arg.type.ofType.ofType.ofType.ofType.ofType.name ||
-                  arg.type.ofType.ofType.ofType.ofType.ofType.ofType.name ||
-                  arg.type.ofType.ofType.ofType.ofType.ofType.ofType.ofType.name;
-                return (
-                  <div key={`1${arg.name}`}>
-                    <span className={styles.spanArgName}>{arg.name}</span>
-                    <span className={styles.spanColon}>:</span>
-                    <span className={styles.spanArgValue}>{argValue}</span>
-                  </div>
-                )
-              })
-            }
-            return (
-              <div className={styles.nameFields} key={`0${item.name}`}>
-                <span className={styles.spanFieldName}>{item.name}</span>
-                {condition &&
+          if (item.args !== []) {
+            allArgs = item.args.map((arg: ArgsArr ) => {
+              const argValue = arg.type.name ||
+                arg.type.ofType.name ||
+                arg.type.ofType.ofType.name ||
+                arg.type.ofType.ofType.ofType.name ||
+                arg.type.ofType.ofType.ofType.ofType.name ||
+                arg.type.ofType.ofType.ofType.ofType.ofType.name ||
+                arg.type.ofType.ofType.ofType.ofType.ofType.ofType.name ||
+                arg.type.ofType.ofType.ofType.ofType.ofType.ofType.ofType.name;
+              return (
+                <div key={`1${arg.name}`}>
+                  <span className={styles.spanArgName}>{arg.name}</span>
+                  <span className={styles.spanColon}>:</span>
+                  <span className={styles.spanArgValue}>{argValue}</span>
+                </div>
+              );
+            });
+          }
+          return (
+            <div className={styles.nameFields} key={`0${item.name}`}>
+              <span className={styles.spanFieldName}>{item.name}</span>
+              {condition &&
                   <div className={styles.blockAllArgs}>
-                    <span className={styles.spanOpenBracket}>(</span>
-                    {allArgs}
-                    <span>)</span>
-                  </div> }
-                  <span className={styles.spanColon}>:</span>
-                  <span className={styles.spanFieldValue}>{fieldValue}</span>
-              </div>
-            )
-          })
+                  <span className={styles.spanOpenBracket}>(</span>
+                  {allArgs}
+                  <span>)</span>
+                </div>
+              }
+              <span className={styles.spanColon}>:</span>
+              <span className={styles.spanFieldValue}>{fieldValue}</span>
+            </div>
+          );
+        });
+        return (
+          <li className={`${styles.liSchema} ${styles.liSchemaTypes}`} key={`4${item.name}`}>
+            <span className={styles.spanType}>type</span>
+            <span className={styles.spanTypeName}>{item.name}</span>
+            <span>{'{'}</span>
+            {allLi}
+            <span>{'}'}</span>
+          </li>
+        );
+      }
+      if (item.kind === 'SCALAR') {
+        return (
+          <li className={`${styles.liSchema} ${styles.liSchemaTypes}`} key={`5${item.name}`}>
+            <span className={styles.spanType}>scalar</span>
+            <span className={styles.spanTypeName}>{item.name}</span>
+          </li>
+        );
+      }
+      if (item.kind === 'INPUT_OBJECT') {
+        const arrInputFields = item.inputFields;
+        const allLi = arrInputFields.map((item : ItemInputField) => {
+          const fieldInputValue = item.type.name ||
+            item.type.ofType.name ||
+            item.type.ofType.ofType.name ||
+            item.type.ofType.ofType.ofType.name ||
+            item.type.ofType.ofType.ofType.ofType.name ||
+            item.type.ofType.ofType.ofType.ofType.ofType.name ||
+            item.type.ofType.ofType.ofType.ofType.ofType.ofType.name ||
+            item.type.ofType.ofType.ofType.ofType.ofType.ofType.ofType.name;
           return (
-            <li className={`${styles.liSchema} ${styles.liSchemaTypes}`} key={item.name}>
-              <span className={styles.spanType}>type</span>
-              <span className={styles.spanTypeName}>{item.name}</span>
-              <span>{'{'}</span>
-              {allLi}
-              <span>{'}'}</span>
-            </li>
-          )
-        }
-        if (item.kind === 'SCALAR') {
-          return (
-            <li className={`${styles.liSchema} ${styles.liSchemaTypes}`} key={item.name}>
-              <span className={styles.spanType}>scalar</span>
-              <span className={styles.spanTypeName}>{item.name}</span>
-            </li>
-          )
-        }
-        if (item.kind === 'INPUT_OBJECT') {
-          const arrInputFields = item.inputFields;
-
-          const allLi = arrInputFields.map((item) => {
-            const fieldInputValue = item.type.name ||
-              item.type.ofType.name ||
-              item.type.ofType.ofType.name ||
-              item.type.ofType.ofType.ofType.name ||
-              item.type.ofType.ofType.ofType.ofType.name ||
-              item.type.ofType.ofType.ofType.ofType.ofType.name ||
-              item.type.ofType.ofType.ofType.ofType.ofType.ofType.name ||
-              item.type.ofType.ofType.ofType.ofType.ofType.ofType.ofType.name;
-            return (
-              <div className={styles.nameFields} key={`2${item.name}`}>
-                <span className={styles.spanFieldName}>{item.name}</span>
-                  <span className={styles.spanColon}>:</span>
-                  <span className={styles.spanFieldValue}>{fieldInputValue}</span>
-              </div>
-            )
-          })
-
-          return (
-            <li className={`${styles.liSchema} ${styles.liSchemaTypes}`} key={item.name}>
-              <span className={styles.spanType}>input</span>
-              <span className={styles.spanTypeName}>{item.name}</span>
-              <span>{'{'}</span>
-              {allLi}
-              <span>{'}'}</span>
-            </li>
-          )
-        }
-        if (item.kind === 'ENUM') {
-          const arrEnum = item.enumValues;
-          const allLi = arrEnum.map((item) => {
-            return (
+            <div className={styles.nameFields} key={`2${item.name}`}>
+              <span className={styles.spanFieldName}>{item.name}</span>
+              <span className={styles.spanColon}>:</span>
+              <span className={styles.spanFieldValue}>{fieldInputValue}</span>
+            </div>
+          );
+        });
+        return (
+          <li className={`${styles.liSchema} ${styles.liSchemaTypes}`} key={`6${item.name}`}>
+            <span className={styles.spanType}>input</span>
+            <span className={styles.spanTypeName}>{item.name}</span>
+            <span>{'{'}</span>
+            {allLi}
+            <span>{'}'}</span>
+          </li>
+        );
+      }
+      if (item.kind === 'ENUM') {
+        const arrEnum = item.enumValues;
+        const allLi = arrEnum.map((item: { name: string }) => (
               <div className={styles.nameFields} key={`3${item.name}`}>
                 <span>{item.name}</span>
               </div>
-            )
-          })
-          return (
-            <li className={`${styles.liSchema} ${styles.liSchemaTypes}`} key={item.name}>
-              <span className={styles.spanType}>enum</span>
-              <span className={styles.spanTypeName}>{item.name}</span>
-              <span>{'{'}</span>
-              {allLi}
-              <span>{'}'}</span>
-            </li>
-          )
-        }
-
-      });
-      return allLi;
+            ));
+        return (
+          <li className={`${styles.liSchema} ${styles.liSchemaTypes}`} key={`7${item.name}`}>
+            <span className={styles.spanType}>enum</span>
+            <span className={styles.spanTypeName}>{item.name}</span>
+            <span>{'{'}</span>
+            {allLi}
+            <span>{'}'}</span>
+          </li>
+        );
+      }
+    });
+    return allLi;
   } catch {
-    return (
-      <p className={styles.pInfoCorrect}>Enter correct api</p>
-    )
+    return <p className={styles.pInfoCorrect}>Enter correct api</p>;
   }
 }

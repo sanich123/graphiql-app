@@ -8,7 +8,6 @@ export default function SearchApi() {
   const urlInput = React.useRef(null);
   const dispatch = useDispatch();
 
-
   async function makeRequest1(endpoint: string, query: string) {
     try {
       const response = await fetch(endpoint, {
@@ -18,6 +17,7 @@ export default function SearchApi() {
       });
       const res = await response.json();
       dispatch(changeDataQuery(JSON.stringify(res)));
+      console.log(res);
     } catch (error) {
       dispatch(changeDataQuery(''));
     }
@@ -33,6 +33,7 @@ export default function SearchApi() {
       const res = await response.json();
       const data = await JSON.stringify(res);
       dispatch(changeDataMutation(data));
+      console.log(res);
     } catch {
       dispatch(changeDataMutation(''));
     }
@@ -53,13 +54,12 @@ export default function SearchApi() {
     }
   }
 
-
   async function changeUrl(event: React.SyntheticEvent) {
     event.preventDefault();
     const url = await urlInput.current;
-      await makeRequest1(url.value, queryQuery);
-      await makeRequest2(url.value, queryMutation);
-      await makeRequest3(url.value, queryDoc);
+    await makeRequest1(url.value, queryQuery);
+    await makeRequest2(url.value, queryMutation);
+    await makeRequest3(url.value, queryDoc);
   }
 
   return (

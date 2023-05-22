@@ -1,10 +1,9 @@
 import { useState } from 'react';
 import styles from './schema.module.scss';
 import { useSelector } from 'react-redux';
-import { RootState } from "@/redux/store";
-import React from "react";
+import { RootState } from '@/redux/store';
+import React from 'react';
 import { DrawKyes, DrawKyesMutation, DrawKyesSchema } from './functions-draw-query';
-
 
 export default function Schema() {
   const [isOpenDoc, setIsOpenDoc] = useState(false);
@@ -29,13 +28,12 @@ export default function Schema() {
     objDoc = JSON.parse(dataDoc);
   }
 
-
   return (
     <div className={styles.allSchema}>
       <button
         className={styles.btnDoc}
         onClick={() => {
-          setIsOpenDoc(state => !state);
+          setIsOpenDoc((state) => !state);
           setIsOpenSchema(false);
         }}
       >
@@ -44,7 +42,7 @@ export default function Schema() {
       <button
         className={styles.btnSchema}
         onClick={() => {
-          setIsOpenSchema(state => !state);
+          setIsOpenSchema((state) => !state);
           setIsOpenDoc(false);
         }}
       >
@@ -54,24 +52,20 @@ export default function Schema() {
         <div className={styles.blockSchema}>
           <div className={styles.blockFirstInfo}>
             <h1 className={styles.h1Schema}>QUERIES</h1>
-            <ul className={styles.ulSchema}>
-              {DrawKyes(objQuery)}
-            </ul>
+            <ul className={styles.ulSchema}>{DrawKyes(objQuery)}</ul>
             <h1 className={styles.h1Schema}>MUTATION</h1>
-            <ul className={styles.ulSchema}>
-              {DrawKyesMutation(objMutation)}
-            </ul>
+            <ul className={styles.ulSchema}>{DrawKyesMutation(objMutation)}</ul>
           </div>
         </div>
       }
-        {isOpenSchema && <div className={styles.blockSchema}>
-        <div className={styles.blockFirstInfo}>
-          <h1 className={styles.h1Schema}>SCHEMA</h1>
-          <ul className={styles.ulSchema}>
-            {DrawKyesSchema(objDoc)}
-          </ul>
+      {isOpenSchema &&
+        <div className={styles.blockSchema}>
+          <div className={styles.blockFirstInfo}>
+            <h1 className={styles.h1Schema}>SCHEMA</h1>
+            <ul className={styles.ulSchema}>{DrawKyesSchema(objDoc)}</ul>
+          </div>
         </div>
-        </div> }
+      }
     </div>
   );
 }
