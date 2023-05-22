@@ -2,7 +2,6 @@
   display: grid;
   grid-template-columns: min-content 1fr auto;
   padding: 70px 180px;
-  transition: width 0.5s ease-in-out;
   @include container($desktop);
   @media (min-width: $tablet) and (max-width: $desktop) {
     @include container($tablet);
@@ -172,8 +171,9 @@
   &.is-sticky {
     position: fixed;
     top: 0;
-    width: 100%;
-    transition: width 0.5s ease-in-out;
+    width: 100vw;
+    height: 75px;
+    // transition: width 0.5s ease-in-out;
     background: #696969;
     & + .compensate-sticky-padding {
       padding-top: 20px;
