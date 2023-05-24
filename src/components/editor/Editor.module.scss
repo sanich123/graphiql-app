@@ -1,0 +1,70 @@
+.urlWrap {
+  border: 1px solid var(--border-color);
+  border-radius: var(--borderRadius10);
+  margin-bottom: 10px;
+  padding: 5px 15px;
+}
+
+.url {
+  width: 100%;
+  padding: 5px 10px;
+
+  &:focus-visible {
+    border: none;
+    outline: none;
+  }
+}
+
+.queryHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.title {
+  background: var(--light-gray);
+  text-transform: uppercase;
+  flex: 1;
+  border-radius: var(--borderRadius10);
+  padding: 13px 30px;
+}
+
+.btnSend {
+  padding: 17px 30px;
+  margin-left: 15px;
+  background: var(--btnBg);
+  color: var(--btnFontColor);
+  transition: .2s;
+  border-radius: var(--borderRadius10);
+
+  &:hover {
+    background: var(--btnBgHover);
+  }
+}
+
+.varHeader {
+  margin-bottom: 15px;
+}
+
+.sideEditor,
+.sideVar,
+.sideDispInfo {
+  padding: 10px;
+}
+
+.sideEditor,
+.sideVar {
+  padding: 10px;
+  // border: 1px solid var(--border-color);
+  border-radius: var(--borderRadius10);
+}
+
+.sideEditor {}
+
+.sideVar {}
+
+.sideDispInfo {
+  border-radius: var(--borderRadius10);
+  background: var(--light-gray);
+}
