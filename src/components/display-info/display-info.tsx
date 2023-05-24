@@ -1,12 +1,7 @@
 import { useAppSelector } from '@/redux/hooks/hooks';
-import { MutableRefObject } from 'react';
 import JsonFormatter from 'react-json-formatter';
 
-interface DisplayInfoProps {
-  rightSide: MutableRefObject<HTMLDivElement | null>;
-}
-
-export function DisplayInfo({ rightSide }: DisplayInfoProps) {
+export function DisplayInfo() {
   const { responseData } = useAppSelector(({ savedData }) => savedData);
   const jsonStyle = {
     propertyStyle: { color: 'red' },
@@ -14,9 +9,5 @@ export function DisplayInfo({ rightSide }: DisplayInfoProps) {
     numberStyle: { color: 'darkorange' },
   };
 
-  return (
-    <div className="leftSide" ref={rightSide}>
-      {responseData && <JsonFormatter json={responseData} tabWith={2} jsonStyle={jsonStyle} />}
-    </div>
-  );
+  return <div className="leftSide">{responseData && <JsonFormatter json={responseData} tabWith={2} jsonStyle={jsonStyle} />}</div>;
 }
