@@ -9,6 +9,8 @@
 @import '../components/footer/footer.scss';
 @import './main.scss';
 @import '../components/tabs/tabs.scss';
+@import './themes/light.scss';
+@import './themes/dark.scss';
 
 @tailwind base;
 @tailwind components;
