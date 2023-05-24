@@ -5,7 +5,7 @@ import styles from './search-api.module.scss';
 import { queryQuery, queryMutation, queryDoc } from './query-param';
 
 export default function SearchApi() {
-  const urlInput = React.useRef(null);
+  const urlInput = React.useRef<HTMLInputElement>(null);
   const dispatch = useDispatch();
 
   async function makeRequest1(endpoint: string, query: string) {
@@ -56,10 +56,12 @@ export default function SearchApi() {
 
   async function changeUrl(event: React.SyntheticEvent) {
     event.preventDefault();
-    const url = await urlInput.current;
-    await makeRequest1(url.value, queryQuery);
-    await makeRequest2(url.value, queryMutation);
-    await makeRequest3(url.value, queryDoc);
+    if (urlInput.current instanceof HTMLInputElement) {
+      const url = urlInput.current;
+      await makeRequest1(url.value, queryQuery);
+      await makeRequest2(url.value, queryMutation);
+      await makeRequest3(url.value, queryDoc);
+    }
   }
 
   return (
