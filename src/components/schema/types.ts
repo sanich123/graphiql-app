@@ -5,24 +5,19 @@ export type ArgsType = {
 };
 
 export type ArgsArr = {
-  name: string
-  type: ArgsType
-}
+  name: string;
+  type: ArgsType;
+};
 
 export type ItemArrField = {
-  name: string,
-  args: [] | ArgsArr[],
-  type: ArgsType
-}
+  name: string;
+  args: [] | ArgsArr[];
+  type: ArgsType;
+};
 
 export type ItemInputField = {
-  type: ArgsType,
-  name: string
-}
+  type: ArgsType;
+  name: string;
+};
 
-export type ItemSchemaTypes = { kind: string,
-  name: string,
-  fields: ItemArrField[],
-  inputFields: ItemInputField[],
-  enumValues: []
-}
+export type ItemSchemaTypes = { kind: string; name: string; fields: ItemArrField[]; inputFields: ItemInputField[]; enumValues: [] };

@@ -36,7 +36,7 @@ export default function Schema() {
       >
         <p className={styles.name}>Shema</p>
       </button>
-      {isOpenDoc &&
+      {isOpenDoc && (
         <div className={styles.blockSchema}>
           <div className={styles.blockFirstInfo}>
             <h1 className={styles.h1Schema}>QUERIES</h1>
@@ -45,15 +45,15 @@ export default function Schema() {
             <ul className={styles.ulSchema}>{DrawKyes(objDoc, 'Mutation')}</ul>
           </div>
         </div>
-      }
-      {isOpenSchema &&
+      )}
+      {isOpenSchema && (
         <div className={styles.blockSchema}>
           <div className={styles.blockFirstInfo}>
             <h1 className={styles.h1Schema}>SCHEMA</h1>
             <ul className={styles.ulSchema}>{DrawKyesSchema(objDoc)}</ul>
           </div>
         </div>
-      }
+      )}
     </div>
   );
 }

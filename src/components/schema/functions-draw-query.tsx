@@ -1,7 +1,6 @@
-import { ReactElement, JSXElementConstructor, ReactFragment, useState } from 'react';
+import { ReactElement, ReactFragment } from 'react';
 import styles from './schema.module.scss';
 import { ArgsArr, ItemArrField, ItemInputField, ItemSchemaTypes } from './types';
-
 
 export function DrawKyes(obj: { data: { __schema: { types: ItemSchemaTypes[] } } } | undefined, name: 'Query' | 'Mutation') {
   try {
@@ -19,23 +18,21 @@ export function DrawKyes(obj: { data: { __schema: { types: ItemSchemaTypes[] } }
       return <p className={styles.pInfoCorrect}>No mutations</p>;
     }
     if (arrQuery) {
-      const allLi = arrQuery.map((item: { name: string }) => {
-
-        return (
-          <div>
-            <li className={styles.liSchema} key={`00${item.name}`}>
-              <button className={styles.btnQuery} value={item.name}
-                onClick={(e: React.SyntheticEvent) => {
-                  e.preventDefault();
-                  console.log(item.name)}}
-              >
-                {item.name}
-              </button>
-            </li>
-          </div>
-        )
-      }
-      );
+      const allLi = arrQuery.map((item: { name: string }) => (
+        <div key={`00${item.name}`}>
+          <li className={styles.liSchema}>
+            <button
+              className={styles.btnQuery}
+              value={item.name}
+              onClick={(e: React.SyntheticEvent) => {
+                e.preventDefault();
+              }}
+            >
+              {item.name}
+            </button>
+          </li>
+        </div>
+      ));
       return allLi;
     }
   } catch {
@@ -52,21 +49,23 @@ export function DrawKyesSchema(obj: { data: { __schema: { types: ItemSchemaTypes
     const allLi = arr.map((item: ItemSchemaTypes) => {
       if (item.kind === 'OBJECT') {
         const arrFields = item.fields;
-        let allArgs: string | number | boolean | JSX.Element[] | ReactElement<any, string | JSXElementConstructor<any>> | ReactFragment | null | undefined;
-        const allLi = arrFields.map((item: ItemArrField) => {
-          const condition = item.args[0] !== undefined;
-          const fieldValue = item.type.name ||
-            item.type.ofType.name ||
-            item.type.ofType.ofType.name ||
-            item.type.ofType.ofType.ofType.name ||
-            item.type.ofType.ofType.ofType.ofType.name ||
-            item.type.ofType.ofType.ofType.ofType.ofType.name ||
-            item.type.ofType.ofType.ofType.ofType.ofType.ofType.name ||
-            item.type.ofType.ofType.ofType.ofType.ofType.ofType.ofType.name;
+        let allArgs: string | number | boolean | JSX.Element[] | ReactElement<string> | ReactFragment | null | undefined;
+        const allLiFields = arrFields.map((itemField: ItemArrField) => {
+          const condition = itemField.args[0] !== undefined;
+          const fieldValue =
+            itemField.type.name ||
+            itemField.type.ofType.name ||
+            itemField.type.ofType.ofType.name ||
+            itemField.type.ofType.ofType.ofType.name ||
+            itemField.type.ofType.ofType.ofType.ofType.name ||
+            itemField.type.ofType.ofType.ofType.ofType.ofType.name ||
+            itemField.type.ofType.ofType.ofType.ofType.ofType.ofType.name ||
+            itemField.type.ofType.ofType.ofType.ofType.ofType.ofType.ofType.name;
 
-          if (item.args !== []) {
-            allArgs = item.args.map((arg: ArgsArr ) => {
-              const argValue = arg.type.name ||
+          if (itemField.args !== []) {
+            allArgs = itemField.args.map((arg: ArgsArr) => {
+              const argValue =
+                arg.type.name ||
                 arg.type.ofType.name ||
                 arg.type.ofType.ofType.name ||
                 arg.type.ofType.ofType.ofType.name ||
@@ -84,15 +83,15 @@ export function DrawKyesSchema(obj: { data: { __schema: { types: ItemSchemaTypes
             });
           }
           return (
-            <div className={styles.nameFields} key={`0${item.name}`}>
-              <span className={styles.spanFieldName}>{item.name}</span>
-              {condition &&
-                  <div className={styles.blockAllArgs}>
+            <div className={styles.nameFields} key={`0${itemField.name}`}>
+              <span className={styles.spanFieldName}>{itemField.name}</span>
+              {condition && (
+                <div className={styles.blockAllArgs}>
                   <span className={styles.spanOpenBracket}>(</span>
                   {allArgs}
                   <span>)</span>
                 </div>
-              }
+              )}
               <span className={styles.spanColon}>:</span>
               <span className={styles.spanFieldValue}>{fieldValue}</span>
             </div>
@@ -103,7 +102,7 @@ export function DrawKyesSchema(obj: { data: { __schema: { types: ItemSchemaTypes
             <span className={styles.spanType}>type</span>
             <span className={styles.spanTypeName}>{item.name}</span>
             <span>{'{'}</span>
-            {allLi}
+            {allLiFields}
             <span>{'}'}</span>
           </li>
         );
@@ -118,18 +117,19 @@ export function DrawKyesSchema(obj: { data: { __schema: { types: ItemSchemaTypes
       }
       if (item.kind === 'INPUT_OBJECT') {
         const arrInputFields = item.inputFields;
-        const allLi = arrInputFields.map((item : ItemInputField) => {
-          const fieldInputValue = item.type.name ||
-            item.type.ofType.name ||
-            item.type.ofType.ofType.name ||
-            item.type.ofType.ofType.ofType.name ||
-            item.type.ofType.ofType.ofType.ofType.name ||
-            item.type.ofType.ofType.ofType.ofType.ofType.name ||
-            item.type.ofType.ofType.ofType.ofType.ofType.ofType.name ||
-            item.type.ofType.ofType.ofType.ofType.ofType.ofType.ofType.name;
+        const allLiInputFields = arrInputFields.map((itemInputFields: ItemInputField) => {
+          const fieldInputValue =
+            itemInputFields.type.name ||
+            itemInputFields.type.ofType.name ||
+            itemInputFields.type.ofType.ofType.name ||
+            itemInputFields.type.ofType.ofType.ofType.name ||
+            itemInputFields.type.ofType.ofType.ofType.ofType.name ||
+            itemInputFields.type.ofType.ofType.ofType.ofType.ofType.name ||
+            itemInputFields.type.ofType.ofType.ofType.ofType.ofType.ofType.name ||
+            itemInputFields.type.ofType.ofType.ofType.ofType.ofType.ofType.ofType.name;
           return (
-            <div className={styles.nameFields} key={`2${item.name}`}>
-              <span className={styles.spanFieldName}>{item.name}</span>
+            <div className={styles.nameFields} key={`2${itemInputFields.name}`}>
+              <span className={styles.spanFieldName}>{itemInputFields.name}</span>
               <span className={styles.spanColon}>:</span>
               <span className={styles.spanFieldValue}>{fieldInputValue}</span>
             </div>
@@ -140,24 +140,24 @@ export function DrawKyesSchema(obj: { data: { __schema: { types: ItemSchemaTypes
             <span className={styles.spanType}>input</span>
             <span className={styles.spanTypeName}>{item.name}</span>
             <span>{'{'}</span>
-            {allLi}
+            {allLiInputFields}
             <span>{'}'}</span>
           </li>
         );
       }
       if (item.kind === 'ENUM') {
         const arrEnum = item.enumValues;
-        const allLi = arrEnum.map((item: { name: string }) => (
-              <div className={styles.nameFields} key={`3${item.name}`}>
-                <span>{item.name}</span>
-              </div>
-            ));
+        const allLiEnum = arrEnum.map((itemEnum: { name: string }) => (
+          <div className={styles.nameFields} key={`3${itemEnum.name}`}>
+            <span>{itemEnum.name}</span>
+          </div>
+        ));
         return (
           <li className={`${styles.liSchema} ${styles.liSchemaTypes}`} key={`7${item.name}`}>
             <span className={styles.spanType}>enum</span>
             <span className={styles.spanTypeName}>{item.name}</span>
             <span>{'{'}</span>
-            {allLi}
+            {allLiEnum}
             <span>{'}'}</span>
           </li>
         );

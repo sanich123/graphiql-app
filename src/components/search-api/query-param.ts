@@ -1,26 +1,3 @@
-export const queryQuery = `{
-  __schema {
-    queryType {
-      fields {
-        name
-        description
-      }
-    }
-  }
-}
-`;
-
-export const queryMutation = `{
-  __schema {
-    mutationType {
-      fields {
-        name
-      }
-    }
-  }
-}
-`;
-
 export const queryDoc = `fragment FullType on __Type {
   kind
   name

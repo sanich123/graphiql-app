@@ -2,7 +2,7 @@ import { changeDataSchema } from '@/redux/api-data/api-data';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import styles from './search-api.module.scss';
-import { queryQuery, queryMutation, queryDoc } from './query-param';
+import { queryDoc } from './query-param';
 
 export default function SearchApi() {
   const urlInput = React.useRef<HTMLInputElement>(null);
@@ -17,7 +17,6 @@ export default function SearchApi() {
       });
       const res = await response.json();
       dispatch(changeDataSchema(JSON.stringify(res)));
-      console.log(res);
     } catch {
       dispatch(changeDataSchema(''));
     }
