@@ -1,65 +1,45 @@
-import { ReactElement, JSXElementConstructor, ReactFragment } from 'react';
+import { ReactElement, JSXElementConstructor, ReactFragment, useState } from 'react';
 import styles from './schema.module.scss';
-import { ArgsArr, ArgsType, ItemArrField, ItemInputField, ItemSchemaTypes } from './types';
+import { ArgsArr, ItemArrField, ItemInputField, ItemSchemaTypes } from './types';
 
-// function DrawSubKyes(e:  React.SyntheticEvent) {
-//   e.preventDefault();
 
-//   const target = e.target as typeof e.target & {
-//     value: { value: string };
-//   };
-//   const value = target.value.value;
-//   console.log(value)
-// }
-
-export function DrawKyes(obj: { data: { __schema: { queryType: { fields: [] } } } }) {
+export function DrawKyes(obj: { data: { __schema: { types: ItemSchemaTypes[] } } } | undefined, name: 'Query' | 'Mutation') {
   try {
     if (obj === undefined) {
       return <p className={styles.pInfoCorrect}>Enter correct api</p>;
     }
-    const arr = obj.data.__schema.queryType.fields;
-    let condSecondQuery = false;
-    let secondBlock: ReactElement;
-    const allLi = arr.map((item: { name: string }) => (
-        <div>
-          <li className={styles.liSchema} key={item.name}>
-            <button className={styles.btnQuery} value={item.name}
-              onClick={(e: React.SyntheticEvent) => {
-                e.preventDefault();
-              }}
-            >
-              {item.name}
-            </button>
-          </li>
-          {condSecondQuery && secondBlock}
-        </div>
-      )
-    );
-    return allLi;
-  } catch {
-    return <p className={styles.pInfoCorrect}>Enter correct api</p>;
-  }
-}
-
-export function DrawKyesMutation(obj: { data: { __schema: { mutationType: { fields: {name: string}[] | [] } | null } } } | undefined) {
-  try {
-    if (obj === undefined) {
-      return <p className={styles.pInfoCorrect}>Enter correct api</p>;
-    } else if (obj.data.__schema.mutationType === null) {
+    const arr = obj.data.__schema.types;
+    let arrQuery: ItemArrField[] | [] = [];
+    arr.forEach((type) => {
+      if (type.name === name) {
+        arrQuery = type.fields;
+      }
+    });
+    if (name === 'Mutation' && arrQuery[0] === undefined) {
       return <p className={styles.pInfoCorrect}>No mutations</p>;
-    } else {
-      const arr = obj.data.__schema.mutationType.fields;
-      const allLi = arr.map((item: { name: string }) => (
-          <li className={styles.liSchema} key={item.name}>
-            <button className={styles.btnQuery}>{item.name}</button>
-          </li>
+    }
+    if (arrQuery) {
+      const allLi = arrQuery.map((item: { name: string }) => {
+
+        return (
+          <div>
+            <li className={styles.liSchema} key={`00${item.name}`}>
+              <button className={styles.btnQuery} value={item.name}
+                onClick={(e: React.SyntheticEvent) => {
+                  e.preventDefault();
+                  console.log(item.name)}}
+              >
+                {item.name}
+              </button>
+            </li>
+          </div>
         )
+      }
       );
       return allLi;
     }
-  } catch (error) {
-    console.log(error);
-    return <p className={styles.pInfoCorrect}>Enter correct api aaa</p>;
+  } catch {
+    return <p className={styles.pInfoCorrect}>Enter correct api</p>;
   }
 }
 

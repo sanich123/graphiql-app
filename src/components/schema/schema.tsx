@@ -3,28 +3,16 @@ import styles from './schema.module.scss';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/redux/store';
 import React from 'react';
-import { DrawKyes, DrawKyesMutation, DrawKyesSchema } from './functions-draw-query';
+import { DrawKyes, DrawKyesSchema } from './functions-draw-query';
 
 export default function Schema() {
   const [isOpenDoc, setIsOpenDoc] = useState(false);
   const [isOpenSchema, setIsOpenSchema] = useState(false);
 
-  const dataQuery = useSelector((state: RootState) => state.apiData.dataQuery);
-  const dataMutation = useSelector((state: RootState) => state.apiData.dataMutation);
   const dataDoc = useSelector((state: RootState) => state.apiData.dataDoc);
-  let objQuery;
-  let objMutation;
   let objDoc;
 
-  if (dataQuery !== '') {
-    objQuery = JSON.parse(dataQuery);
-  }
-
-  if (dataMutation !== '') {
-    objMutation = JSON.parse(dataMutation);
-  }
-
-  if (dataDoc !== '') {
+  if (dataDoc) {
     objDoc = JSON.parse(dataDoc);
   }
 
@@ -52,9 +40,9 @@ export default function Schema() {
         <div className={styles.blockSchema}>
           <div className={styles.blockFirstInfo}>
             <h1 className={styles.h1Schema}>QUERIES</h1>
-            <ul className={styles.ulSchema}>{DrawKyes(objQuery)}</ul>
+            <ul className={styles.ulSchema}>{DrawKyes(objDoc, 'Query')}</ul>
             <h1 className={styles.h1Schema}>MUTATION</h1>
-            <ul className={styles.ulSchema}>{DrawKyesMutation(objMutation)}</ul>
+            <ul className={styles.ulSchema}>{DrawKyes(objDoc, 'Mutation')}</ul>
           </div>
         </div>
       }

@@ -1,4 +1,4 @@
-import { changeDataQuery, changeDataMutation, changeDataSchema } from '@/redux/api-data/api-data';
+import { changeDataSchema } from '@/redux/api-data/api-data';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import styles from './search-api.module.scss';
@@ -8,38 +8,7 @@ export default function SearchApi() {
   const urlInput = React.useRef<HTMLInputElement>(null);
   const dispatch = useDispatch();
 
-  async function makeRequest1(endpoint: string, query: string) {
-    try {
-      const response = await fetch(endpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ query }),
-      });
-      const res = await response.json();
-      dispatch(changeDataQuery(JSON.stringify(res)));
-      console.log(res);
-    } catch (error) {
-      dispatch(changeDataQuery(''));
-    }
-  }
-
-  async function makeRequest2(endpoint: string, query: string) {
-    try {
-      const response = await fetch(endpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ query }),
-      });
-      const res = await response.json();
-      const data = await JSON.stringify(res);
-      dispatch(changeDataMutation(data));
-      console.log(res);
-    } catch {
-      dispatch(changeDataMutation(''));
-    }
-  }
-
-  async function makeRequest3(endpoint: string, query: string) {
+  async function makeRequest(endpoint: string, query: string) {
     try {
       const response = await fetch(endpoint, {
         method: 'POST',
@@ -58,9 +27,7 @@ export default function SearchApi() {
     event.preventDefault();
     if (urlInput.current instanceof HTMLInputElement) {
       const url = urlInput.current;
-      await makeRequest1(url.value, queryQuery);
-      await makeRequest2(url.value, queryMutation);
-      await makeRequest3(url.value, queryDoc);
+      await makeRequest(url.value, queryDoc);
     }
   }
 
