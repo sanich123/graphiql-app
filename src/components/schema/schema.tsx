@@ -10,11 +10,15 @@ export default function Schema() {
   const [isOpenSchema, setIsOpenSchema] = useState(false);
 
   const dataDoc = useSelector((state: RootState) => state.apiData.dataDoc);
+  const dataUrl = useSelector((state: RootState) => state.apiData.urlData);
+
   let objDoc;
 
   if (dataDoc) {
     objDoc = JSON.parse(dataDoc);
   }
+
+  console.log(dataUrl)
 
   return (
     <div className={styles.allSchema}>
