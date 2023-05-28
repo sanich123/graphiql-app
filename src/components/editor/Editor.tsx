@@ -19,7 +19,6 @@ export function Editor() {
     setEditorMinSize(size);
   }, [editorMinSize]);
 
-
   async function makeRequest(endpoint: string, query: string) {
     try {
       const response = await fetch(endpoint, {
@@ -38,7 +37,7 @@ export function Editor() {
     event.preventDefault();
     if (urlInput.current instanceof HTMLInputElement) {
       const url = urlInput.current;
-      dispatch(changeUrlData(url.value))
+      dispatch(changeUrlData(url.value));
       await makeRequest(url.value, queryDoc);
     }
   }
@@ -47,7 +46,7 @@ export function Editor() {
     <>
       <div className={`flex gap-2 items-center ${style.urlWrap}`}>
         <FaAngleRight />
-        <input type="url" name="urlapi" id="urlapi" defaultValue={BASE_URL} className={`${style.url}`} ref={urlInput} onInput={changeUrl}/>
+        <input type="url" name="urlapi" id="urlapi" defaultValue={BASE_URL} className={`${style.url}`} ref={urlInput} onInput={changeUrl} />
       </div>
       <Split className={style.editor} sizes={[50, 50]} minSize={[300, 300]} gutterSize={10} style={{ height: 'calc(100vh - 150px)' }}>
         <Split direction="vertical" sizes={editorMinSize} minSize={[200, 70]} gutterSize={10}>

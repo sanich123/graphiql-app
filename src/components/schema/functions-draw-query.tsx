@@ -62,24 +62,24 @@ export function DrawKyesSchema(obj: { data: { __schema: { types: ItemSchemaTypes
             itemField.type.ofType.ofType.ofType.ofType.ofType.ofType.name ||
             itemField.type.ofType.ofType.ofType.ofType.ofType.ofType.ofType.name;
 
-            allArgs = itemField.args.map((arg: ArgsArr) => {
-              const argValue =
-                arg.type.name ||
-                arg.type.ofType.name ||
-                arg.type.ofType.ofType.name ||
-                arg.type.ofType.ofType.ofType.name ||
-                arg.type.ofType.ofType.ofType.ofType.name ||
-                arg.type.ofType.ofType.ofType.ofType.ofType.name ||
-                arg.type.ofType.ofType.ofType.ofType.ofType.ofType.name ||
-                arg.type.ofType.ofType.ofType.ofType.ofType.ofType.ofType.name;
-              return (
-                <div key={`1${arg.name}`}>
-                  <span className={styles.spanArgName}>{arg.name}</span>
-                  <span className={styles.spanColon}>:</span>
-                  <span className={styles.spanArgValue}>{argValue}</span>
-                </div>
-              );
-            });
+          allArgs = itemField.args.map((arg: ArgsArr) => {
+            const argValue =
+              arg.type.name ||
+              arg.type.ofType.name ||
+              arg.type.ofType.ofType.name ||
+              arg.type.ofType.ofType.ofType.name ||
+              arg.type.ofType.ofType.ofType.ofType.name ||
+              arg.type.ofType.ofType.ofType.ofType.ofType.name ||
+              arg.type.ofType.ofType.ofType.ofType.ofType.ofType.name ||
+              arg.type.ofType.ofType.ofType.ofType.ofType.ofType.ofType.name;
+            return (
+              <div key={`1${arg.name}`}>
+                <span className={styles.spanArgName}>{arg.name}</span>
+                <span className={styles.spanColon}>:</span>
+                <span className={styles.spanArgValue}>{argValue}</span>
+              </div>
+            );
+          });
 
           return (
             <div className={styles.nameFields} key={`0${itemField.name}`}>
