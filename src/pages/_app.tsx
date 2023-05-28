@@ -1,6 +1,4 @@
 import '@/styles/entry.scss';
-// import 'codemirror/lib/codemirror.css';
-// import 'codemirror/theme/material.css';
 import type { AppProps } from 'next/app';
 import { Provider } from 'react-redux';
 import { store } from '@/redux/store';
