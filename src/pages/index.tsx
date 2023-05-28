@@ -29,7 +29,7 @@ export default function Home() {
           placeholder="blur"
         />
       </section>
-      <section className="tabs mt-40">
+      <section className="tabs mt-20 md:mt-40">
         <Tabs />
       </section>
     </main>
