@@ -3,16 +3,25 @@ import { TetxtareaRequest, TetxtareaVar } from '../../components';
 import { DisplayInfo } from '../../components';
 import { FaPlay, FaAngleRight } from 'react-icons/fa';
 import style from './Editor.module.scss';
-import { BASE_URL } from '@/utils/const';
+import { BASE_URL, ROUTES } from '@/utils/const';
 import { useCallback, useRef, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { changeDataSchema, changeUrlData } from '@/redux/api-data/api-data';
 import { queryDoc } from '../search-api/query-param';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from '@/firebase';
+import { useRouter } from 'next/router';
 
 export function Editor() {
+  const [user] = useAuthState(auth);
   const urlInput = useRef<HTMLInputElement>(null);
   const dispatch = useDispatch();
-
+  const { push } = useRouter();
+  useEffect(() => {
+    if (!user) {
+      push(ROUTES.main);
+    }
+  }, [user, push]);
   const [editorMinSize, setEditorMinSize] = useState([91, 9]);
   const openEditor = useCallback(() => {
     const size = editorMinSize[0] === 9 ? [91, 9] : [9, 91];
