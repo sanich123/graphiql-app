@@ -4,7 +4,7 @@ import { DisplayInfo } from '../../components';
 import { FaPlay, FaAngleRight } from 'react-icons/fa';
 import style from './Editor.module.scss';
 import { BASE_URL } from '@/utils/const';
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useState } from 'react';
 
 export function Editor() {
   const [editorMinSize, setEditorMinSize] = useState([91, 9]);
@@ -19,7 +19,7 @@ export function Editor() {
         <FaAngleRight />
         <input type="url" name="urlapi" id="urlapi" defaultValue={BASE_URL} className={`${style.url}`} />
       </div>
-      <Split className={style.editor} sizes={[50, 50]} minSize={[300, 300]} gutterSize={10} style={{ height: 'calc(100vh - 250px)' }}>
+      <Split className={style.editor} sizes={[50, 50]} minSize={[300, 300]} gutterSize={10} style={{ height: 'calc(100vh - 150px)' }}>
         <Split direction="vertical" sizes={editorMinSize} minSize={[200, 70]} gutterSize={10}>
           <div className={`${style.sideEditor}`}>
             <div className={`${style.queryHeader}`}>
