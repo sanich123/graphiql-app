@@ -15,10 +15,10 @@ export const LANG = {
       predmaxim: 'предмаксим',
       sanich123: 'санич123',
     },
-    graphiql: 'ГРАФиКюЛ',
+    graphiql: 'GRAPHiQl',
     main: {
-      h1: 'ГРАФИКЮЛ ПЕСОЧНИЦА',
-      p: 'Это песочница делать графикюл запросы',
+      h1: 'Песочница GraphiQL',
+      p: 'Это песочница/IDE для создания графикюл запросов',
       startBtn: 'Давай начнем!',
     },
     tabs: ['Запросы к любой API', 'Подсветка синтаксиса', 'Документация', 'Схема', 'Переменные запросов'],
@@ -40,7 +40,7 @@ export const LANG = {
     },
     graphiql: 'GRAPHiQl',
     main: {
-      h1: 'GRAPHIQL PLAYGROUND',
+      h1: 'GraphiQL Playground',
       p: `It is a playground/IDE for graphQL requests`,
       startBtn: 'Get Started!',
     },

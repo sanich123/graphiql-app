@@ -2,6 +2,7 @@
   border: none;
   cursor: pointer;
   background: transparent;
+  outline: none;
 }
 
 @mixin resetUl() {
@@ -16,7 +17,7 @@
 }
 
 @mixin container($width) {
-  width: $width;
+  max-width: $width;
   margin: 0 auto;
 }
 

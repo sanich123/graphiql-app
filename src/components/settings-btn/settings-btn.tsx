@@ -1,6 +1,7 @@
 import { LANG } from '@/utils/languages';
-import { SettingsIcon } from '../svg/svg';
 import { useAppSelector } from '@/redux/hooks/hooks';
+import { RiSettings3Fill } from 'react-icons/ri';
+import { IconContext } from 'react-icons';
 
 type SettingsBtnProps = {
   setIsPanelOpen: (arg: boolean) => void;
@@ -9,10 +10,13 @@ type SettingsBtnProps = {
 
 export default function SettingsBtn({ setIsPanelOpen, isPanelOpen }: SettingsBtnProps) {
   const { language } = useAppSelector(({ changeThemeLang }) => changeThemeLang);
+
   return (
-    <button type="button" className="header__settings-btn" onClick={() => setIsPanelOpen(!isPanelOpen)} data-cy="settings-btn">
-      <SettingsIcon />
-      <span className="header__settings-btn--text">{LANG[language].settings}</span>
-    </button>
+    <IconContext.Provider value={{ size: '20', className: 'iconsColor' }}>
+      <button type="button" className="header__settings-btn" onClick={() => setIsPanelOpen(!isPanelOpen)} data-cy="settings-btn">
+        <RiSettings3Fill />
+        <span className="header__settings-btn--text">{LANG[language].settings}</span>
+      </button>
+    </IconContext.Provider>
   );
 }

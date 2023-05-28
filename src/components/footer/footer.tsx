@@ -7,10 +7,10 @@ import Link from 'next/link';
 import { LANG } from '@/utils/languages';
 
 export default function Footer() {
-  const { theme, language } = useAppSelector(({ changeThemeLang }) => changeThemeLang);
+  const { language } = useAppSelector(({ changeThemeLang }) => changeThemeLang);
 
   return (
-    <div className={`footer-wrapper ${theme}`}>
+    <div className="footer-wrapper">
       <footer className="footer">
         <nav className="footer__nav">
           <Logo place="footer" />
