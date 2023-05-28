@@ -42,14 +42,14 @@ export function Editor() {
     }
   }
 
-  async function changeUrl(event: React.SyntheticEvent) {
-    event.preventDefault();
+  async function changeUrl() {
     if (urlInput.current instanceof HTMLInputElement) {
       const url = urlInput.current;
       dispatch(changeUrlData(url.value));
       await makeRequest(url.value, queryDoc);
     }
   }
+  changeUrl();
   const useWidth = () => {
     const [width, setWidth] = useState(0);
     const handleResize = () => setWidth(window.innerWidth);
@@ -68,7 +68,18 @@ export function Editor() {
     <>
       <div className={`flex gap-2 items-center ${style.urlWrap}`}>
         <FaAngleRight />
-        <input type="url" name="urlapi" id="urlapi" defaultValue={BASE_URL} className={`${style.url}`} ref={urlInput} onInput={changeUrl} />
+        <input
+          type="url"
+          name="urlapi"
+          id="urlapi"
+          defaultValue={BASE_URL}
+          className={`${style.url}`}
+          ref={urlInput}
+          onInput={(e) => {
+            e.preventDefault();
+            changeUrl();
+          }}
+        />
       </div>
       {windowWidth ? (
         <Split className={style.editor} sizes={[50, 50]} minSize={[300, 300]} gutterSize={10} style={{ height: 'calc(100vh - 150px)' }}>
