@@ -4,20 +4,17 @@ import { useSelector } from 'react-redux';
 import { RootState } from '@/redux/store';
 import React from 'react';
 import { DrawKyes, DrawKyesSchema } from './functions-draw-query';
-// import { useAppSelector } from '@/redux/hooks/hooks';
 
 export default function Schema() {
   const [isOpenDoc, setIsOpenDoc] = useState(false);
   const [isOpenSchema, setIsOpenSchema] = useState(false);
 
-  // const { theme } = useAppSelector(({ changeThemeLang }) => changeThemeLang);
   const dataDoc = useSelector((state: RootState) => state.apiData.dataDoc);
   let objDoc;
 
   if (dataDoc) {
     objDoc = JSON.parse(dataDoc);
   }
-  // console.log(objDoc);
 
   return (
     <div className={styles.allSchema}>
