@@ -37,7 +37,7 @@ export default function Schema() {
         <p className={styles.name}>Shema</p>
       </button>
       {isOpenDoc && (
-        <div className={styles.blockSchema}>
+        <div className={`${styles.blockSchema} ${styles.blockSchemaBorderDoc}`}>
           <div className={styles.blockFirstInfo}>
             <h1 className={styles.h1Schema}>QUERIES</h1>
             <ul className={styles.ulSchema}>{DrawKyes(objDoc, 'Query')}</ul>

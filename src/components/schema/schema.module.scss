@@ -50,6 +50,26 @@
   // max-width: 80%;
   overflow-x: scroll;
   border-left: 4px solid #B7B7B7;
+
+  @media screen and (max-width: 800px) {
+      max-width: 400px;
+  }
+
+  @media screen and (max-width: 600px) {
+    max-width: 360px;
+  }
+
+  @media screen and (max-width: 500px) {
+    max-width: 300px;
+  }
+
+  @media screen and (max-width: 400px) {
+    max-width: 280px;
+  }
+}
+
+.blockSchemaBorderDoc {
+  border-color: #fd714e;
 }
 
 .blockFirstInfo {
@@ -145,10 +165,4 @@
   width: 100px;
   height: 100px;
   background-color: #D33592;
-}
-
-.aaa {
-  width: 100px;
-  height: 50px;
-  background-color: aquamarine;
 }
