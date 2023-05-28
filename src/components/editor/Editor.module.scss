@@ -65,10 +65,16 @@
 .sideVar {
   padding: 10px 10px 10px 0;
   border-radius: var(--borderRadius10);
+  width: 100%;
 }
 
 .sideDispInfo {
   margin: 10px 0 10px 10px;
   border-radius: var(--borderRadius10);
   background: var(--light-gray);
+  width: 100%;
+
+  @media screen and (width <=$mobile) {
+    margin: 10px 0;
+  }
 }
