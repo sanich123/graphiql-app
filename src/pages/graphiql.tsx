@@ -2,8 +2,8 @@ import { Editor } from '../components';
 
 export default function GraphiQl() {
   return (
-    <div>
+    <main>
       <Editor />
-    </div>
+    </main>
   );
 }
