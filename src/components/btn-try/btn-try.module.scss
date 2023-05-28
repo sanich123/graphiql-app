@@ -1,0 +1,10 @@
+@import '../../styles/mixins.scss';
+
+.btnTry {
+  @include resetBtn();
+  padding: 14px 42px;
+  color: var(--btnFontColor);
+  background: var(--btnBg);
+  border-radius: 50px;
+  font-weight: 700;
+}
