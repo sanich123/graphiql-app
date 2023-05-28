@@ -1,17 +1,30 @@
+@import '../../styles/variables.scss';
+
 .urlWrap {
   border: 1px solid var(--border-color);
   border-radius: var(--borderRadius10);
-  margin-bottom: 10px;
+  margin: 20px 0 10px;
   padding: 5px 15px;
+  width: 100%;
 }
 
 .url {
   width: 100%;
   padding: 5px 10px;
+  background: var(--bodyColor);
 
   &:focus-visible {
     border: none;
     outline: none;
+  }
+}
+
+.editor {
+  display: flex;
+  width: 100%;
+
+  @media screen and (with <=$mobile) {
+    flex-direction: column;
   }
 }
 
@@ -28,6 +41,7 @@
   flex: 1;
   border-radius: var(--borderRadius10);
   padding: 13px 30px;
+  cursor: pointer;
 }
 
 .btnSend {
@@ -48,23 +62,13 @@
 }
 
 .sideEditor,
-.sideVar,
-.sideDispInfo {
-  padding: 10px;
-}
-
-.sideEditor,
 .sideVar {
-  padding: 10px;
-  // border: 1px solid var(--border-color);
+  padding: 10px 10px 10px 0;
   border-radius: var(--borderRadius10);
 }
 
-.sideEditor {}
-
-.sideVar {}
-
 .sideDispInfo {
+  margin: 10px 0 10px 10px;
   border-radius: var(--borderRadius10);
   background: var(--light-gray);
 }
