@@ -33,8 +33,17 @@
       justify-content: start;
       column-gap: 15px;
 
-      &--item a {
-        @include resetLink();
+
+      &--item {
+        a {
+          @include resetLink();
+        }
+
+      }
+
+      .active {
+        font-weight: 700;
+        color: var(--primaryColor);
       }
     }
   }

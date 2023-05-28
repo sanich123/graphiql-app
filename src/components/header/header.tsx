@@ -9,6 +9,7 @@ import useHeaderListeners from '@/hooks/use-header-listeners';
 import SettingsBtn from '../settings-btn/settings-btn';
 import LoginBtn from '../login-btn/login-btn';
 import LogoutBtn from '../logout-btn/logout-btn';
+import { useRouter } from 'next/router';
 
 const SettingsPanel = dynamic(() => import('../settings-panel/settings-panel'));
 
@@ -16,6 +17,12 @@ export default function Header() {
   const { theme } = useAppSelector(({ changeThemeLang }) => changeThemeLang);
   const [user] = useAuthState(auth);
   const { sticky, isPanelOpen, setIsPanelOpen } = useHeaderListeners();
+  // const active = () => {
+  //   const pathname = useLocation().pathname;
+  // };
+
+  const router = useRouter();
+  const path = router.asPath.split('?')[0];
 
   return (
     <div className={`header-wrapper ${theme}`}>
@@ -23,11 +30,11 @@ export default function Header() {
         <Logo place={'header'} />
         <nav className="header__nav nav">
           <ul className="nav__list">
-            <li className="nav__list--item">
+            <li className={path === ROUTES.main ? 'nav__list--item active' : 'nav__list--item'}>
               <Link href={ROUTES.main}>About</Link>
             </li>
             {user && (
-              <li className="nav__list--item">
+              <li className={path === ROUTES.graphiql ? 'nav__list--item active' : 'nav__list--item'}>
                 <Link href={ROUTES.graphiql}>Playground</Link>
               </li>
             )}
