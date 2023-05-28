@@ -62,7 +62,6 @@ export function DrawKyesSchema(obj: { data: { __schema: { types: ItemSchemaTypes
             itemField.type.ofType.ofType.ofType.ofType.ofType.ofType.name ||
             itemField.type.ofType.ofType.ofType.ofType.ofType.ofType.ofType.name;
 
-          if (itemField.args !== []) {
             allArgs = itemField.args.map((arg: ArgsArr) => {
               const argValue =
                 arg.type.name ||
@@ -81,7 +80,7 @@ export function DrawKyesSchema(obj: { data: { __schema: { types: ItemSchemaTypes
                 </div>
               );
             });
-          }
+
           return (
             <div className={styles.nameFields} key={`0${itemField.name}`}>
               <span className={styles.spanFieldName}>{itemField.name}</span>
