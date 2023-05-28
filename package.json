@@ -16,12 +16,13 @@
     "component:headless": "cypress run --component"
   },
   "dependencies": {
+    "@codemirror/lang-javascript": "^6.1.8",
     "@codemirror/state": "^6.2.0",
     "@codemirror/view": "^6.10.0",
     "@types/node": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
-    "@uiw/codemirror-theme-xcode": "^4.20.2",
+    "@uiw/codemirror-themes": "^4.20.2",
     "@uiw/react-codemirror": "^4.20.2",
     "autoprefixer": "latest",
     "firebase": "^9.21.0",
@@ -35,12 +36,9 @@
     "react-icons": "^4.8.0",
     "react-split": "^2.0.14",
     "react-toastify": "^9.1.2",
-    "rodemirror": "^2.0.0",
     "tailwindcss": "latest"
   },
   "devDependencies": {
-    "@codemirror/lang-javascript": "^6.1.7",
-    "@codemirror/theme-one-dark": "^6.1.2",
     "@reduxjs/toolkit": "latest",
     "@testing-library/react": "latest",
     "@testing-library/user-event": "latest",
