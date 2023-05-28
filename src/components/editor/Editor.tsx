@@ -4,7 +4,7 @@ import { DisplayInfo } from '../../components';
 import { FaPlay, FaAngleRight } from 'react-icons/fa';
 import style from './Editor.module.scss';
 import { BASE_URL } from '@/utils/const';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useRef, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { changeDataSchema, changeUrlData } from '@/redux/api-data/api-data';
 import { queryDoc } from '../search-api/query-param';
