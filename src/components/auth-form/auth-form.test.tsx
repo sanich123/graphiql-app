@@ -9,9 +9,7 @@ import customRender from '@/tests/render-with-providers';
 vi.mock('@/redux/hooks/hooks');
 
 describe('Authorization form', () => {
-  afterEach(() => {
-    cleanup();
-  });
+  afterEach(() => cleanup());
   it('should correctly renders in english', () => {
     vi.mocked(useAppSelector).mockReturnValue({ language: 'en' });
     customRender(<AuthForm place={AUTH_PLACES.login} />);
@@ -83,6 +81,6 @@ describe('Authorization form', () => {
     customRender(<AuthForm place={AUTH_PLACES.reset} />);
     expect(screen.getByPlaceholderText(/электропочта/i)).toBeDefined();
     expect(screen.getByRole('textbox')).toBeDefined();
-    expect(screen.getByRole('button', { name: 'Cброс' })).toBeDefined();
+    expect(screen.getByRole('button', { name: 'Сброс' })).toBeDefined();
   });
 });
