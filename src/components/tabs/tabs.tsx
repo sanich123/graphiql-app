@@ -8,9 +8,9 @@ export default function Tabs() {
   const { language } = useAppSelector(({ changeThemeLang }) => changeThemeLang);
   const [activeTab, setActiveTab] = useState(LANG[language].tabs[0]);
   return (
-    <section className="main__tabs tabs">
+    <div className="main__tabs tabs">
       <div className="tabs-wrapper">
-        <h2 className="tabs__h2">Functionality</h2>
+        <h2 className="h2">Functionality</h2>
         <ul className="tabs__list">
           {LANG[language].tabs.map((tab) => (
             <li key={tab} className={`tabs__list--item ${tab === activeTab ? 'active' : ''}`} onClick={() => setActiveTab(tab)}>
@@ -18,9 +18,9 @@ export default function Tabs() {
             </li>
           ))}
         </ul>
-        <BtnTry place={'tabs'} />
+        <BtnTry />
       </div>
       <video className="tabs__iframe" src={LINKS[activeTab as keyof typeof LINKS]} controls />
-    </section>
+    </div>
   );
 }

@@ -5,7 +5,7 @@ export const changeThemeLang = createSlice({
   name: 'changeThemeLang',
   initialState: {
     language: LANGUAGES.en,
-    theme: THEMES.dark,
+    theme: THEMES.light,
   },
   reducers: {
     changeLanguage: (state) => {

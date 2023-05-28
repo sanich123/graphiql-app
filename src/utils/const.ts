@@ -1,5 +1,7 @@
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 
+export const BASE_URL = 'https://graphqlzero.almansi.me';
+
 export const enum SOCIAL_NETWORKS {
   github = 'Github',
   google = 'Google',
