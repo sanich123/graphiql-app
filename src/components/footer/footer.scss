@@ -23,21 +23,15 @@
       justify-content: space-between;
     }
 
-    &__nav svg {
-      width: 100px;
-      width: 70px;
-
-    }
-
     &__logo {
       @include resetLink();
       @include gridFlowColumn();
       @include setFont(18px, 140%, 400);
 
       &--text {
-        color: inherit;
+        margin-left: 10px;
 
-        @media (max-width: ($tablet - 1)) {
+        @media (width <=$mobile) {
           display: none;
         }
       }
@@ -48,21 +42,16 @@
       @include gridFlowColumn();
       gap: 15px;
 
-      @media (max-width: ($tablet - 1)) {
+      @media (width <=$tablet) {
         grid-auto-flow: row;
         gap: 5px;
-        place-items: center;
-      }
-
-      &--item a {
-        color: inherit;
       }
     }
 
     .copyright__rsschool-info {
-      @media (max-width: ($tablet - 1)) {
+      @media (width <=$tablet) {
         display: grid;
-        place-items: center;
+        place-items: end;
       }
     }
 
