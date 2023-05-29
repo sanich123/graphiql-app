@@ -5,28 +5,40 @@ import { FaPlay, FaAngleRight } from 'react-icons/fa';
 import style from './Editor.module.scss';
 import { BASE_URL, ROUTES } from '@/utils/const';
 import { useCallback, useRef, useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { changeDataSchema, changeUrlData } from '@/redux/api-data/api-data';
 import { queryDoc } from '../search-api/query-param';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '@/firebase';
 import { useRouter } from 'next/router';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks/hooks';
+import { useSendGraphiqlResponseMutation } from '@/redux/graphql-api/graphql-api';
+import { changeData } from '@/redux/save-data/save-data';
 
 export function Editor() {
+  const [sendRequest] = useSendGraphiqlResponseMutation();
   const [user] = useAuthState(auth);
   const urlInput = useRef<HTMLInputElement>(null);
-  const dispatch = useDispatch();
+  const url = urlInput.current ? (urlInput.current as HTMLInputElement).value : BASE_URL;
+  const request = useAppSelector((state) => state.savedData.requestData);
   const { push } = useRouter();
-  useEffect(() => {
-    if (!user) {
-      push(ROUTES.main);
-    }
-  }, [user, push]);
+  const dispatch = useAppDispatch();
   const [editorMinSize, setEditorMinSize] = useState([91, 9]);
   const openEditor = useCallback(() => {
     const size = editorMinSize[0] === 9 ? [91, 9] : [9, 91];
     setEditorMinSize(size);
   }, [editorMinSize]);
+
+  useEffect(() => {
+    if (!user) {
+      push(ROUTES.main);
+    }
+  }, [user, push]);
+
+  const requestHandle = async () => {
+    const requestJSON = JSON.parse(request);
+    const response = await sendRequest({ url, request: requestJSON });
+    dispatch(changeData(JSON.stringify({ response, request })));
+  };
 
   async function makeRequest(endpoint: string, query: string) {
     try {
@@ -45,9 +57,8 @@ export function Editor() {
   async function changeUrl(event: React.SyntheticEvent) {
     event.preventDefault();
     if (urlInput.current instanceof HTMLInputElement) {
-      const url = urlInput.current;
-      dispatch(changeUrlData(url.value));
-      await makeRequest(url.value, queryDoc);
+      dispatch(changeUrlData(url));
+      await makeRequest(url, queryDoc);
     }
   }
   const useWidth = () => {
@@ -57,7 +68,6 @@ export function Editor() {
       handleResize();
       window.addEventListener('resize', handleResize);
       return () => window.removeEventListener('resize', handleResize);
-      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     return width;
   };
@@ -78,7 +88,7 @@ export function Editor() {
                 <div className={style.title} onClick={openEditor}>
                   Query
                 </div>
-                <button className={style.btnSend}>
+                <button className={style.btnSend} onClick={requestHandle}>
                   <FaPlay />
                 </button>
               </div>
@@ -104,7 +114,7 @@ export function Editor() {
               <div className={style.title} onClick={openEditor}>
                 Query
               </div>
-              <button className={style.btnSend}>
+              <button className={style.btnSend} onClick={requestHandle}>
                 <FaPlay />
               </button>
             </div>
