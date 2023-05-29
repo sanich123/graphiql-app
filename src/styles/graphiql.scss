@@ -47,3 +47,23 @@
   outline: none !important;
   border: none !important;
 }
+
+
+.dark .display-info .cm-scroller,
+.dark .ͼ2 .cm-gutters {
+  background: var(--stickyHeader);
+  border-color: var(--stickyHeader);
+  border-radius: var(--borderRadius10);
+}
+
+.light .display-info .cm-scroller,
+.light .ͼ2 .cm-gutters {
+  background: var(--light-gray);
+  border-color: var(--light-gray);
+  border-radius: var(--borderRadius10);
+}
+
+.dark .display-info .cm-scroller,
+.light .display-info .cm-scroller {
+  padding: 10px 0;
+}
