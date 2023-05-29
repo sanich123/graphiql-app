@@ -1,22 +1,31 @@
 import CodeMirror from '@uiw/react-codemirror';
-import { javascript } from '@codemirror/lang-javascript';
+import { json } from '@codemirror/lang-json';
 import style from './textarea-request.module.scss';
-import { useSelector } from 'react-redux';
-import { RootState } from '@/redux/store';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks/hooks';
+import { changeData } from '@/redux/save-data/save-data';
 
 export function TetxtareaRequest() {
-  const theme = useSelector((state: RootState) => state.changeThemeLang.theme);
+  const theme = useAppSelector((state) => state.changeThemeLang.theme);
   const isLightTheme = theme === 'light';
-  const [code, setCode] = useState('query {}');
+  const dispatch = useAppDispatch();
+  const [code, setCode] = useState(`query {
+  post(id: 1) {
+    id
+    title
+    body
+  }
+}`);
 
-  const onChangeHandle = useCallback((value: string) => {
-    setCode(value);
-  }, []);
+  const onChangeHandle = useCallback(() => {
+    dispatch(changeData(JSON.stringify({ request: code })));
+  }, [code, dispatch]);
+
+  useEffect(onChangeHandle, [onChangeHandle]);
 
   return (
     <div className={style.wrapper}>
-      <CodeMirror value={code} theme={isLightTheme ? 'light' : 'dark'} height="100%" extensions={[javascript({ jsx: true })]} onChange={onChangeHandle} />
+      <CodeMirror value={code} theme={isLightTheme ? 'light' : 'dark'} height="100%" extensions={[json()]} onChange={(value) => setCode(value)} />
     </div>
   );
 }
