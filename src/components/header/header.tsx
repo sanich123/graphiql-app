@@ -17,10 +17,6 @@ export default function Header() {
   const { theme } = useAppSelector(({ changeThemeLang }) => changeThemeLang);
   const [user] = useAuthState(auth);
   const { sticky, isPanelOpen, setIsPanelOpen } = useHeaderListeners();
-  // const active = () => {
-  //   const pathname = useLocation().pathname;
-  // };
-
   const router = useRouter();
   const path = router.asPath.split('?')[0];
 
