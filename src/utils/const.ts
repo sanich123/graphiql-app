@@ -154,14 +154,14 @@ export const DEVELOPERS = [
 ];
 
 export const LINKS = {
-  'Requests to any API': 'https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1b67DzK4cy4M9_8YD3M-JeNOB1HkYyYf1',
-  'Syntax highlighting': 'https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1Fa0qXs79GU5TRXCWchfoEDJfbJDGFlp9',
-  Documentation: 'https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1GZUrW0TFlokdcejc5CO2VyxBpsnNm88J',
-  'Запросы к любой API': 'https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1b67DzK4cy4M9_8YD3M-JeNOB1HkYyYf1',
-  'Подсветка синтаксиса': 'https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1Fa0qXs79GU5TRXCWchfoEDJfbJDGFlp9',
-  Документация: 'https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1GZUrW0TFlokdcejc5CO2VyxBpsnNm88J',
-  Schema: 'https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1cemPaSCIzWuTNWJq68mCuH4F8vFcxxiL',
-  Схема: 'https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1cemPaSCIzWuTNWJq68mCuH4F8vFcxxiL',
-  'Query variables': 'https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1-H00DxU7g5Dya8_b4-cZuVYFQGc-dj4S',
-  'Переменные запросов': 'https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1-H00DxU7g5Dya8_b4-cZuVYFQGc-dj4S',
+  'Requests to any API': ['/img/3.png', '/img/3d.png'],
+  'Syntax highlighting': ['/img/4.png', '/img/4d.png'],
+  Documentation: ['/img/5.png', '/img/5d.png'],
+  'Запросы к любой API': ['/img/3.png', '/img/3d.png'],
+  'Подсветка синтаксиса': ['/img/4.png', '/img/4d.png'],
+  Документация: ['/img/5.png', '/img/5d.png'],
+  Schema: ['/img/6.png', '/img/6d.png'],
+  Схема: ['/img/6.png', '/img/6d.png'],
+  'Query variables': ['/img/7.png', '/img/7d.png'],
+  'Переменные запросов': ['/img/7.png', '/img/7d.png'],
 };

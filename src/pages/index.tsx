@@ -1,8 +1,8 @@
 import { useAppSelector } from '@/redux/hooks/hooks';
 import { LANG } from '@/utils/languages';
 import Image from 'next/image';
-import Img1 from '../../public/img/home-sceenshot.png';
-import Img1Dark from '../../public/img/home-sceenshot-dark.png';
+import Img1 from '../../public/img/0.png';
+import Img1Dark from '../../public/img/0d.png';
 import { BigLogo } from '../components/svg/svg';
 import Tabs from '@/components/tabs/tabs';
 import BtnTry from '@/components/btn-try/btn-try';
