@@ -16,7 +16,7 @@
     "component:headless": "cypress run --component"
   },
   "dependencies": {
-    "@codemirror/lang-javascript": "^6.1.8",
+    "@codemirror/lang-json": "^6.0.1",
     "@codemirror/state": "^6.2.0",
     "@codemirror/view": "^6.10.0",
     "@types/node": "latest",
@@ -34,6 +34,7 @@
     "react-dom": "latest",
     "react-firebase-hooks": "^5.1.1",
     "react-icons": "^4.8.0",
+    "react-json-formatter": "^0.3.2",
     "react-split": "^2.0.14",
     "react-toastify": "^9.1.2",
     "tailwindcss": "latest"
@@ -72,7 +73,6 @@
     "prettier": "latest",
     "pretty-print-json": "^2.0.0",
     "react-focus-lock": "^2.9.4",
-    "react-json-formatter": "^0.3.2",
     "react-redux": "latest",
     "react-remove-scroll": "^2.5.5",
     "sass": "latest",

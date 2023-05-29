@@ -1,5 +1,5 @@
 import CodeMirror from '@uiw/react-codemirror';
-import { javascript } from '@codemirror/lang-javascript';
+import { json } from '@codemirror/lang-json';
 import style from './textarea-var.module.scss';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/redux/store';
@@ -11,7 +11,7 @@ export function TetxtareaVar() {
 
   return (
     <div className={style.wrapper}>
-      <CodeMirror value={defaultValue} theme={isLightTheme ? 'light' : 'dark'} height="100%" extensions={[javascript({ jsx: true })]} />
+      <CodeMirror value={defaultValue} theme={isLightTheme ? 'light' : 'dark'} height="100%" extensions={[json()]} />
     </div>
   );
 }

@@ -4,10 +4,12 @@ export const saveData = createSlice({
   name: 'saveData',
   initialState: {
     responseData: '',
+    requestData: '',
   },
   reducers: {
     changeData: (state, action) => {
-      state.responseData = action.payload;
+      state.responseData = JSON.stringify(JSON.parse(action.payload).response);
+      state.requestData = JSON.stringify(JSON.parse(action.payload).request);
     },
   },
 });

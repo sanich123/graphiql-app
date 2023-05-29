@@ -2,7 +2,7 @@
   position: absolute;
   z-index: 2;
   right: 0px;
-  height: 100%;
+  height: calc(100% - 50px);
   color: #000000;
 }
 
@@ -54,7 +54,7 @@
   border-left: 4px solid #B7B7B7;
 
   @media screen and (max-width: 800px) {
-      max-width: 400px;
+    max-width: 400px;
   }
 
   @media screen and (max-width: 600px) {
@@ -82,7 +82,7 @@
 .blockQuery {
   margin-bottom: 20px;
 
-   &:hover {
+  &:hover {
     background-color: #F4F4F4;
   }
 }
@@ -94,7 +94,7 @@
   font-size: 15px;
 }
 
-.blockQueryType{
+.blockQueryType {
   color: #EE727D;
 }
 
@@ -176,7 +176,7 @@
 .spanArgValue {
   margin-right: 4px;
 
-  color: #806163;;
+  color: #806163;
 }
 
 .spanOpenBracket {
