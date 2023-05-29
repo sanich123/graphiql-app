@@ -18,21 +18,56 @@ export function DrawKyes(obj: { data: { __schema: { types: ItemSchemaTypes[] } }
       return <p className={styles.pInfoCorrect}>No mutations</p>;
     }
     if (arrQuery) {
-      const allLi = arrQuery.map((item: { name: string }) => (
-        <div key={`00${item.name}`}>
-          <li className={styles.liSchema}>
-            <button
-              className={styles.btnQuery}
-              value={item.name}
-              onClick={(e: React.SyntheticEvent) => {
-                e.preventDefault();
-              }}
-            >
-              {item.name}
-            </button>
-          </li>
-        </div>
-      ));
+      const allLi = arrQuery.map((item: ItemArrField) => {
+        const conditionArg = item.args[0] !== undefined;
+
+        const fieldValue =
+          item.type.name ||
+          item.type.ofType.name ||
+          item.type.ofType.ofType.name ||
+          item.type.ofType.ofType.ofType.name ||
+          item.type.ofType.ofType.ofType.ofType.name ||
+          item.type.ofType.ofType.ofType.ofType.ofType.name ||
+          item.type.ofType.ofType.ofType.ofType.ofType.ofType.name ||
+          item.type.ofType.ofType.ofType.ofType.ofType.ofType.ofType.name;
+
+        const allArgs = item.args.map((arg: ArgsArr) => {
+          const argValue =
+            arg.type.name ||
+            arg.type.ofType.name ||
+            arg.type.ofType.ofType.name ||
+            arg.type.ofType.ofType.ofType.name ||
+            arg.type.ofType.ofType.ofType.ofType.name ||
+            arg.type.ofType.ofType.ofType.ofType.ofType.name ||
+            arg.type.ofType.ofType.ofType.ofType.ofType.ofType.name ||
+            arg.type.ofType.ofType.ofType.ofType.ofType.ofType.ofType.name;
+          return (
+            <div key={`1${arg.name}`}>
+              <span className={styles.spanArgName}>{arg.name}</span>
+              <span className={styles.spanColon}>:</span>
+              <span className={styles.spanArgValue}>{argValue}</span>
+            </div>
+          );
+        });
+
+        return (
+          <div className={styles.blockQuery} key={`00${item.name}`}>
+            <li className={styles.liSchema}>
+              <div className={styles.btnQuery}>{item.name}</div>
+              <div className={styles.blockQueryType}>
+                <span className={styles.spanBlockQueryType}>type</span>
+                {fieldValue}
+              </div>
+              {conditionArg && (
+                <div className={styles.blockQueryArgs}>
+                  <span className={styles.spanBlockQueryArgs}>Arguments:</span>
+                  {allArgs}
+                </div>
+              )}
+            </li>
+          </div>
+        );
+      });
       return allLi;
     }
   } catch {

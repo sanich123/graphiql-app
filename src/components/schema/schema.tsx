@@ -8,6 +8,7 @@ import { DrawKyes, DrawKyesSchema } from './functions-draw-query';
 export default function Schema() {
   const [isOpenDoc, setIsOpenDoc] = useState(false);
   const [isOpenSchema, setIsOpenSchema] = useState(false);
+
   const dataDoc = useSelector((state: RootState) => state.apiData.dataDoc);
   let objDoc;
 
@@ -46,7 +47,7 @@ export default function Schema() {
         </div>
       )}
       {isOpenSchema && (
-        <div className={styles.blockSchema}>
+        <div className={`${styles.blockSchema}`}>
           <div className={styles.blockFirstInfo}>
             <h1 className={styles.h1Schema}>SCHEMA</h1>
             <ul className={styles.ulSchema}>{DrawKyesSchema(objDoc)}</ul>
