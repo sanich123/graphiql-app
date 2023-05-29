@@ -2,7 +2,7 @@
   position: absolute;
   z-index: 10;
   right: 0px;
-  height: 100%;
+  height: calc(100% - 50px);
 }
 
 .btnDoc {
@@ -53,7 +53,7 @@
   border-left: 4px solid #B7B7B7;
 
   @media screen and (max-width: 800px) {
-      max-width: 400px;
+    max-width: 400px;
   }
 
   @media screen and (max-width: 600px) {
@@ -155,7 +155,7 @@
 .spanArgValue {
   margin-right: 4px;
 
-  color: #806163;;
+  color: #806163;
 }
 
 .spanOpenBracket {
