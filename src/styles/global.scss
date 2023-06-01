@@ -1,0 +1,75 @@
+* {
+  box-sizing: border-box;
+  // border: 1px solid red;
+}
+
+html {
+  position: relative;
+  scroll-behavior: smooth;
+}
+
+img {
+  display: block;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1 {
+  font-size: 40px;
+  font-weight: 700;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include container($desktop);
+
+  @media screen and (width <=$notebook) {
+    @include container($notebook);
+  }
+
+  @media screen and (width <=$tablet) {
+    @include container($tablet);
+  }
+
+  @media screen and (width <=$mobile) {
+    @include container($mobile);
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.page-body {
+  color: var(--fontColor);
+  background: var(--bodyColor);
+  padding: 20px 20px 0;
+  overflow: hidden;
+  min-height: 100vh;
+}
+
+.home-main {
+  margin-top: 135px;
+
+  @media screen and (width <=$mobile) {
+    margin-top: 60px;
+  }
+}

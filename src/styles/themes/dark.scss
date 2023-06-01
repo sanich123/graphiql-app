@@ -1,0 +1,29 @@
+.dark {
+  --bodyColor: #161D25;
+  --primaryColor: #D33592;
+  --primaryGradient: linear-gradient(97.03deg, #D33592 -59.36%, #EE727D 77.99%);
+  --gutter-color: #3f3f3f;
+  --border-color: #2D3947;
+  --light-gray: #2D3947;
+  --btnFontColor: #fff;
+  --btnBg: linear-gradient(97.03deg, #D33592 -59.36%, #EE727D 77.99%);
+  --btnBgHover: linear-gradient(97.03deg, #EE727D -77.99%, #D33592 59.36%);
+  --borderRadius10: 10px;
+  --fontColor: #fff;
+  --panelColor: #2D3947;
+  --activeSelectBg: #131A21;
+  --activeSelectColor: #fff;
+  --stickyHeader: #232c35;
+  --shadow1: 0px 5px 20px -10px #00000099;
+  --shadow2: 0px 4px 38px rgba(0, 0, 0, 0.1);
+  --footerBg: #131A21;
+  --footerColor: #fff;
+
+  .active .iconsColor {
+    color: var(--btnFontColor);
+  }
+
+  .iconsColor {
+    color: var(--fontColor);
+  }
+}

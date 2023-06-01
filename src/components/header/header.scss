@@ -1,0 +1,202 @@
+.header {
+  display: flex;
+  align-items: center;
+  transition: .2s;
+  z-index: 11;
+
+  &__logo {
+    @include resetLink();
+    @include gridFlowColumn();
+    column-gap: 9px;
+    color: inherit;
+
+    &--text {
+      @media (width <=$mobile) {
+        display: none;
+      }
+    }
+  }
+
+  &__nav {
+    margin-left: 60px;
+    flex: 1;
+
+    @media screen and (width <=$mobile) {
+      margin-left: 30px;
+    }
+
+    @include gridFlowColumn();
+
+    .nav__list {
+      @include resetUl();
+      @include gridFlowColumn();
+      justify-content: start;
+      column-gap: 15px;
+
+
+      &--item {
+        a {
+          @include resetLink();
+        }
+
+      }
+
+      .active {
+        font-weight: 700;
+        color: var(--primaryColor);
+      }
+    }
+  }
+
+  &__btns-wrapper {
+    @include gridFlowColumn();
+    position: relative;
+    gap: 30px;
+
+    @media screen and (width <=$mobile) {
+      gap: 15px;
+    }
+  }
+
+  &__settings-btn {
+    @include gridFlowColumn();
+    column-gap: 7px;
+
+    &--text {
+      @media (width <=$mobile) {
+        display: none;
+      }
+    }
+  }
+
+  &__login {
+    @include gridFlowColumn();
+    column-gap: 7px;
+    color: inherit;
+    width: max-content;
+
+    &--text {
+      @media (width <=$mobile) {
+        display: none;
+      }
+    }
+
+    &--img {
+      border-radius: 50%;
+    }
+
+    &--user-info {
+      @media (width <=$tablet) {
+        display: none;
+      }
+    }
+  }
+
+  &__logout {
+    @include gridFlowColumn();
+    min-width: 80px;
+
+    @media (width <=$notebook) {
+      min-width: 0;
+    }
+
+    &--text {
+      @media (width <=$notebook) {
+        display: none;
+      }
+    }
+
+    &--icon {
+      display: none;
+
+      @media (width <=$notebook) {
+        display: grid;
+        place-content: center;
+      }
+    }
+  }
+
+  &__settings-panel {
+    position: absolute;
+    right: 0;
+    top: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 15px;
+    box-shadow: var(--shadow2);
+    border-radius: 10px;
+    min-height: 170px;
+    min-width: 267px;
+    padding: 27px 20px;
+    z-index: 12;
+
+    background: var(--panelColor);
+
+    @media (width <=$tablet) {
+      min-height: 100px;
+      min-width: 150px;
+      padding: 20px 15px;
+    }
+
+    &--button {
+      display: grid;
+      grid-auto-flow: column;
+      align-items: center;
+      justify-content: start;
+      column-gap: 10px;
+      padding: 15px 25px;
+
+      @media (min-width: $tablet) and (max-width: $desktop) {
+        padding: 5px 7px;
+      }
+
+      @media (max-width: ($tablet - 1)) {
+        padding: 5px;
+      }
+
+      border-radius: 10px;
+
+      &.active {
+        background: var(--activeSelectBg);
+        color: var(--activeSelectColor);
+      }
+    }
+  }
+
+  &.is-sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    transition: width 0.5s ease-in-out;
+    background: var(--stickyHeader);
+    box-shadow: var(--shadow1);
+    left: 0;
+    right: 0;
+    max-width: 100%;
+    padding: 0 40px;
+
+    & + .compensate-sticky-padding {
+      padding-top: 20px;
+    }
+  }
+
+  button {
+    @include resetBtn();
+  }
+
+  @include container($desktop);
+
+  @media screen and (width <=$notebook) {
+    @include container($notebook);
+  }
+
+  @media screen and (width <=$tablet) {
+    @include container($tablet);
+  }
+
+  @media screen and (width <=$mobile) {
+    @include container($mobile);
+  }
+}

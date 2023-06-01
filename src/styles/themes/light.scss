@@ -1,0 +1,29 @@
+.light {
+  --bodyColor: #fff;
+  --primaryColor: #D33592;
+  --primaryGradient: linear-gradient(97.03deg, #D33592 -59.36%, #EE727D 77.99%);
+  --gutter-color: #e5e7eb;
+  --border-color: #e0e0e0;
+  --light-gray: #F4F4F4;
+  --btnFontColor: #fff;
+  --btnBg: linear-gradient(97.03deg, #D33592 -59.36%, #EE727D 77.99%);
+  --btnBgHover: linear-gradient(97.03deg, #EE727D -77.99%, #D33592 59.36%);
+  --borderRadius10: 10px;
+  --fontColor: #161D25;
+  --panelColor: #fff;
+  --activeSelectBg: #131A21;
+  --activeSelectColor: #fff;
+  --stickyHeader: #ffffff;
+  --shadow1: 0px 5px 20px -15px #0000005e;
+  --shadow2: 0px 4px 38px rgba(0, 0, 0, 0.1);
+  --footerBg: #F4F4F4;
+  --footerColor: #000000;
+
+  .active .iconsColor {
+    color: var(--btnFontColor);
+  }
+
+  .iconsColor {
+    color: var(--fontColor);
+  }
+}

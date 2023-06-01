@@ -1,0 +1,16 @@
+@import './normalize.scss';
+@import './variables.scss';
+@import './mixins.scss';
+@import './global.scss';
+
+@import './authorization.scss';
+@import './graphiql.scss';
+@import '../components/header/header.scss';
+@import '../components/footer/footer.scss';
+@import '../components/tabs/tabs.scss';
+@import './themes/light.scss';
+@import './themes/dark.scss';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

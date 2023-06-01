@@ -1,0 +1,190 @@
+.allSchema {
+  position: absolute;
+  z-index: 2;
+  right: 0px;
+  height: calc(100% - 50px);
+  color: #000000;
+}
+
+.btnDoc {
+  color: rgb(255, 255, 255);
+  background: linear-gradient(97.03deg, #D33592 -59.36%, #EE727D 77.99%);
+  border-radius: 10px 0 0 10px;
+  border: none;
+  width: 35px;
+  position: absolute;
+  top: 60px;
+  left: -35px;
+  padding: 10px 6px;
+}
+
+.btnSchema {
+  color: rgb(255, 255, 255);
+  background: #B7B7B7;
+  border-radius: 10px 0 0 10px;
+  border: none;
+  width: 35px;
+  position: absolute;
+  top: 160px;
+  left: -35px;
+  padding: 10px 6px;
+}
+
+.name {
+  writing-mode: vertical-lr;
+  text-orientation: upright;
+  margin: 0px;
+}
+
+.h1Schema {
+  margin: 20px;
+  margin-bottom: 10px;
+  margin-top: 40px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #B7B7B7;
+}
+
+.blockSchema {
+  min-width: 280px;
+  max-width: 600px;
+  height: 100%;
+  background-color: #ffffff;
+  overflow-x: scroll;
+  border-left: 4px solid #B7B7B7;
+
+  @media screen and (max-width: 800px) {
+    max-width: 400px;
+  }
+
+  @media screen and (max-width: 600px) {
+    max-width: 360px;
+  }
+
+  @media screen and (max-width: 500px) {
+    max-width: 300px;
+  }
+
+  @media screen and (max-width: 400px) {
+    max-width: 280px;
+  }
+}
+
+.blockSchemaBorderDoc {
+  border-color: #f5687f;
+}
+
+.blockFirstInfo {
+  background-color: rgb(255, 255, 255);
+  height: 100%;
+}
+
+.blockQuery {
+  margin-bottom: 20px;
+
+  &:hover {
+    background-color: #F4F4F4;
+  }
+}
+
+.blockQueryArgs,
+.blockQueryType {
+  margin-left: 20px;
+  display: flex;
+  font-size: 15px;
+}
+
+.blockQueryType {
+  color: #EE727D;
+}
+
+.spanBlockQueryType,
+.spanBlockQueryArgs {
+  color: #000000;
+  margin-right: 5px;
+}
+
+.btnQuery {
+  width: 100%;
+  padding: 0 20px;
+  margin: 0;
+  border: none;
+  background: none;
+  text-align: left;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.ulSchema {
+  padding: 0;
+  margin: 0;
+}
+
+.liSchema {
+  list-style-type: none;
+}
+
+.liSchemaTypes {
+  margin-left: 20px;
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+.pInfoCorrect {
+  margin: 20px;
+  font-size: 18px;
+}
+
+.spanType {
+  color: #B7B7B7;
+}
+
+
+.spanTypeName {
+  margin: 0 7px;
+  font-weight: 600;
+}
+
+.nameFields {
+  margin-top: 4px;
+  padding-left: 12px;
+  display: flex;
+  flex-direction: row;
+}
+
+.spanFieldName {
+  margin-right: 4px;
+}
+
+.spanArgName {
+  color: #B7B7B7;
+}
+
+.blockAllArgs {
+  display: flex;
+  flex-direction: row;
+}
+
+.spanColon {
+  margin-right: 4px;
+}
+
+.spanFieldValue {
+  color: #EE727D;
+}
+
+.spanArgValue {
+  margin-right: 4px;
+
+  color: #806163;
+}
+
+.spanOpenBracket {
+  margin-right: 4px;
+}
+
+.blockSecondQuery {
+  width: 100px;
+  height: 100px;
+  background-color: #D33592;
+}

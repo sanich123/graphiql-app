@@ -1,0 +1,62 @@
+.footer-wrapper {
+  background: var(--footerBg);
+  color: var(--footerColor);
+  margin: 150px -20px 0;
+  padding: 40px 20px;
+
+  @media screen and (width <=$mobile) {
+    margin: 80px -20px 0;
+  }
+
+  a {
+    color: var(--footerColor);
+  }
+
+
+  .footer {
+    @include container($desktop);
+
+    &__nav,
+    &__copyright {
+      margin-top: 20px;
+      @include gridFlowColumn();
+      justify-content: space-between;
+    }
+
+    &__logo {
+      @include resetLink();
+      @include gridFlowColumn();
+      @include setFont(18px, 140%, 400);
+
+      &--text {
+        margin-left: 10px;
+
+        @media (width <=$mobile) {
+          display: none;
+        }
+      }
+    }
+
+    .copyright__authors {
+      @include resetUl();
+      @include gridFlowColumn();
+      gap: 15px;
+
+      @media (width <=$tablet) {
+        grid-auto-flow: row;
+        gap: 5px;
+      }
+    }
+
+    .copyright__rsschool-info {
+      @media (width <=$tablet) {
+        display: grid;
+        place-items: end;
+      }
+    }
+
+    a {
+      color: inherit;
+    }
+  }
+}
