@@ -8,7 +8,7 @@ export default function SearchApi() {
   const urlInput = React.useRef<HTMLInputElement>(null);
   const dispatch = useDispatch();
 
-  async function makeRequest(endpoint: string, query: string) {
+  async function getSchema(endpoint: string, query: string) {
     try {
       const response = await fetch(endpoint, {
         method: 'POST',
@@ -26,7 +26,7 @@ export default function SearchApi() {
     event.preventDefault();
     if (urlInput.current instanceof HTMLInputElement) {
       const url = urlInput.current;
-      await makeRequest(url.value, queryDoc);
+      await getSchema(url.value, queryDoc);
     }
   }
 

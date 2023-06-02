@@ -1,6 +1,6 @@
 import { toast } from 'react-toastify';
 
-export async function makeRequest(endpoint: string, query: string) {
+export async function getSchema(endpoint: string, query: string) {
   try {
     const response = await fetch(endpoint, {
       method: 'POST',

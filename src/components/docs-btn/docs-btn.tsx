@@ -8,6 +8,7 @@ type DocsBtnProps = {
 
 export default function DocsBtn({ isOpenDoc, setIsOpenDoc, setIsOpenSchema }: DocsBtnProps) {
   const { btnDoc, name } = styles;
+
   return (
     <button
       className={btnDoc}

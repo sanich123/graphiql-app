@@ -1,9 +1,12 @@
 import useOpenCloseSchema from '@/hooks/use-open-close-schema';
 import DocsBtn from '../docs-btn/docs-btn';
 import SchemaBtn from '../schema-btn/schema-btn';
-import DocsList from '../docs-list/docs-list';
-import SchemaList from '../schema-list/schema-list';
 import styles from './schema.module.scss';
+import dynamic from 'next/dynamic';
+import Loader from '../loader/loader';
+
+const ListOfDocuments = dynamic(() => import('../docs-list/docs-list'), { loading: () => <Loader /> });
+const ListOfSchema = dynamic(() => import('../schema-list/schema-list'), { loading: () => <Loader /> });
 
 export default function Schema() {
   const { isOpenDoc, isOpenSchema, setIsOpenDoc, setIsOpenSchema } = useOpenCloseSchema();
@@ -12,8 +15,8 @@ export default function Schema() {
     <div className={styles.allSchema}>
       <DocsBtn isOpenDoc={isOpenDoc} setIsOpenDoc={setIsOpenDoc} setIsOpenSchema={setIsOpenSchema} />
       <SchemaBtn isOpenSchema={isOpenSchema} setIsOpenDoc={setIsOpenDoc} setIsOpenSchema={setIsOpenSchema} />
-      {isOpenDoc && <DocsList />}
-      {isOpenSchema && <SchemaList />}
+      {isOpenDoc && <ListOfDocuments />}
+      {isOpenSchema && <ListOfSchema />}
     </div>
   );
 }
