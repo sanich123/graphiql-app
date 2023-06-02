@@ -6756,6 +6756,11 @@ react-json-formatter@^0.3.2:
   resolved "https://registry.yarnpkg.com/react-json-formatter/-/react-json-formatter-0.3.2.tgz#f2374a80442f6d977eb1bc3a011194ffaff471f5"
   integrity sha512-RjYM+hFcgm4x3Opt+fZCH3LktF6VfcQB/CtJX/SGd2Hko6RvL4dJw/BW17gRg7DLAHM7aKMt/ms/MroARalxoQ==
 
+react-json-view-lite@^0.9.6:
+  version "0.9.6"
+  resolved "https://registry.yarnpkg.com/react-json-view-lite/-/react-json-view-lite-0.9.6.tgz#7c11c76c607b09fc807a95403109514ed1f1c47f"
+  integrity sha512-E5P4YnJPRubzzc0ekJcKRk31Ts/hVaph7XH8ZfsybhFB1gWaAzewoYLLO1SIa4g32LKlcpnqXP4MSPbJrgckng==
+
 react-json-view@^1.21.3:
   version "1.21.3"
   resolved "https://registry.yarnpkg.com/react-json-view/-/react-json-view-1.21.3.tgz#f184209ee8f1bf374fb0c41b0813cff54549c475"

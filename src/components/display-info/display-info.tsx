@@ -3,7 +3,9 @@ import style from './display-info.module.scss';
 import styles from '../editor/Editor.module.scss';
 // import JsonFormatter from 'react-json-formatter';
 // import { THEMES } from '@/constants/enums';
-import ReactJson from 'react-json-view';
+// import ReactJson from 'react-json-view';
+import { JsonView, darkStyles, defaultStyles } from 'react-json-view-lite';
+import 'react-json-view-lite/dist/index.css';
 
 export function DisplayInfo() {
   const { responseData } = useAppSelector(({ apiData }) => apiData);
@@ -21,7 +23,7 @@ export function DisplayInfo() {
     <div className={sideDispInfo}>
       <div className={`${style.leftSide} display-info`}>
         {/* {responseData && <JsonFormatter json={responseData} tabWith={4} jsonStyle={jsonStyle} />} */}
-        {responseData && (
+        {/* {responseData && (
           <ReactJson
             src={JSON.parse(responseData)}
             indentWidth={2}
@@ -31,7 +33,8 @@ export function DisplayInfo() {
             displayObjectSize
             displayDataTypes
           />
-        )}
+        )} */}
+        {responseData && <JsonView data={JSON.parse(responseData)} shouldInitiallyExpand={(level) => true} style={defaultStyles} />}
       </div>
     </div>
   );
