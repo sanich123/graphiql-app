@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import AuthForm from '@/components/auth-form/auth-form';
-import SocialBtns from '@/components/social-btns/social-btns';
-import AuthNavigateBtns from '@/components/auth-navigate-btns/auth-navigate-btns';
-import { AUTH_PLACES, ROUTES } from '@/utils/const';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '@/firebase';
 import { useRouter } from 'next/router';
+import AuthForm from '@/components/auth-form/auth-form';
+import SocialBtns from '@/components/social-btns/social-btns';
+import AuthNavigateBtns from '@/components/auth-navigate-btns/auth-navigate-btns';
+import { AUTH_PLACES, ROUTES } from '@/constants/enums';
 
 export default function Login() {
   const [place, setPlace] = useState(AUTH_PLACES.login);
@@ -13,7 +13,7 @@ export default function Login() {
   const { push } = useRouter();
   useEffect(() => {
     if (user) {
-      push(ROUTES.main);
+      push(ROUTES.graphiql);
     }
   }, [user, push]);
   return (

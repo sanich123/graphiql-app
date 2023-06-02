@@ -1,19 +1,23 @@
-import React from 'react';
-import styles from '../editor/Editor.module.scss';
-import { TetxtareaVar } from '../textarea-var/textarea-var';
+import { useAppSelector } from '@/redux/hooks/hooks';
 import useTextEditor from '@/hooks/use-text-editor';
+import { Textarea } from '../textarea/textarea';
+import { TEXTAREA_PLACES } from '@/constants/enums';
+import { LANG } from '@/constants/languages';
+import styles from '../editor/Editor.module.scss';
 
 export default function RequestVariables() {
   const { sideVar, varHeader, title } = styles;
   const { openEditor } = useTextEditor();
+  const { language } = useAppSelector(({ changeThemeLang }) => changeThemeLang);
+
   return (
-    <div className={`${sideVar}`}>
-      <div className={`${varHeader}`}>
+    <div className={sideVar}>
+      <div className={varHeader}>
         <div className={title} onClick={openEditor}>
-          Query variables
+          {LANG[language].graphQlPage.variablesHeader}
         </div>
       </div>
-      <TetxtareaVar />
+      <Textarea place={TEXTAREA_PLACES.variables} />
     </div>
   );
 }

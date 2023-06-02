@@ -1,6 +1,7 @@
 import { auth, db } from '@/firebase';
-import { LANGUAGES } from '@/utils/const';
-import { NOTIFICATIONS } from '@/utils/notifications';
+import { LANGUAGES } from '@/constants/const';
+import { errorHandler } from '@/utils/helpers';
+import { NOTIFICATIONS } from '@/constants/notifications';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, signOut } from 'firebase/auth';
 import { addDoc, collection } from 'firebase/firestore';
 import { toast } from 'react-toastify';
@@ -28,9 +29,7 @@ export async function registerWithEmailAndPassword(name: string, email: string, 
     });
     toast.success(NOTIFICATIONS[language].successRegistration);
   } catch (err) {
-    if (err instanceof Error) {
-      toast.error(err.message);
-    }
+    errorHandler(err);
   }
 }
 
@@ -39,9 +38,7 @@ export async function sendPasswordReset(email: string, language: LANGUAGES) {
     await sendPasswordResetEmail(auth, email);
     toast.success(NOTIFICATIONS[language].passwordResetHasBeenSent);
   } catch (err) {
-    if (err instanceof Error) {
-      toast.error(err.message);
-    }
+    errorHandler(err);
   }
 }
 

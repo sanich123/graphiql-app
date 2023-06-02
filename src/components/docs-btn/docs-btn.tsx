@@ -1,3 +1,5 @@
+import { useAppSelector } from '@/redux/hooks/hooks';
+import { LANG } from '@/constants/languages';
 import styles from '../schema/schema.module.scss';
 
 type DocsBtnProps = {
@@ -8,6 +10,7 @@ type DocsBtnProps = {
 
 export default function DocsBtn({ isOpenDoc, setIsOpenDoc, setIsOpenSchema }: DocsBtnProps) {
   const { btnDoc, name } = styles;
+  const { language } = useAppSelector(({ changeThemeLang }) => changeThemeLang);
 
   return (
     <button
@@ -17,7 +20,7 @@ export default function DocsBtn({ isOpenDoc, setIsOpenDoc, setIsOpenSchema }: Do
         setIsOpenSchema(false);
       }}
     >
-      <p className={name}>DOCS</p>
+      <p className={name}>{LANG[language].graphQlPage.docsHeader}</p>
     </button>
   );
 }

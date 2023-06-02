@@ -1,6 +1,6 @@
 import { logOut } from '@/firebase/email-auth';
 import { useAppSelector } from '@/redux/hooks/hooks';
-import { LANG } from '@/utils/languages';
+import { LANG } from '@/constants/languages';
 import { LogoutIcon } from '../svg/svg';
 
 export default function LogoutBtn() {

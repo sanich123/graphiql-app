@@ -1,4 +1,4 @@
-import { LANG } from '../../src/utils/languages';
+import { LANG } from '../../src/constants/languages';
 
 describe('Main page', () => {
   beforeEach(() => cy.visit('/'));

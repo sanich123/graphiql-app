@@ -2,7 +2,7 @@ import { describe, it, expect, afterEach, vi } from 'vitest';
 import { screen, cleanup } from '@testing-library/react';
 import { useAppSelector } from '@/redux/hooks/hooks';
 import Logo from './logo';
-import { LANG } from '@/utils/languages';
+import { LANG } from '@/constants/languages';
 import customRender from '@/tests/render-with-providers';
 
 vi.mock('@/redux/hooks/hooks');

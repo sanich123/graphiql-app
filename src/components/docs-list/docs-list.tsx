@@ -1,5 +1,4 @@
 import { useAppSelector } from '@/redux/hooks/hooks';
-import React from 'react';
 import { DrawKyes } from '../schema/functions-draw-query';
 import styles from '../schema/schema.module.scss';
 import PWrongSchema from '../p-wrong-schema/p-wrong-schema';

@@ -1,6 +1,7 @@
 import { useAppSelector } from '@/redux/hooks/hooks';
-import { AUTH_NAV_BTNS_TEXT, AUTH_PLACES } from '@/utils/const';
+import { AUTH_NAV_BTNS_TEXT } from '@/constants/const';
 import { filterBtns } from '@/utils/helpers';
+import { AUTH_PLACES } from '@/constants/enums';
 
 type AuthNavigateBtnsProps = {
   place: AUTH_PLACES;

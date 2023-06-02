@@ -1,11 +1,10 @@
 import { useAppDispatch, useAppSelector } from '@/redux/hooks/hooks';
-// import { DarkIcon, EnIcon, LightIcon, RuIcon } from '../svg/svg';
-import { LANG } from '@/utils/languages';
+import { LANG } from '@/constants/languages';
 import { changeTheme, changeLanguage } from '@/redux/change-lang-slice/change-lang-slice';
-import { LANGUAGES, THEMES } from '@/utils/const';
 import { useCallback, useEffect } from 'react';
 import { IconContext } from 'react-icons';
 import { RiMoonFill, RiSunFill, RiCharacterRecognitionLine, RiCharacterRecognitionFill } from 'react-icons/ri';
+import { LANGUAGES, THEMES } from '@/constants/enums';
 
 export default function SettingsPanel() {
   const { theme, language } = useAppSelector(({ changeThemeLang }) => changeThemeLang);

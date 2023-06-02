@@ -1,4 +1,4 @@
-import { LANGUAGES, THEMES } from '@/utils/const';
+import { LANGUAGES, THEMES } from '@/constants/enums';
 import { createSlice } from '@reduxjs/toolkit';
 
 export const changeThemeLang = createSlice({

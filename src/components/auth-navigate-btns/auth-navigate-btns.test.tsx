@@ -2,9 +2,10 @@ import { describe, it, expect, vi, afterEach } from 'vitest';
 import { screen, cleanup } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import AuthNavigateBtns from './auth-navigate-btns';
-import { AUTH_NAV_BTNS_TEXT, AUTH_PLACES, AUTH_PLACES_RU } from '@/utils/const';
+import { AUTH_NAV_BTNS_TEXT } from '@/constants/const';
 import { useAppSelector } from '@/redux/hooks/hooks';
 import customRender from '@/tests/render-with-providers';
+import { AUTH_PLACES, AUTH_PLACES_RU } from '@/constants/enums';
 
 vi.mock('@/redux/hooks/hooks');
 

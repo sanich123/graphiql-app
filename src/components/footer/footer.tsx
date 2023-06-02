@@ -1,10 +1,9 @@
-import React from 'react';
 import Logo from '../logo/logo';
 import { RSLogo } from '../svg/svg';
 import { useAppSelector } from '@/redux/hooks/hooks';
-import { DEVELOPERS } from '@/utils/const';
+import { DEVELOPERS } from '@/constants/const';
 import Link from 'next/link';
-import { LANG } from '@/utils/languages';
+import { LANG } from '@/constants/languages';
 
 export default function Footer() {
   const { language } = useAppSelector(({ changeThemeLang }) => changeThemeLang);

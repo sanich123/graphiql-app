@@ -1,9 +1,10 @@
 import useOpenCloseSchema from '@/hooks/use-open-close-schema';
+import dynamic from 'next/dynamic';
 import DocsBtn from '../docs-btn/docs-btn';
 import SchemaBtn from '../schema-btn/schema-btn';
-import styles from './schema.module.scss';
-import dynamic from 'next/dynamic';
+
 import Loader from '../loader/loader';
+import styles from './schema.module.scss';
 
 const ListOfDocuments = dynamic(() => import('../docs-list/docs-list'), { loading: () => <Loader /> });
 const ListOfSchema = dynamic(() => import('../schema-list/schema-list'), { loading: () => <Loader /> });

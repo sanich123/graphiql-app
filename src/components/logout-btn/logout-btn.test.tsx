@@ -1,7 +1,7 @@
 import { describe, it, expect, afterEach, vi } from 'vitest';
 import { screen, cleanup } from '@testing-library/react';
 import LogoutBtn from './logout-btn';
-import { LANG } from '@/utils/languages';
+import { LANG } from '@/constants/languages';
 import { useAppSelector } from '@/redux/hooks/hooks';
 import customRender from '@/tests/render-with-providers';
 

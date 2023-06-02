@@ -1,5 +1,5 @@
+import { COLORS, LANGUAGES, THEMES } from '@/constants/enums';
 import { useAppSelector } from '@/redux/hooks/hooks';
-import { COLORS, LANGUAGES, THEMES } from '@/utils/const';
 
 export function LogoIcon() {
   const { theme } = useAppSelector(({ changeThemeLang }) => changeThemeLang);

@@ -1,52 +1,43 @@
-import { FaAngleRight } from 'react-icons/fa';
-import styles from '../editor/Editor.module.scss';
-import { useAppDispatch } from '@/redux/hooks/hooks';
-import { changeDataSchema, changeUrlData } from '@/redux/api-data/api-data';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks/hooks';
+import { changeDataSchema, setUrlAddress } from '@/redux/api-data/api-data';
 import { getSchema } from '@/utils/async-funcs';
 import { queryDoc } from '../search-api/query-param';
 import { ChangeEvent, KeyboardEvent } from 'react';
-import { toast } from 'react-toastify';
+import useUrlAuth from '@/hooks/use-url-auth';
+import styles from '../editor/Editor.module.scss';
+import { FaAngleRight } from 'react-icons/fa';
+import { errorHandler } from '@/utils/helpers';
 
-type InputAddressProps = {
-  urlAddress: string;
-  setUrlAddress: (arg: string) => void;
-};
-
-export default function InputAddress({ urlAddress, setUrlAddress }: InputAddressProps) {
-  const { url } = styles;
+export default function InputAddress() {
+  const { url, setUrl } = useUrlAuth();
   const dispatch = useAppDispatch();
+  const { savedUrlAddress } = useAppSelector(({ apiData }) => apiData);
 
   async function handleSavingUrl(urlValue: string) {
-    dispatch(changeUrlData(urlValue));
-    const res = await getSchema(urlValue, queryDoc);
-    if (res) {
-      toast.success('We have successfully recieved the schema from graphql server!');
+    try {
+      dispatch(setUrlAddress(urlValue));
+      const schema = await getSchema(urlValue, queryDoc);
+      dispatch(changeDataSchema(JSON.stringify(schema)));
+    } catch (error) {
+      errorHandler(error);
     }
-    dispatch(changeDataSchema(JSON.stringify(res) || ''));
   }
 
   return (
-    <>
+    <div className={`flex gap-2 items-center ${styles.urlWrap}`}>
       <FaAngleRight />
       <input
         type="url"
         name="urlapi"
         id="urlapi"
         pattern="https://.*"
-        value={urlAddress}
-        className={url}
-        onKeyDown={({ code }: KeyboardEvent) => {
-          if (code === 'Enter') {
-            handleSavingUrl(urlAddress);
-          }
-        }}
-        onChange={({ target: { value } }: ChangeEvent<HTMLInputElement>) => setUrlAddress(value)}
-        onBlur={async ({ target: { value } }: ChangeEvent<HTMLInputElement>) => handleSavingUrl(value)}
-        onPaste={async () => {
-          const pastedUrl = await navigator.clipboard.readText();
-          handleSavingUrl(pastedUrl);
-        }}
+        value={url}
+        className={styles.url}
+        onKeyDown={async ({ code }: KeyboardEvent) => code === 'Enter' && handleSavingUrl(url)}
+        onChange={({ target: { value } }: ChangeEvent<HTMLInputElement>) => setUrl(value)}
+        onBlur={async ({ target: { value } }: ChangeEvent<HTMLInputElement>) => value !== savedUrlAddress && handleSavingUrl(value)}
+        onPaste={async () => handleSavingUrl(await navigator.clipboard.readText())}
       />
-    </>
+    </div>
   );
 }

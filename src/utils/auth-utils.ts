@@ -1,8 +1,8 @@
 import { logInWithEmailAndPassword, registerWithEmailAndPassword, sendPasswordReset } from '@/firebase/email-auth';
 import { ChangeEvent, Dispatch, SetStateAction, SyntheticEvent } from 'react';
 import { toast } from 'react-toastify';
-import { AUTH_PLACES, LANGUAGES } from './const';
-import { NOTIFICATIONS } from './notifications';
+import { AUTH_PLACES, LANGUAGES } from '../constants/const';
+import { NOTIFICATIONS } from '../constants/notifications';
 
 export function handleSetState(setStateFn: Dispatch<SetStateAction<string>>) {
   return ({ target: { value } }: ChangeEvent<HTMLInputElement>) => {

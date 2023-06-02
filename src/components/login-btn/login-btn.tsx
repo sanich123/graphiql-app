@@ -5,8 +5,8 @@ import Image from 'next/image';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import Loader from '../loader/loader';
 import { DefaultUserIcon } from '../svg/svg';
-import { LANG } from '@/utils/languages';
-import { ROUTES } from '@/utils/const';
+import { LANG } from '@/constants/languages';
+import { ROUTES } from '@/constants/enums';
 
 export default function LoginBtn() {
   const [user, loading, error] = useAuthState(auth);

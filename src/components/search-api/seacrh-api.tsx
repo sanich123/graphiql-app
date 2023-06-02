@@ -1,11 +1,11 @@
+import { useRef } from 'react';
 import { changeDataSchema } from '@/redux/api-data/api-data';
-import React from 'react';
 import { useDispatch } from 'react-redux';
 import styles from './search-api.module.scss';
 import { queryDoc } from './query-param';
 
 export default function SearchApi() {
-  const urlInput = React.useRef<HTMLInputElement>(null);
+  const urlInput = useRef<HTMLInputElement>(null);
   const dispatch = useDispatch();
 
   async function getSchema(endpoint: string, query: string) {
