@@ -1,7 +1,7 @@
 import { logInWithEmailAndPassword, registerWithEmailAndPassword, sendPasswordReset } from '@/firebase/email-auth';
 import { ChangeEvent, Dispatch, SetStateAction, SyntheticEvent } from 'react';
 import { toast } from 'react-toastify';
-import { AUTH_PLACES, LANGUAGES } from '../constants/const';
+import { AUTH_PLACES, LANGUAGES } from '../constants/enums';
 import { NOTIFICATIONS } from '../constants/notifications';
 
 export function handleSetState(setStateFn: Dispatch<SetStateAction<string>>) {
