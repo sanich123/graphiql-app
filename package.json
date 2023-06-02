@@ -35,6 +35,7 @@
     "react-firebase-hooks": "^5.1.1",
     "react-icons": "^4.8.0",
     "react-json-formatter": "^0.3.2",
+    "react-json-view": "^1.21.3",
     "react-split": "^2.0.14",
     "react-toastify": "^9.1.2",
     "tailwindcss": "latest"
