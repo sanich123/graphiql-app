@@ -1,4 +1,4 @@
-import { THEMES } from "@/constants/enums";
+import { THEMES } from '@/constants/enums';
 
 export type ObjectWithStrings = {
   [key: string]: string;
