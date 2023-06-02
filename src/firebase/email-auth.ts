@@ -1,10 +1,10 @@
 import { auth, db } from '@/firebase';
-import { LANGUAGES } from '@/constants/const';
 import { errorHandler } from '@/utils/helpers';
 import { NOTIFICATIONS } from '@/constants/notifications';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, signOut } from 'firebase/auth';
 import { addDoc, collection } from 'firebase/firestore';
 import { toast } from 'react-toastify';
+import { LANGUAGES } from '@/constants/enums';
 
 export async function logInWithEmailAndPassword(email: string, password: string, language: LANGUAGES) {
   try {
