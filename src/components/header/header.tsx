@@ -11,7 +11,9 @@ import LogoutBtn from '../logout-btn/logout-btn';
 import { useRouter } from 'next/router';
 import { ROUTES } from '@/constants/enums';
 
-const SettingsPanel = dynamic(() => import('../settings-panel/settings-panel'));
+const SettingsPanel = dynamic(() => import('../settings-panel/settings-panel'), {
+  ssr: false,
+});
 
 export default function Header() {
   const { theme } = useAppSelector(({ changeThemeLang }) => changeThemeLang);

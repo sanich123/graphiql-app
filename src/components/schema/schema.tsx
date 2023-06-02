@@ -6,8 +6,8 @@ import SchemaBtn from '../schema-btn/schema-btn';
 import Loader from '../loader/loader';
 import styles from './schema.module.scss';
 
-const ListOfDocuments = dynamic(() => import('../docs-list/docs-list'), { loading: () => <Loader /> });
-const ListOfSchema = dynamic(() => import('../schema-list/schema-list'), { loading: () => <Loader /> });
+const ListOfDocuments = dynamic(() => import('../docs-list/docs-list'), { loading: () => <Loader />, ssr: false });
+const ListOfSchema = dynamic(() => import('../schema-list/schema-list'), { loading: () => <Loader />, ssr: false });
 
 export default function Schema() {
   const { isOpenDoc, isOpenSchema, setIsOpenDoc, setIsOpenSchema } = useOpenCloseSchema();
