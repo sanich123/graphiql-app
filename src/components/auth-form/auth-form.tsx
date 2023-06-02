@@ -14,6 +14,8 @@ export default function AuthForm({ place }: { place: AUTH_PLACES }) {
   return (
     <form className="auth-wrapper__form" onSubmit={handleSubmitForm(name, email, password, place, language)}>
       {AUTH_INPUTS[language]
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        //@ts-ignore
         .filter(filterInputs(place))
         .map(({ type, placeholder, name: inputName, pattern, title, autoComplete }: { [key: string]: string }) => {
           const value = setStateObj[inputName as keyof typeof setStateObj][0];
