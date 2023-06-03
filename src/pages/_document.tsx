@@ -1,4 +1,4 @@
-import { LANGUAGES, THEMES } from '@/utils/const';
+import { LANGUAGES, THEMES } from '@/constants/enums';
 import { Html, Head, Main, NextScript } from 'next/document';
 
 export default function Document() {

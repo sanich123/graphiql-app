@@ -1,25 +1,30 @@
 import { useAppDispatch, useAppSelector } from '@/redux/hooks/hooks';
-import React from 'react';
+import { useSendGraphiqlResponseMutation } from '@/redux/graphql-api/graphql-api';
+import { saveResponse } from '@/redux/api-data/api-data';
 import styles from '../editor/Editor.module.scss';
 import { FaPlay } from 'react-icons/fa';
-import { useSendGraphiqlResponseMutation } from '@/redux/graphql-api/graphql-api';
-import { changeData } from '@/redux/save-data/save-data';
+import { errorHandler } from '@/utils/helpers';
 
-export default function RequestBtn({ urlAddress }: { urlAddress: string }) {
-  const [sendRequest] = useSendGraphiqlResponseMutation();
-  const { requestData: request } = useAppSelector(({ savedData }) => savedData);
-  const { btnSend } = styles;
+export default function RequestBtn() {
   const dispatch = useAppDispatch();
+  const [sendRequest, { isLoading }] = useSendGraphiqlResponseMutation();
+  const { savedUrlAddress, requestData } = useAppSelector(({ apiData }) => apiData);
 
   return (
     <button
-      className={btnSend}
+      className={styles.btnSend}
       onClick={async () => {
-        const response = await sendRequest({ url: urlAddress, request: JSON.parse(request) });
-        dispatch(changeData(JSON.stringify({ response, request })));
+        try {
+          const response = await sendRequest({ url: savedUrlAddress, request: requestData });
+          dispatch(saveResponse(response));
+        } catch (error) {
+          errorHandler(error);
+        }
       }}
+      disabled={isLoading}
     >
-      <FaPlay />
+      {isLoading && 'Loading'}
+      {!isLoading && <FaPlay />}
     </button>
   );
 }

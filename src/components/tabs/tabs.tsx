@@ -1,15 +1,17 @@
 import { useAppSelector } from '@/redux/hooks/hooks';
-import { LANG } from '@/utils/languages';
+import { LANG } from '@/constants/languages';
 import { useState } from 'react';
 import BtnTry from '../btn-try/btn-try';
-import { LINKS } from '@/utils/const';
+import { LINKS } from '@/constants/const';
 import Image from 'next/image';
+import { THEMES } from '@/constants/enums';
 
 export default function Tabs() {
   const { theme } = useAppSelector(({ changeThemeLang }) => changeThemeLang);
-  const imgSrcNum = theme === 'light' ? 0 : 1;
+  const imgSrcNum = theme === THEMES.light ? 0 : 1;
   const { language } = useAppSelector(({ changeThemeLang }) => changeThemeLang);
   const [activeTab, setActiveTab] = useState(LANG[language].tabs[0]);
+
   return (
     <div className="main__tabs tabs">
       <div className="tabs-wrapper">

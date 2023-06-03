@@ -34,7 +34,7 @@
     "react-dom": "latest",
     "react-firebase-hooks": "^5.1.1",
     "react-icons": "^4.8.0",
-    "react-json-formatter": "^0.3.2",
+    "react-json-view-lite": "^0.9.6",
     "react-split": "^2.0.14",
     "react-toastify": "^9.1.2",
     "tailwindcss": "latest"
@@ -78,7 +78,7 @@
     "sass": "latest",
     "sharp": "^0.32.1",
     "start-server-and-test": "^2.0.0",
-    "typescript": "latest",
+    "typescript": "^4.9.5",
     "vite-tsconfig-paths": "^4.2.0",
     "vitest": "latest",
     "vitest-fetch-mock": "^0.2.2"

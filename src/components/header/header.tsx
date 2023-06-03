@@ -2,7 +2,6 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '@/firebase';
 import Link from 'next/link';
 import { useAppSelector } from '@/redux/hooks/hooks';
-import { ROUTES } from '@/utils/const';
 import Logo from '../logo/logo';
 import dynamic from 'next/dynamic';
 import useHeaderListeners from '@/hooks/use-header-listeners';
@@ -10,8 +9,11 @@ import SettingsBtn from '../settings-btn/settings-btn';
 import LoginBtn from '../login-btn/login-btn';
 import LogoutBtn from '../logout-btn/logout-btn';
 import { useRouter } from 'next/router';
+import { ROUTES } from '@/constants/enums';
 
-const SettingsPanel = dynamic(() => import('../settings-panel/settings-panel'));
+const SettingsPanel = dynamic(() => import('../settings-panel/settings-panel'), {
+  ssr: false,
+});
 
 export default function Header() {
   const { theme } = useAppSelector(({ changeThemeLang }) => changeThemeLang);

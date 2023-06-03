@@ -1,4 +1,4 @@
-import { LANG } from '@/utils/languages';
+import { LANG } from '@/constants/languages';
 import { useAppSelector } from '@/redux/hooks/hooks';
 import { RiSettings3Fill } from 'react-icons/ri';
 import { IconContext } from 'react-icons';

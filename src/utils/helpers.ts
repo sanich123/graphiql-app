@@ -1,4 +1,5 @@
-import { AUTH_PLACES, AUTH_PLACES_RU, LANGUAGES } from './const';
+import { toast } from 'react-toastify';
+import { AUTH_PLACES, AUTH_PLACES_RU, LANGUAGES } from '../constants/enums';
 
 export function filterBtns(place: AUTH_PLACES) {
   return ({ value }: { value: AUTH_PLACES }) => {
@@ -40,5 +41,11 @@ export function changeBtnText(place: AUTH_PLACES, language: LANGUAGES) {
     } else {
       return AUTH_PLACES.reset;
     }
+  }
+}
+
+export function errorHandler(error: unknown) {
+  if (error instanceof Error) {
+    toast.error(`${error.message}`);
   }
 }

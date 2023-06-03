@@ -2,7 +2,8 @@ import { signInWithPopup } from 'firebase/auth';
 import { query, getDocs, collection, where, addDoc } from 'firebase/firestore';
 import { auth, db } from '../firebase';
 import { toast } from 'react-toastify';
-import { SOCIAL_NETWORKS, SOCIAL_NETWORKS_PROVIDERS } from '@/utils/const';
+import { SOCIAL_NETWORKS_PROVIDERS } from '@/constants/const';
+import { SOCIAL_NETWORKS } from '@/constants/enums';
 
 export async function signInWithSocialNetwork(provider: SOCIAL_NETWORKS.google | SOCIAL_NETWORKS.github) {
   try {

@@ -1,6 +1,6 @@
 import { describe, it, expect, afterEach, vi } from 'vitest';
 import { screen, cleanup } from '@testing-library/react';
-import { LANG } from '@/utils/languages';
+import { LANG } from '@/constants/languages';
 import SettingsPanel from './settings-panel';
 import { useAppSelector } from '@/redux/hooks/hooks';
 import customRender from '@/tests/render-with-providers';

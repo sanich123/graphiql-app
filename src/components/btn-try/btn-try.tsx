@@ -1,10 +1,10 @@
 import { useAppSelector } from '@/redux/hooks/hooks';
-import { ROUTES } from '@/utils/const';
-import { LANG } from '@/utils/languages';
 import { useRouter } from 'next/router';
-import style from './btn-try.module.scss';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '@/firebase';
+import { ROUTES } from '@/constants/enums';
+import { LANG } from '@/constants/languages';
+import style from './btn-try.module.scss';
 
 export default function BtnTry() {
   const [user] = useAuthState(auth);

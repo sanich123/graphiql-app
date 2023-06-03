@@ -1,10 +1,10 @@
 import { describe, it, expect, afterEach, vi } from 'vitest';
 import { screen, cleanup } from '@testing-library/react';
-import { AUTH_PLACES } from '@/utils/const';
 import AuthForm from './auth-form';
 import userEvent from '@testing-library/user-event';
 import { useAppSelector } from '@/redux/hooks/hooks';
 import customRender from '@/tests/render-with-providers';
+import { AUTH_PLACES } from '@/constants/enums';
 
 vi.mock('@/redux/hooks/hooks');
 

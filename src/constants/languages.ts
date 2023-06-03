@@ -22,6 +22,12 @@ export const LANG = {
       startBtn: 'Давай начнем!',
     },
     tabs: ['Запросы к любой API', 'Подсветка синтаксиса', 'Документация', 'Схема', 'Переменные запросов'],
+    graphQlPage: {
+      queryHeader: 'Запросы',
+      variablesHeader: 'Переменные',
+      docsHeader: 'Доки',
+      schemaHeader: 'Схема',
+    },
   },
   en: {
     login: 'Sign-in',
@@ -45,5 +51,11 @@ export const LANG = {
       startBtn: 'Get Started!',
     },
     tabs: ['Requests to any API', 'Syntax highlighting', 'Documentation', 'Schema', 'Query variables'],
+    graphQlPage: {
+      queryHeader: 'Queries',
+      variablesHeader: 'Variables',
+      docsHeader: 'Docs',
+      schemaHeader: 'Schema',
+    },
   },
 };

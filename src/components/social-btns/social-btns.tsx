@@ -1,10 +1,12 @@
 import { signInWithSocialNetwork } from '@/firebase/social-auth';
-import { LANGUAGES, SOCIAL_NETWORKS, SOCIAL_NETWORKS_ARR } from '../../utils/const';
+import { LANGUAGES, SOCIAL_NETWORKS } from '../../constants/enums';
 import { useAppSelector } from '@/redux/hooks/hooks';
 import { GithubIcon, GoogleIcon } from '../svg/svg';
+import { SOCIAL_NETWORKS_ARR } from '@/constants/const';
 
 export default function SocialBtns() {
   const { language } = useAppSelector(({ changeThemeLang }) => changeThemeLang);
+
   return (
     <>
       {SOCIAL_NETWORKS_ARR.map((socialNetwork) => (

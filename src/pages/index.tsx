@@ -1,5 +1,5 @@
 import { useAppSelector } from '@/redux/hooks/hooks';
-import { LANG } from '@/utils/languages';
+import { LANG } from '@/constants/languages';
 import Image from 'next/image';
 import Img1 from '../../public/img/0.png';
 import Img1Dark from '../../public/img/0d.png';

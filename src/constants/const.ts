@@ -1,24 +1,8 @@
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
+import { AUTH_PLACES, AUTH_PLACES_RU, SOCIAL_NETWORKS } from './enums';
 
 export const BASE_URL = 'https://graphqlzero.almansi.me/api';
-
-export const enum SOCIAL_NETWORKS {
-  github = 'Github',
-  google = 'Google',
-}
 export const SOCIAL_NETWORKS_ARR = [SOCIAL_NETWORKS.google, SOCIAL_NETWORKS.github];
-export const enum AUTH_PLACES {
-  login = 'Login',
-  register = 'Register',
-  reset = 'Reset',
-}
-
-export const enum AUTH_PLACES_RU {
-  login = 'Логин',
-  register = 'Регистрация',
-  reset = 'Сброс',
-}
-
 export const AUTH_NAV_BTNS_TEXT = {
   en: [
     // eslint-disable-next-line quotes
@@ -104,7 +88,7 @@ export const AUTH_INPUTS = {
       autoComplete: 'current-password',
     },
   ],
-};
+} as const;
 
 export const LOGIN_BTN_TEXTS = {
   Login: AUTH_PLACES.login,
@@ -116,27 +100,6 @@ export const SOCIAL_NETWORKS_PROVIDERS = {
   Github: new GithubAuthProvider(),
   Google: new GoogleAuthProvider(),
 } as const;
-
-export const enum LANGUAGES {
-  ru = 'ru',
-  en = 'en',
-}
-
-export const enum THEMES {
-  dark = 'dark',
-  light = 'light',
-}
-
-export const enum ROUTES {
-  main = '/',
-  login = '/login',
-  graphiql = '/graphiql',
-}
-
-export const enum COLORS {
-  almostBlack = '#161D25',
-  white = 'white',
-}
 
 export const DEVELOPERS = [
   {
@@ -165,3 +128,11 @@ export const LINKS = {
   'Query variables': ['/img/7.png', '/img/7d.png'],
   'Переменные запросов': ['/img/7.png', '/img/7d.png'],
 };
+
+export const INITIAL_REQUEST = `query {
+  post(id: 1) {
+    id
+    title
+    body
+  }
+}`;

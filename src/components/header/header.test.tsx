@@ -3,13 +3,13 @@ import { cleanup, screen } from '@testing-library/react';
 import Header from './header';
 import { useAppSelector } from '@/redux/hooks/hooks';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { LANG } from '@/utils/languages';
+import { LANG } from '@/constants/languages';
 import { USER_MOCK } from '@/tests/auth-mocks';
 import { User } from 'firebase/auth';
 import customRender from '@/tests/render-with-providers';
 import userEvent from '@testing-library/user-event';
 import mockRouter from 'next-router-mock';
-import { ROUTES } from '@/utils/const';
+import { ROUTES } from '@/constants/enums';
 vi.mock('@/redux/hooks/hooks');
 vi.mock('react-firebase-hooks/auth');
 describe('Header', () => {
