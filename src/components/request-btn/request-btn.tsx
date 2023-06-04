@@ -1,10 +1,10 @@
 import { useAppDispatch, useAppSelector } from '@/redux/hooks/hooks';
 import { useSendGraphiqlResponseMutation } from '@/redux/graphql-api/graphql-api';
 import { saveResponse } from '@/redux/api-data/api-data';
-import styles from '../editor/Editor.module.scss';
-import { FaPlay } from 'react-icons/fa';
+import { FaPlay, FaCircle } from 'react-icons/fa';
 import { errorHandler } from '@/utils/helpers';
 import { requestValidator } from '@/utils/request-validator';
+import styles from '../editor/Editor.module.scss';
 
 export default function RequestBtn() {
   const dispatch = useAppDispatch();
@@ -15,17 +15,19 @@ export default function RequestBtn() {
     <button
       className={styles.btnSend}
       onClick={async () => {
-        requestValidator(requestData, variablesData);
         try {
-          const response = await sendRequest({ url: savedUrlAddress, request: requestData });
-          dispatch(saveResponse(response));
+          const requestWithVariables = requestValidator(requestData, variablesData);
+          if (requestWithVariables) {
+            const response = await sendRequest({ url: savedUrlAddress, request: requestWithVariables });
+            dispatch(saveResponse(response));
+          }
         } catch (error) {
           errorHandler(error);
         }
       }}
       disabled={isLoading}
     >
-      {isLoading && 'Loading'}
+      {isLoading && <FaCircle />}
       {!isLoading && <FaPlay />}
     </button>
   );

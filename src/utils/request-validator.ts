@@ -13,6 +13,7 @@ export function requestValidator(request: string, variables: string) {
       const matched = variablesWithoutNewLines.match(regExp);
       if (!matched) {
         toast.error('You use variables in your request, but in section of variables we didnt find your variables. Check if you wrote the right way');
+        return '';
       }
       if (matched) {
         const cleared = matched.map((str) => str.replace(`${clearedVars[i]}":`, '').replace(',', '').trim()).toString();
@@ -26,5 +27,6 @@ export function requestValidator(request: string, variables: string) {
     });
     return requestWithoutVarsSection;
   }
-  return 'There are no variables in your query';
+  toast.error('Something wrong with your request, try again and check the errors');
+  return '';
 }
