@@ -129,10 +129,20 @@ export const LINKS = {
   'Переменные запросов': ['/img/7.png', '/img/7d.png'],
 };
 
-export const INITIAL_REQUEST = `query {
-  post(id: 1) {
-    id
-    title
-    body
+export const INITIAL_REQUEST = `query (
+  $id: ID!
+) {
+  photo(id: $id) {
+    album {
+      id
+      title
+      user {
+        id
+      }
+    }
   }
+}`;
+
+export const INITIAL_VARIABLE = `{
+  "id": 5
 }`;

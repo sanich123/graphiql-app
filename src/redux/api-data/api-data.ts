@@ -1,4 +1,4 @@
-import { INITIAL_REQUEST } from '@/constants/const';
+import { INITIAL_REQUEST, INITIAL_VARIABLE } from '@/constants/const';
 import { createSlice } from '@reduxjs/toolkit';
 
 export const apiData = createSlice({
@@ -8,7 +8,7 @@ export const apiData = createSlice({
     dataDoc: '',
     responseData: '',
     requestData: INITIAL_REQUEST,
-    variablesData: '',
+    variablesData: INITIAL_VARIABLE,
   },
   reducers: {
     setUrlAddress: (state, action) => {
