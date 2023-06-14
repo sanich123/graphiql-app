@@ -14,7 +14,7 @@ export function DisplayInfo() {
   return (
     <div className={sideDispInfo}>
       <div className={`${style.leftSide} display-info`}>
-        {responseData && <JsonView data={JSON.parse(responseData)} shouldInitiallyExpand={() => true} style={isLightTheme ? darkStyles : defaultStyles} />}
+        {responseData && <JsonView data={JSON.parse(responseData)} shouldInitiallyExpand={() => true} style={isLightTheme ? defaultStyles : darkStyles} />}
       </div>
     </div>
   );
