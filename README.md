@@ -2,9 +2,11 @@
 
 In collaboration with: [predmaxim](https://github.com/predmaxim), [irinaid](https://github.com/IrinaIID)
 
-1. How to launch: 
+1. How to launch:
+You need to install yarn to launch the project.
+`npm i yarn -g`
 
-copy and past into your code-editor command-line: `git clone git@github.com:sanich123/graphiql-app.git project&&cd project&&git checkout develop&&npm i&&npm start`
+copy and past into your code-editor command-line: `git clone git@github.com:sanich123/graphiql-app.git project&&cd project&&git checkout develop&&yarn&&yarn dev`
 
 *or you can use deployed version:* [Deployed](https://graphiql-kappa.vercel.app/graphiql)
 
